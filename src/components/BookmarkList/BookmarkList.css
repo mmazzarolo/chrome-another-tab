@@ -1,0 +1,14 @@
+.BookmarkList {
+  text-align: left;
+  color: white;
+  font-size: calc(10px + 2vmin);
+}
+
+.BookmarkList ul {
+  padding-left: 18px;
+}
+
+.BookmarkList ul,
+.BookmarkList li {
+  list-style: none;
+}

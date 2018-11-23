@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/chrome": "^0.0.75",
     "@types/jest": "23.3.9",
     "@types/node": "10.12.10",
     "@types/react": "16.7.7",
     "@types/react-dom": "16.0.10",
+    "prettier": "^1.15.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
@@ -26,9 +28,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "@types/chrome": "^0.0.75",
-    "prettier": "^1.15.2"
-  }
+  ]
 }
