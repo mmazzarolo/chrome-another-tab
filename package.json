@@ -26,5 +26,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/chrome": "^0.0.75",
+    "prettier": "^1.15.2"
+  }
 }
