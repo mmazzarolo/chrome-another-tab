@@ -1,5 +1,5 @@
 {
-  "name": "chrome-new-page",
+  "name": "chrome-another-tab",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,8 +9,8 @@
     "@types/react": "16.7.7",
     "@types/react-dom": "16.0.10",
     "prettier": "^1.15.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
     "react-scripts": "2.1.1",
     "typescript": "3.1.6"
   },

@@ -1,5 +1,3 @@
-# DevLog
-
 ### Fixing the Content Security Policy issue
 
 Latest versions of Chrome block inline scripts in Chrome extensions. Since Create React App 2 creates an inline script to run the app you might stumble upon an error message which is related to Content Security Policy (CSP) in the console.  

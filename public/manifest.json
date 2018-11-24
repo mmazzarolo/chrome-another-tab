@@ -1,11 +1,11 @@
 {
-  "name": "Chrome New Page",
-  "description": "Chrome New Page Extension",
+  "name": "Another Tab",
+  "description": "Another Tab Chrome Extension",
   "version": "1.0",
   "manifest_version": 2,
   "permissions": ["bookmarks"],
   "browser_action": {
-    "default_title": "Chrome New Page",
+    "default_title": "Another Tab",
     "default_icon": "icon.png"
   },
   "chrome_url_overrides": {
