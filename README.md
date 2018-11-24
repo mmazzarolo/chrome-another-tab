@@ -7,7 +7,8 @@
 &nbsp;
 
 Just building a Chrome Extension with Create React App and TypeScript.  
-Let's see how it goes.
+...I still don't have a clear idea of what I'll build though.  
+[Let's see how it goes](./DEVLOG.md).
 
 # Acknowledgements
 
