@@ -6,13 +6,14 @@
 
 .App-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header img {
+  width: 42px;
+  height: 42px;
 }

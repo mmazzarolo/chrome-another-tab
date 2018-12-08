@@ -1,9 +1,13 @@
+import { filterBookmarkTree } from "./../utils/filterBookmarkTree";
 import { delay } from "../utils/delay";
 import bookmarksFixture from "../fixtures/bookmarks.json";
 
 export const getBookmarks = async (query?: string) => {
   if (process.env.NODE_ENV === "development") {
     await delay(100);
+    if (query) {
+      return filterBookmarkTree(bookmarksFixture, query);
+    }
     return bookmarksFixture;
   } else {
     return new Promise<chrome.bookmarks.BookmarkTreeNode[]>(resolve =>
