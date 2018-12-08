@@ -1,0 +1,21 @@
+.SearchBar {
+  width: 320px;
+  background-color: white;
+  font-size: 1.13em;
+  line-height: 1.13em;
+  transition: all 0.6s ease-out;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  margin: 20px;
+  padding: 8px 8px;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  color: #282c34;
+  background-position: 8px;
+  padding-left: calc(32px + 8px + 8px);
+  border: none;
+}
+
+.SearchBar:focus {
+  outline: 0;
+}
