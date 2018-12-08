@@ -4,13 +4,16 @@ import "./App.css";
 import { getBookmarks } from "../../services/chromeService";
 import BookmarkList from "../BookmarkList/BookmarkList";
 import { useOnMount } from "../../hooks/useOnMount";
+import { flattenBookmarkTree } from "../../utils/flattenBookmarkTree";
 
 export const App: React.FC = () => {
   const [bookmarks, setBookmarks] = useState<
     chrome.bookmarks.BookmarkTreeNode[]
   >([]);
   const updateBookmarks = async (query?: string) => {
-    setBookmarks(await getBookmarks());
+    const chromeBookmarks = await getBookmarks();
+    const bookmarks = flattenBookmarkTree(chromeBookmarks);
+    setBookmarks(bookmarks);
   };
   useOnMount(() => {
     updateBookmarks();

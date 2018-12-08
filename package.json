@@ -3,11 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/chrome": "^0.0.75",
-    "@types/jest": "23.3.9",
-    "@types/node": "10.12.10",
-    "@types/react": "16.7.7",
-    "@types/react-dom": "16.0.10",
+    "lodash": "^4.17.11",
     "prettier": "^1.15.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
@@ -28,5 +24,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/chrome": "^0.0.75",
+    "@types/jest": "23.3.9",
+    "@types/node": "10.12.10",
+    "@types/react": "16.7.7",
+    "@types/react-dom": "16.0.10",
+    "@types/lodash": "^4.14.118"
+  }
 }
