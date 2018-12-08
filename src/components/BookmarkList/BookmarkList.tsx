@@ -1,4 +1,5 @@
 import React, { FC, memo } from "react";
+import BookmarkNode from "../BookmarkNode/BookmarkNode";
 import "./BookmarkList.css";
 
 interface Props {
@@ -20,13 +21,22 @@ const BookmarkList: FC<Props> = memo(props => {
   } else {
     return (
       <>
-        <li>{bookmarkNode.title}</li>
+        {!bookmarkNode.children && (
+          <BookmarkNode
+            id={bookmarkNode.id}
+            title={bookmarkNode.title}
+            url={bookmarkNode.url}
+          />
+        )}
         {bookmarkNode.children && (
-          <ul>
-            {bookmarkNode.children.map(x => (
-              <BookmarkList bookmarkNode={x} key={x.id} />
-            ))}
-          </ul>
+          <>
+            <li className="BookmarkList-folder-title">{bookmarkNode.title}</li>
+            <ul>
+              {bookmarkNode.children.map(x => (
+                <BookmarkList bookmarkNode={x} key={x.id} />
+              ))}
+            </ul>
+          </>
         )}
       </>
     );
