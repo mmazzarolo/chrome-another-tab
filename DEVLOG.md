@@ -34,3 +34,18 @@ The development mode build of Create React App (created by `webpack-dev-server`)
 This means that to test our extension we have to always create a production build.  
 As a workaround I'll mock a the result of the Chrome API with a few fixtures while in development.  
 See [`chromeService`](./src/services/chromeService.ts).
+
+### Getting a bookmark favicon
+
+The Chrome Bookmark API doesn't return the bookmark favicon.  
+I investigated a bit and it looks like the two most common ways to grab it right now are:
+
+1. Use the `chrome://favicon/` API (e.g.: `chrome://favicon/twitter.com`) to get the favicon icon, or...
+2. Use the `https://www.google.com/s2/favicons?domain=foobar.com` Google service.
+
+Well, guess what, both services return the 16x16 favicon, which looks crappy nowadays.
+
+Thanks to a StackOverflow comment though I was able to discover [faviconkit.com](https://faviconkit.com) which looks amazing: you can fetch up to 144x144px icons and it uses an aggressive caching strategy (both in the browser and on the CDN) so it's incredibly fast.  
+The website says that the project is in "free beta" but given how well it performs I suspect it wont' stay free for long.
+
+I still don't know why the Bookmark API doesn't return the 32x32 favicon used in the Chrome bookmarks management (I tried taking a quick look at the Chromium source but I wasn't able to find anything related to that).
