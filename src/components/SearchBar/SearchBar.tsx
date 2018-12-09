@@ -1,4 +1,4 @@
-import React, { FC, memo, ChangeEvent, useState, useRef } from "react";
+import React, { FC, memo, ChangeEvent, useRef } from "react";
 import "./SearchBar.css";
 import searchImage from "../../assets/images/search-24px.svg";
 

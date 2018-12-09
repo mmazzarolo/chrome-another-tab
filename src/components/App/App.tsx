@@ -14,7 +14,6 @@ export const App: FC = () => {
   const updateBookmarks = async (query?: string) => {
     const chromeBookmarks = await getBookmarks(query);
     const bookmarks = flattenBookmarkTree(chromeBookmarks);
-    console.log("bookmarks", bookmarks);
     setBookmarks(bookmarks);
   };
   useOnMount(() => {

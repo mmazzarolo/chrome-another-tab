@@ -7,17 +7,16 @@ export const flattenBookmarkTree = (
   const flattenBookmarkNodes = (nodes: chrome.bookmarks.BookmarkTreeNode[]) => {
     nodes.forEach(node => {
       if (node.children) {
-        const hasBookmarks = !!node.children.find(x => {
-          return !x.children && x.url !== "chrome://bookmarks/";
-        });
-        if (hasBookmarks) {
-          flattenedBookmarksTree.push({
-            ...node,
-            children: node.children.map(child => {
+        flattenedBookmarksTree.push({
+          ...node,
+          children: node.children
+            .filter(child => {
+              return !!child.url && child.url !== "chrome://bookmarks/";
+            })
+            .map(child => {
               return omit(child, "children");
             })
-          });
-        }
+        });
         flattenBookmarkNodes(node.children);
       }
     });
