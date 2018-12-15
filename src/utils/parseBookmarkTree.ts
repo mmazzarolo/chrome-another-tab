@@ -11,20 +11,21 @@ export const parseBookmarkTree = (bookmarkTree: Bookmark[], query?: string) => {
           ...node,
           children: node.children
             .filter(child => {
-              const hasValidUrl =
-                !!child.url && child.url !== "chrome://bookmarks/";
+              const hasValidUrl = child.url !== "chrome://bookmarks/";
               const isInQuery = query
                 ? child.title.toLowerCase().includes(query.toLowerCase())
                 : true;
               const isEmptyFolder =
                 child.children && child.children.length === 0;
-              return hasValidUrl && isInQuery && !isEmptyFolder;
+              return isInQuery && !isEmptyFolder && hasValidUrl;
             })
             .map(child => {
               return omit(child, "children");
             })
         };
-        parsedBookmarksTree.push(parsedBookmark);
+        if (!!parsedBookmark.title) {
+          parsedBookmarksTree.push(parsedBookmark);
+        }
         parseBookmarkNodes(node.children);
       }
     });

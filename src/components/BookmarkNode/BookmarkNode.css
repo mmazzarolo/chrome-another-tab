@@ -3,12 +3,14 @@
   flex-direction: row;
   text-align: left;
   font-size: 14px;
+  font-weight: 400;
   width: 320px;
   background-color: white;
   background-color: #fbfbfd;
+  background-color: rgba(255, 255, 255, 0.5);
   transition: all 0.6s ease-out;
-  border-radius: 2px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
   text-decoration: none;
 }
@@ -32,6 +34,6 @@
 }
 
 .BookmarkNode-content span {
-  color: black;
   letter-spacing: 0px;
+  color: #252124;
 }

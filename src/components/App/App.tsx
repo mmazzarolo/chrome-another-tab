@@ -5,6 +5,7 @@ import BookmarkList from "../BookmarkList/BookmarkList";
 import { useOnMount } from "../../hooks/useOnMount";
 import { parseBookmarkTree } from "../../utils/parseBookmarkTree";
 import SearchBar from "../SearchBar/SearchBar";
+import logoImage from "../../assets/images/logo.png";
 
 type Bookmark = chrome.bookmarks.BookmarkTreeNode;
 
@@ -21,6 +22,7 @@ export const App: FC = () => {
     const chromeBookmarks = await getBookmarks();
     const bookmarks = parseBookmarkTree(chromeBookmarks, query);
     setBookmarks(bookmarks);
+    console.log("bookmarks: ", bookmarks);
     if (isLoading) {
       setIsLoading(false);
     }
@@ -37,7 +39,9 @@ export const App: FC = () => {
       {!isLoading && (
         <>
           <header>
-            <SearchBar query={searchQuery} onChange={handleQueryChange} />
+            <img src={logoImage} />
+            <p>Another Tab</p>
+            {/* <SearchBar query={searchQuery} onChange={handleQueryChange} /> */}
           </header>
           <main>
             <BookmarkList bookmarkNode={bookmarks} />

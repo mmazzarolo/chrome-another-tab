@@ -4,21 +4,36 @@
   text-align: center;
   transition: all 0.6s ease-out;
   height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #c6ffdd,
+    #fbd786,
+    #f7797d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to top, #c2e59c, #64b3f4);
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 .App > header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 8px 40px;
+  height: 28px;
+  width: 100%;
+  background-color: #ffffff;
   animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .App > header img {
-  width: 42px;
-  height: 42px;
+  height: 100%;
+}
+
+.App > header p {
+  font-size: 17px;
+  margin-left: 16px;
+  color: #252124;
 }
 
 .App > main {
@@ -28,7 +43,7 @@
 
 @keyframes fade-in-bottom {
   0% {
-    transform: translateY(20px);
+    transform: translateY(-40px);
     opacity: 0;
   }
   100% {

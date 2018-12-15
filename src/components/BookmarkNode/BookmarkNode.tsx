@@ -1,6 +1,7 @@
 import React, { FC, memo } from "react";
 import "./BookmarkNode.css";
 import { getFaviconUrl } from "../../utils/getFaviconUrl";
+import folderImage from "../../assets/images/folder-open.svg";
 
 interface Props {
   id: string;
@@ -10,16 +11,12 @@ interface Props {
 
 const BookmarkNode: FC<Props> = memo(props => {
   const { title, url } = props;
-  let faviconUrl = url ? getFaviconUrl(url) : "";
+  let imageSrc = url ? getFaviconUrl(url) : folderImage;
+
   return (
-    <a
-      className="BookmarkNode"
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a className="BookmarkNode" href={url} rel="noopener noreferrer">
       <div className="BookmarkNode-content">
-        <img src={faviconUrl} />
+        <img src={imageSrc} />
         <span>{title}</span>
       </div>
     </a>
