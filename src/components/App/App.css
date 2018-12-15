@@ -1,19 +1,47 @@
 .App {
   /* background-color: #282c34; */
-  background-color: #fbfbfd;
+  /* background-color: #fbfbfd; */
   text-align: center;
+  transition: all 0.6s ease-out;
+  height: 100%;
 }
 
-.App-header {
+.App > header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-.App-header img {
+.App > header img {
   width: 42px;
   height: 42px;
+}
+
+.App > main {
+  animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation-delay: 0.2s;
+}
+
+@keyframes fade-in-bottom {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

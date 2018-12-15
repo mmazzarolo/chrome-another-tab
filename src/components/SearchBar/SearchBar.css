@@ -1,18 +1,21 @@
 .SearchBar {
   width: 320px;
+  height: 34px;
+  border-radius: 21px;
   background-color: white;
-  font-size: 26px;
+  font-size: 22px;
   transition: all 0.6s ease-out;
-  border-radius: 2px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08); */
   margin: 20px;
-  padding: 8px 8px;
+  padding: 4px 10px;
   background-repeat: no-repeat;
-  background-size: 32px;
+  background-size: 24px;
   color: #282c34;
-  background-position: 8px;
-  padding-left: calc(32px + 8px + 8px);
+  background-position: 300px;
+  /* padding-left: calc(32px + 8px + 8px); */
   border: none;
+  text-align: center;
+  background-color: #f0f0f0;
 }
 
 .SearchBar:focus {
@@ -20,5 +23,5 @@
 }
 
 .SearchBar::placeholder {
-  font-size: 26px;
+  font-size: 22px;
 }

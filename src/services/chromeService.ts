@@ -1,20 +1,14 @@
-import { filterBookmarkTree } from "./../utils/filterBookmarkTree";
 import { delay } from "../utils/delay";
 import bookmarksFixture from "../fixtures/bookmarks.json";
 
-export const getBookmarks = async (query?: string) => {
+type Bookmark = chrome.bookmarks.BookmarkTreeNode;
+
+export const getBookmarks = async () => {
   if (process.env.NODE_ENV === "development") {
     await delay(100);
-    if (query) {
-      return filterBookmarkTree(bookmarksFixture, query);
-    }
     return bookmarksFixture;
   } else {
-    return new Promise<chrome.bookmarks.BookmarkTreeNode[]>(resolve =>
-      query
-        ? chrome.bookmarks.search(query, resolve)
-        : chrome.bookmarks.getTree(resolve)
-    );
+    return new Promise<Bookmark[]>(chrome.bookmarks.getTree);
   }
 };
 
