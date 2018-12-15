@@ -8,7 +8,7 @@ export const getBookmarks = async () => {
     await delay(100);
     return bookmarksFixture;
   } else {
-    return new Promise<Bookmark[]>(chrome.bookmarks.getTree);
+    return new Promise<Bookmark[]>(res => chrome.bookmarks.getTree(res));
   }
 };
 
