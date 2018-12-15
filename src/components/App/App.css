@@ -20,7 +20,6 @@
   align-items: center;
   padding: 8px 40px;
   height: 28px;
-  width: 100%;
   background-color: #ffffff;
   animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);

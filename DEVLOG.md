@@ -49,3 +49,10 @@ Thanks to a StackOverflow comment though I was able to discover [faviconkit.com]
 The website says that the project is in "free beta" but given how well it performs I suspect it wont' stay free for long.
 
 I still don't know why the Bookmark API doesn't return the 32x32 favicon used in the Chrome bookmarks management (I tried taking a quick look at the Chromium source but I wasn't able to find anything related to that).
+
+### Chrome API
+
+I really like the the shape of the bookmark tree returned by the Chrome API.  
+Since it's a tree it might look scary at first but once you get the pattern it just "click", and you can easily iterate trough it using recursion (see `./utils/parseBookmarkTree.ts` as an example).
+
+Shoutout to the `@types/chrome` type-definitions: they are immensively helpful for exploring the Chrome APIs.
