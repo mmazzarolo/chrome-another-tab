@@ -13,7 +13,7 @@ Just building a Chrome Extension with Create React App and TypeScript.
 &nbsp;
 
 <p align="center" margin-bottom="0">
-  <a href="https://numvalidate.com" target="_blank">
+  <a href="https://github.com/mmazzarolo/chrome-another-tab" target="_blank">
     <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-15-screenshot.png">
   </a>
 </p>
