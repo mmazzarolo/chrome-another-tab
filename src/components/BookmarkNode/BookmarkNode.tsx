@@ -11,7 +11,7 @@ interface Props {
 
 const BookmarkNode: FC<Props> = memo(props => {
   const { title, url } = props;
-  let imageSrc = url ? getFaviconUrl(url) : folderImage;
+  const imageSrc = url ? getFaviconUrl(url) : folderImage;
 
   return (
     <a className="BookmarkNode" href={url} rel="noopener noreferrer">
