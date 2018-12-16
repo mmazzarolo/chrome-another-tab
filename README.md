@@ -13,17 +13,18 @@ Just building a Chrome Extension with Create React App and TypeScript.
 &nbsp;
 
 <p align="center" margin-bottom="0">
-  <a href="https://numvalidate.com" target="_blank">
-    <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-15.png">
+  <a href="https://github.com/mmazzarolo/chrome-another-tab" target="_blank">
+    <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-15-screenshot.png">
   </a>
 </p>
 
 # ~Roadmap~ What should I work on?
 
-[X] Get the Chrome bookmarks
-[X] Parse the Chrome bookmarks and show them in a new tab
-[X] Open a bookmark on click
-[ ] Hide a specific bookmark/folder
+- [X] Get the Chrome bookmarks
+- [X] Parse the Chrome bookmarks and show them in a new tab
+- [X] Open a bookmark on click
+- [ ] Hide a specific bookmark/folder
+- [ ] Publish it
 
 # Acknowledgements
 
