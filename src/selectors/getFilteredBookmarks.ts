@@ -3,8 +3,8 @@ import { getIsBookmarkHidden } from "./getIsBookmarkHidden";
 
 export const getFilteredBookmarks = (state: ReduxState) => {
   const { bookmarks } = state.bookmarks;
-  const { isShowingHiddenBookmark } = state.app;
-  if (isShowingHiddenBookmark) {
+  const { query, isShowingHiddenBookmark } = state.session;
+  if (isShowingHiddenBookmark && !query) {
     return bookmarks;
   }
   return bookmarks.map(folder => {
@@ -14,7 +14,13 @@ export const getFilteredBookmarks = (state: ReduxState) => {
         folder.children &&
         folder.children.filter(bookmark => {
           const isHidden = getIsBookmarkHidden(state, bookmark.id);
-          return !isHidden;
+          const isTitleQuery = bookmark.title
+            .toLowerCase()
+            .includes(query.toLowerCase());
+          const isUrlQuery = (bookmark.url || "")
+            .toLowerCase()
+            .includes(query.toLowerCase());
+          return !isHidden && (isTitleQuery || isUrlQuery);
         })
     };
   });

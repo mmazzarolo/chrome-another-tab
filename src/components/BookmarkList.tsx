@@ -44,11 +44,12 @@ export const BookmarkList: FC<Props> = memo(props => {
 
 const RootList = styled.ul`
   text-align: left;
+  padding-left: 0;
 `;
 
 const Folder = styled.ul`
   display: grid;
-  grid-gap: 12px 32px;
+  grid-gap: 12px 20px;
   grid-template-columns: repeat(auto-fit, 320px);
   grid-auto-rows: 54px;
   padding-left: 0;
@@ -57,7 +58,7 @@ const Folder = styled.ul`
 const FolderTitle = styled.li`
   list-style: none;
   padding-left: 0px;
-  color: #252124;
+  color: white;
   font-size: 19px;
   margin-top: 30px;
   margin-bottom: 10px;

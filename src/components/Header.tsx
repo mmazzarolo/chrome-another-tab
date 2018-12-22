@@ -5,18 +5,23 @@ import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
 import { useMappedActions } from "../hooks/useMappedActions";
 import { useMappedState } from "redux-react-hook";
+import { SearchBar } from "./SearchBar";
+import { MarkGithub as GithubIcon } from "styled-icons/octicons";
+import { Hide as HideIcon } from "styled-icons/boxicons-regular";
 
 const mapState = (state: ReduxState) => ({
-  isShowingHiddenBookmark: state.app.isShowingHiddenBookmark
+  query: state.session.query,
+  isShowingHiddenBookmark: state.session.isShowingHiddenBookmark
 });
 
 const mapActions = {
+  setQuery: actions.setQuery,
   toggleShowHiddenBookmark: actions.toggleShowHiddenBookmark
 };
 
 export const Header: FC = memo(props => {
-  const { isShowingHiddenBookmark } = useMappedState(mapState);
-  const { toggleShowHiddenBookmark } = useMappedActions(mapActions);
+  const { isShowingHiddenBookmark, query } = useMappedState(mapState);
+  const { toggleShowHiddenBookmark, setQuery } = useMappedActions(mapActions);
 
   const handleBookmarksVisibilityClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -29,11 +34,17 @@ export const Header: FC = memo(props => {
         <LogoImage src={logoImage} />
         <LogoText>Another Tab</LogoText>
       </Logo>
-      <VisibilityLink onClick={handleBookmarksVisibilityClick}>
-        {isShowingHiddenBookmark
-          ? "Hide hidden bookmarks"
-          : "Show hidden bookmarks"}
-      </VisibilityLink>
+      <SearchBar query={query} onChange={setQuery} />
+      <Menu>
+        <MenuItem onClick={handleBookmarksVisibilityClick}>
+          <StyledHideIcon />
+          {isShowingHiddenBookmark ? "Hide hidden" : "Show hidden"}
+        </MenuItem>
+        <Separator />
+        <MenuItem href="https://github.com/mmazzarolo/chrome-another-tab">
+          <StyledGithubIcon />
+        </MenuItem>
+      </Menu>
     </Root>
   );
 });
@@ -56,8 +67,8 @@ const Root = styled.div`
   justify-content: space-between;
   padding: 8px 40px;
   height: 28px;
-  background-color: #ffffff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4); */
   animation: ${fadeInBottom} 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 `;
 
@@ -73,15 +84,48 @@ const LogoImage = styled.img`
 `;
 
 const LogoText = styled.p`
+  color: white;
   font-size: 17px;
+  font-weight: 600;
   margin-left: 16px;
-  color: #252124;
 `;
 
-const VisibilityLink = styled.a`
-  font-size: 14px;
+const Menu = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const MenuItem = styled.a`
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
   font-weight: 500;
-  color: #252124;
-  text-decoration: underline;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+const Separator = styled.span`
+  background-color: white;
+  margin: 0px 16px;
+  height: 18px;
+  width: 1px;
+`;
+
+const StyledHideIcon = styled(HideIcon)`
+  color: white;
+  height: 22px;
+  width: 22px;
+  margin-right: 4px;
+`;
+
+const StyledGithubIcon = styled(GithubIcon)`
+  color: white;
+  height: 22px;
+  width: 22px;
 `;

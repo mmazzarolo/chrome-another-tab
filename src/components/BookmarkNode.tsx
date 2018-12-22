@@ -1,11 +1,12 @@
 import React, { FC, memo, MouseEvent, useCallback } from "react";
+import { useMappedState } from "redux-react-hook";
 import styled, { keyframes } from "styled-components/macro";
-import { Hide, Show } from "styled-icons/boxicons-regular";
+import { Hide as HideIcon } from "styled-icons/boxicons-regular";
+import { Show as ShowIcon } from "styled-icons/boxicons-regular";
+import { FolderOpen as FolderIcon } from "styled-icons/fa-solid/FolderOpen";
 import { getFaviconUrl } from "../utils/getFaviconUrl";
-import folderImage from "../assets/images/folder-open.svg";
 import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
-import { useMappedState } from "redux-react-hook";
 import { getIsBookmarkHidden } from "../selectors/getIsBookmarkHidden";
 import { useMappedActions } from "../hooks/useMappedActions";
 
@@ -32,7 +33,7 @@ export const BookmarkNode: FC<Props> = memo(props => {
   const { isHidden } = useMappedState(mapState);
   const { hideBookmark, showBookmark } = useMappedActions(mapActions);
 
-  const imageSrc = url ? getFaviconUrl(url) : folderImage;
+  const faviconSrc = url && getFaviconUrl(url);
 
   const handleHideClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -44,15 +45,16 @@ export const BookmarkNode: FC<Props> = memo(props => {
   };
 
   return (
-    <Root href={url} isHidden={isHidden} rel="noopener noreferrer">
-      <Content>
-        <Favicon src={imageSrc} />
+    <Root href={url} rel="noopener noreferrer">
+      <Content isHidden={isHidden}>
+        {url && <Favicon src={faviconSrc} />}
+        {!url && <StyledFolderIcon />}
         <Title>{title}</Title>
       </Content>
       <Options>
         <Option onClick={handleHideClick}>
-          {!isHidden && <HideIcon />}
-          {isHidden && <ShowIcon />}
+          {!isHidden && <StyledHideIcon />}
+          {isHidden && <StyledShowIcon />}
         </Option>
       </Options>
     </Root>
@@ -77,18 +79,15 @@ const Root = styled.a`
   font-size: 14px;
   font-weight: 400;
   width: 320px;
-  background-color: white;
-  background-color: #fbfbfd;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.4s ease-out;
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
 
-  opacity: ${(props: { isHidden: boolean }) => (props.isHidden ? "0.4" : "1")};
-
   &:hover {
-    background-color: #f5f5fb;
+    background-color: rgba(255, 255, 255, 0.8);
   }
 `;
 
@@ -96,6 +95,7 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   padding: 4px 12px;
+  opacity: ${(props: { isHidden: boolean }) => (props.isHidden ? "0.4" : "1")};
 `;
 
 const Favicon = styled.img`
@@ -105,9 +105,21 @@ const Favicon = styled.img`
   margin-right: 12px;
 `;
 
+const StyledFolderIcon = styled(FolderIcon)`
+  color: white;
+  height: 24px;
+  width: 24px;
+  margin-right: 12px;
+`;
+
 const Title = styled.span`
   letter-spacing: 0px;
-  color: #252124;
+  font-weight: 500;
+  color: white;
+
+  ${Root}:hover & {
+    color: #7076c0;
+  }
 `;
 
 const Options = styled.div`
@@ -129,25 +141,26 @@ const Option = styled.div`
   align-items: center;
   height: 32px;
   width: 32px;
-  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   animation: ${scaleIn} 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: 140ms;
   transition: background-color 100ms;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 1);
   }
 `;
 
-const HideIcon = styled(Hide)`
-  color: white;
+const StyledHideIcon = styled(HideIcon)`
+  color: #7076c0;
   height: 24px;
   width: 24px;
 `;
 
-const ShowIcon = styled(Show)`
-  color: white;
+const StyledShowIcon = styled(ShowIcon)`
+  color: #7076c0;
   height: 24px;
   width: 24px;
 `;

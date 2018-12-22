@@ -1,7 +1,6 @@
-import React, { FC, memo, ChangeEvent, useRef } from "react";
+import React, { FC, memo, ChangeEvent } from "react";
 import styled from "styled-components/macro";
-import "./SearchBar.css";
-import searchImage from "../assets/images/search-24px.svg";
+import { Search as SearchIcon } from "styled-icons/material";
 
 interface Props {
   query: string;
@@ -10,44 +9,57 @@ interface Props {
 
 export const SearchBar: FC<Props> = memo(props => {
   const { query, onChange } = props;
-  const inputRef = useRef<HTMLInputElement>(null);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
   return (
-    <Input
-      ref={inputRef}
-      placeholder="Search"
-      style={{ backgroundImage: `url(${searchImage})` }}
-      type="text"
-      onChange={handleInputChange}
-      value={query}
-    />
+    <Form>
+      <StyledSearchIcon />
+      <Input
+        placeholder="Search bookmarks..."
+        type="text"
+        onChange={handleInputChange}
+        value={query}
+      />
+    </Form>
   );
 });
 
+const Form = styled.form`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 190px;
+  height: 32px;
+`;
+
+const StyledSearchIcon = styled(SearchIcon)`
+  color: white;
+  width: 28px;
+  height: 28px;
+  margin-right: 6px;
+`;
+
 const Input = styled.input`
-  width: 320px;
-  height: 34px;
-  border-radius: 21px;
-  background-color: white;
-  font-size: 22px;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 500;
   transition: all 0.6s ease-out;
-  margin: 20px;
-  padding: 4px 10px;
-  background-repeat: no-repeat;
-  background-size: 24px;
-  color: #282c34;
-  background-position: 300px;
+  color: white;
+  background-color: transparent;
   border: none;
-  text-align: center;
-  background-color: #f0f0f0;
+  outline: 0;
 
   &:hover:focus {
     outline: 0;
+    border: none;
   }
 
   &:hover::placeholder {
-    font-size: 22px;
+  }
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
   }
 `;

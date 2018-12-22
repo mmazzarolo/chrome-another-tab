@@ -51,12 +51,14 @@ const Root = styled.div`
   text-align: center;
   transition: all 0.6s ease-out;
   height: 100%;
-  background: linear-gradient(to bottom, #c6ffdd, #fbd786, #f7797d);
-  background: linear-gradient(to top, #c2e59c, #64b3f4);
-  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  /* background: linear-gradient(to bottom, #d3959b, #bfe6ba); */
+  background: linear-gradient(to bottom, #7474bf, #348ac7);
+  background-attachment: fixed;
+  min-height: 100vh;
 `;
 
 const Main = styled.main`
   animation: ${fadeIn} 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation-delay: 0.2s;
+  padding: 0 40px;
 `;

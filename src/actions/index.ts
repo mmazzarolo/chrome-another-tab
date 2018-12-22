@@ -7,10 +7,7 @@ export const actions = {
   toggleShowHiddenBookmark: createStandardAction(
     "app/TOGGLE_SHOW_HIDDEN_BOOKMARK"
   )(),
-  rehydrate: createStandardAction("app/REHYDRATE_REQUEST")(),
-  rehydrateSuccess: createStandardAction("app/REHYDRATE_SUCCESS")<
-    ReduxPersistedState
-  >(),
+  setQuery: createStandardAction("app/SET_QUERY")<string>(),
 
   // Bookmark actions
   retrieveBookmarks: createStandardAction("bookmark/RETRIEVE_BOOKMARK")(),
@@ -20,5 +17,11 @@ export const actions = {
 
   // Settings actions
   hideBookmark: createStandardAction("settings/HIDE_BOOKMARK")<string>(),
-  showBookmark: createStandardAction("settings/SHOW_BOOKMARK")<string>()
+  showBookmark: createStandardAction("settings/SHOW_BOOKMARK")<string>(),
+
+  // Other
+  rehydrate: createStandardAction("other/REHYDRATE_REQUEST")(),
+  rehydrateSuccess: createStandardAction("other/REHYDRATE_SUCCESS")<
+    ReduxPersistedState
+  >()
 };
