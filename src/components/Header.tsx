@@ -1,5 +1,5 @@
 import React, { FC, memo, MouseEvent } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import logoImage from "../assets/images/logo.png";
 
 interface Props {
@@ -22,6 +22,17 @@ export const Header: FC<Props> = memo(props => {
   );
 });
 
+const fadeInBottom = keyframes`
+  from { 
+    transform: translateY(-40px); 
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+`;
+
 const Root = styled.div`
   display: flex;
   flex-direction: row;
@@ -31,6 +42,7 @@ const Root = styled.div`
   height: 28px;
   background-color: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  animation: ${fadeInBottom} 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 `;
 
 const Logo = styled.div`

@@ -1,30 +1,29 @@
-import React, { FC, useState } from "react";
-import styled from "styled-components";
-import { getBookmarks } from "../services/chromeService";
+import React, { FC } from "react";
+import styled, { keyframes } from "styled-components";
 import { BookmarkList } from "./BookmarkList";
 import { useOnMount } from "../hooks/useOnMount";
-import { parseBookmarkTree } from "../utils/parseBookmarkTree";
+import { actions } from "../actions";
 import { Header } from "./Header";
+import { ReduxState } from "../types/ReduxState";
+import { useMappedState } from "redux-react-hook";
+import { useMappedActions } from "../hooks/useMappedActions";
 
-type Bookmark = chrome.bookmarks.BookmarkTreeNode;
+const mapState = (state: ReduxState) => ({
+  bookmarks: state.bookmark.bookmarks,
+  isRetrievingBookmarks: state.bookmark.isRetrievingBookmarks
+});
+
+const mapActions = {
+  retrieveBookmarks: actions.retrieveBookmarks
+};
 
 export const App: FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
+  const { bookmarks, isRetrievingBookmarks } = useMappedState(mapState);
+  const { retrieveBookmarks } = useMappedActions(mapActions);
 
   useOnMount(() => {
-    updateBookmarks();
+    retrieveBookmarks();
   });
-
-  const updateBookmarks = async (query?: string) => {
-    const chromeBookmarks = await getBookmarks();
-    const bookmarks = parseBookmarkTree(chromeBookmarks, query);
-    setBookmarks(bookmarks);
-    console.log("bookmarks: ", bookmarks);
-    if (isLoading) {
-      setIsLoading(false);
-    }
-  };
 
   const handleEditClick = () => {
     console.log("click");
@@ -32,8 +31,7 @@ export const App: FC = () => {
 
   return (
     <Root>
-      {isLoading && <div />}
-      {!isLoading && (
+      {!isRetrievingBookmarks && bookmarks.length > 0 && (
         <>
           <Header onEditClick={handleEditClick} />
           <Main>
@@ -45,6 +43,11 @@ export const App: FC = () => {
   );
 };
 
+const fadeIn = keyframes`
+  from { opacity: 0;}
+  to { opacity: 1; }
+`;
+
 const Root = styled.div`
   text-align: center;
   transition: all 0.6s ease-out;
@@ -55,6 +58,6 @@ const Root = styled.div`
 `;
 
 const Main = styled.main`
-  animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: ${fadeIn} 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation-delay: 0.2s;
 `;

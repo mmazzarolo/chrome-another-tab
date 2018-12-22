@@ -1,11 +1,10 @@
 import React, { FC, memo } from "react";
 import styled from "styled-components";
 import { BookmarkNode } from "./BookmarkNode";
-
-type Bookmark = chrome.bookmarks.BookmarkTreeNode;
+import { ChromeBookmark } from "../types/ChromeBookmark";
 
 interface Props {
-  bookmarkNode: Bookmark[] | Bookmark;
+  bookmarkNode: ChromeBookmark[] | ChromeBookmark;
 }
 
 export const BookmarkList: FC<Props> = memo(props => {

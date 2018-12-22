@@ -1,14 +1,13 @@
 import { delay } from "../utils/delay";
 import bookmarksFixture from "../fixtures/bookmarks.json";
-
-type Bookmark = chrome.bookmarks.BookmarkTreeNode;
+import { ChromeBookmark } from "./../types/ChromeBookmark";
 
 export const getBookmarks = async () => {
   if (process.env.NODE_ENV === "development") {
     await delay(100);
     return bookmarksFixture;
   } else {
-    return new Promise<Bookmark[]>(res => chrome.bookmarks.getTree(res));
+    return new Promise<ChromeBookmark[]>(res => chrome.bookmarks.getTree(res));
   }
 };
 

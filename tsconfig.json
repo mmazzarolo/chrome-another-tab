@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "allowJs": true,
-    "skipLibCheck": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -13,7 +15,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "skipLibCheck": true
   },
-  "include": ["src"]
+  "exclude": [
+    "build/**"
+  ],
+  "include": [
+    "src"
+  ]
 }

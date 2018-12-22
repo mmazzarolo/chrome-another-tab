@@ -1,10 +1,12 @@
 import { omit } from "lodash";
+import { ChromeBookmark } from "./../types/ChromeBookmark";
 
-type Bookmark = chrome.bookmarks.BookmarkTreeNode;
-
-export const parseBookmarkTree = (bookmarkTree: Bookmark[], query?: string) => {
-  const parsedBookmarksTree: Bookmark[] = [];
-  const parseBookmarkNodes = (nodes: Bookmark[]) => {
+export const parseBookmarkTree = (
+  bookmarkTree: ChromeBookmark[],
+  query?: string
+) => {
+  const parsedBookmarksTree: ChromeBookmark[] = [];
+  const parseBookmarkNodes = (nodes: ChromeBookmark[]) => {
     nodes.forEach(node => {
       if (node.children) {
         const parsedBookmark = {
