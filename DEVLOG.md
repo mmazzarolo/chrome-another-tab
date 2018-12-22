@@ -53,6 +53,32 @@ I still don't know why the Bookmark API doesn't return the 32x32 favicon used in
 ### Chrome API
 
 I really like the the shape of the bookmark tree returned by the Chrome API.  
-Since it's a tree it might look scary at first but once you get the pattern it just "click", and you can easily iterate trough it using recursion (see `./utils/parseBookmarkTree.ts` as an example).
+Since it's a tree it might look scary at first but once you get the pattern it just "click", and you can easily iterate trough it using recursion (see `./src/utils/parseBookmarkTree.ts` as an example).
 
 Shoutout to the `@types/chrome` type-definitions: they are immensively helpful for exploring the Chrome APIs.
+
+### Styled-Components
+
+Not much to say here, I added styled-components.  
+Why styled-components instead of any other library? Well, it's an easy choice for me: it's one of the most used CSS in JS libraries and I like its API (especially in the latest versions).
+
+### State management
+
+Since I'm planning to add a few features that need to share a global state between different components I had (wanted) to pick a state management library.  
+Initially I thought about just using the `Context` API, maybe in conjuntion with the `useReducer` hook, but since in [my last project](https://github.com/mmazzarolo/just-tap) I fell in love (again) with Redux + TypeScript (and a few other related libraries) I decided to use them here as well.  
+The libraries I'm planning to use are:
+
+- Redux
+- Redux-Saga
+- Typesafe-Actions
+- Redux-React-Hook
+- Immer
+
+Yes, I know: so many libraries to handle the state when I could have go for MobX ot other smaller libraries...  
+Well, there are a few reason why I really dig this setup:
+
+- **Top-notch TypeScript integration.** Everything is type-checked, auto-importable and I feel like I can trust TypeScript to be able to catch even the more subtle error. The only margin of improvement that I can see is a better typing support for Redux-Saga.
+- **Small boilerplate.** The boilerplate is way smaller than what you'd expect from a standard Redux setup: Typesafe-Actions allows you to define the actions in a simple way, while Immer takes care of the reducer complexities. And also...
+- **Hooks.** Redux-React-Hook and a [small custom hook makes](./src/hooks/useMappedActions.ts) the connection between Redux and React components simple, clear and strongly typed.
+
+The main drawback here (which might be a deal-braker for someone) is that you'll need to learn the API of 5 different libraries...
