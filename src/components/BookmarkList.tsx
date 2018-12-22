@@ -1,6 +1,6 @@
 import React, { FC, memo } from "react";
-import BookmarkNode from "../BookmarkNode/BookmarkNode";
-import "./BookmarkList.css";
+import styled from "styled-components";
+import { BookmarkNode } from "./BookmarkNode";
 
 type Bookmark = chrome.bookmarks.BookmarkTreeNode;
 
@@ -8,15 +8,15 @@ interface Props {
   bookmarkNode: Bookmark[] | Bookmark;
 }
 
-const BookmarkList: FC<Props> = memo(props => {
+export const BookmarkList: FC<Props> = memo(props => {
   const { bookmarkNode } = props;
   if (Array.isArray(bookmarkNode)) {
     return (
-      <ul className="BookmarkList">
+      <RootList>
         {bookmarkNode.map(x => (
           <BookmarkList bookmarkNode={x} key={x.id} />
         ))}
-      </ul>
+      </RootList>
     );
   } else {
     return (
@@ -30,12 +30,12 @@ const BookmarkList: FC<Props> = memo(props => {
         )}
         {bookmarkNode.children && (
           <>
-            <li className="BookmarkList-folder-title">{bookmarkNode.title}</li>
-            <ul>
+            <FolderTitle>{bookmarkNode.title}</FolderTitle>
+            <Folder>
               {bookmarkNode.children.map(x => (
                 <BookmarkList bookmarkNode={x} key={x.id} />
               ))}
-            </ul>
+            </Folder>
           </>
         )}
       </>
@@ -43,4 +43,23 @@ const BookmarkList: FC<Props> = memo(props => {
   }
 });
 
-export default BookmarkList;
+const RootList = styled.ul`
+  text-align: left;
+`;
+
+const Folder = styled.ul`
+  display: grid;
+  grid-gap: 6px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: 54px;
+`;
+
+const FolderTitle = styled.li`
+  list-style: none;
+  padding-left: 0px;
+  color: #252124;
+  font-size: 1.17em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-weight: 500;
+`;
