@@ -97,6 +97,6 @@ Added an option to show/hide bookmarks.
 Finding a way to handle the show/hide flow has been really interesting.  
 My initial idea was adding an "Edit mode" that, once activated, allowed the user to hide/show the bookmarks and in the future rename/move them.  
 After creating a stub of it and playing around though it seemed a bit too clunky for my use cases so I changed the pattern: I'm showing the "hide" options as a floating button that appears on a bookmark after hovering it.  
-This also allowed me to experiment a bit with the hovering micro-interaction... since the option was showing up every time you hovered on a bookmark (which is a common action) I added a small delay before showing it, so it won't show up while you're moving between the bookmarks.
+This also allowed me to experiment a bit with the hovering micro-interaction... since the option was showing up every time you hovered on a bookmark (which is a common action) I added a small delay before showing it, so it won't show up while you're moving between the bookmarks.  
 The "hide/show" option icon is small enough to allow me to add another option in the future (if needed).  
-I also took the chance to added a custom made persistence/rehydration logic (redux-persist seemed overkill, so I'm just using two small sagas for that) and a button to show/hide the hidden bookmarks.
+I also took the chance to add a custom made persistence/rehydration logic (redux-persist seemed overkill, so I'm just using two small sagas for that) and a button to show/hide the hidden bookmarks.
