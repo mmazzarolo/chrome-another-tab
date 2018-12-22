@@ -1,5 +1,5 @@
 import React, { FC, memo } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { BookmarkNode } from "./BookmarkNode";
 import { ChromeBookmark } from "../types/ChromeBookmark";
 
@@ -48,16 +48,17 @@ const RootList = styled.ul`
 
 const Folder = styled.ul`
   display: grid;
-  grid-gap: 6px;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 12px 32px;
+  grid-template-columns: repeat(auto-fit, 320px);
   grid-auto-rows: 54px;
+  padding-left: 0;
 `;
 
 const FolderTitle = styled.li`
   list-style: none;
   padding-left: 0px;
   color: #252124;
-  font-size: 1.17em;
+  font-size: 19px;
   margin-top: 30px;
   margin-bottom: 10px;
   font-weight: 500;

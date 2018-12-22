@@ -1,23 +1,39 @@
 import React, { FC, memo, MouseEvent } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components/macro";
 import logoImage from "../assets/images/logo.png";
+import { actions } from "../actions";
+import { ReduxState } from "../types/ReduxState";
+import { useMappedActions } from "../hooks/useMappedActions";
+import { useMappedState } from "redux-react-hook";
 
-interface Props {
-  onEditClick: () => void;
-}
+const mapState = (state: ReduxState) => ({
+  isShowingHiddenBookmark: state.app.isShowingHiddenBookmark
+});
 
-export const Header: FC<Props> = memo(props => {
-  const handleEditClick = (e: MouseEvent<HTMLAnchorElement>) => {
+const mapActions = {
+  toggleShowHiddenBookmark: actions.toggleShowHiddenBookmark
+};
+
+export const Header: FC = memo(props => {
+  const { isShowingHiddenBookmark } = useMappedState(mapState);
+  const { toggleShowHiddenBookmark } = useMappedActions(mapActions);
+
+  const handleBookmarksVisibilityClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    props.onEditClick();
+    toggleShowHiddenBookmark();
   };
+
   return (
     <Root>
       <Logo>
         <LogoImage src={logoImage} />
         <LogoText>Another Tab</LogoText>
       </Logo>
-      <Link onClick={handleEditClick}>Edit</Link>
+      <VisibilityLink onClick={handleBookmarksVisibilityClick}>
+        {isShowingHiddenBookmark
+          ? "Hide hidden bookmarks"
+          : "Show hidden bookmarks"}
+      </VisibilityLink>
     </Root>
   );
 });
@@ -62,8 +78,10 @@ const LogoText = styled.p`
   color: #252124;
 `;
 
-const Link = styled.a`
-  font-size: 15px;
-  margin-left: 16px;
+const VisibilityLink = styled.a`
+  font-size: 14px;
+  font-weight: 500;
   color: #252124;
+  text-decoration: underline;
+  cursor: pointer;
 `;

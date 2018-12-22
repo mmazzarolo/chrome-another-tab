@@ -1,5 +1,5 @@
 import React, { FC, memo, ChangeEvent, useRef } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import "./SearchBar.css";
 import searchImage from "../assets/images/search-24px.svg";
 
@@ -15,8 +15,7 @@ export const SearchBar: FC<Props> = memo(props => {
     onChange(e.target.value);
   };
   return (
-    <input
-      className="SearchBar"
+    <Input
       ref={inputRef}
       placeholder="Search"
       style={{ backgroundImage: `url(${searchImage})` }}

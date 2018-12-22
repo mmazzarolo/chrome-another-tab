@@ -1,5 +1,6 @@
 ## Nov 23, 2018
-### Initial setup (Create React App + TypeScript) 
+
+### Initial setup (Create React App + TypeScript)
 
 Creating a Chrome Extension seems to be way easier than expected.
 
@@ -37,6 +38,7 @@ As a workaround I'll mock a the result of the Chrome API with a few fixtures whi
 See [`chromeService`](./src/services/chromeService.ts).
 
 ## Dec 8, 2018
+
 ### Getting a bookmark favicon
 
 The Chrome Bookmark API doesn't return the bookmark favicon.  
@@ -53,6 +55,7 @@ The website says that the project is in "free beta" but given how well it perfor
 I still don't know why the Bookmark API doesn't return the 32x32 favicon used in the Chrome bookmarks management (I tried taking a quick look at the Chromium source but I wasn't able to find anything related to that).
 
 ## Dec 15, 2018
+
 ### Chrome API
 
 I really like the the shape of the bookmark tree returned by the Chrome API.  
@@ -61,6 +64,7 @@ Since it's a tree it might look scary at first but once you get the pattern it j
 Shoutout to the `@types/chrome` type-definitions: they are immensively helpful for exploring the Chrome APIs.
 
 ## Dec 22, 2018
+
 ### Styled-Components
 
 Not much to say here, I added styled-components.  
@@ -86,3 +90,13 @@ Well, there are a few reason why I really dig this setup:
 - **Hooks.** Redux-React-Hook and a [small custom hook makes](./src/hooks/useMappedActions.ts) the connection between Redux and React components simple, clear and strongly typed.
 
 The main drawback here (which might be a deal-braker for someone) is that you'll need to learn the API of 5 different libraries...
+
+### Hide-show bookmarks
+
+Added an option to show/hide bookmarks.  
+Finding a way to handle the show/hide flow has been really interesting.  
+My initial idea was adding an "Edit mode" that, once activated, allowed the user to hide/show the bookmarks and in the future rename/move them.  
+After creating a stub of it and playing around though it seemed a bit too clunky for my use cases so I changed the pattern: I'm showing the "hide" options as a floating button that appears on a bookmark after hovering it.  
+This also allowed me to experiment a bit with the hovering micro-interaction... since the option was showing up every time you hovered on a bookmark (which is a common action) I added a small delay before showing it, so it won't show up while you're moving between the bookmarks.
+The "hide/show" option icon is small enough to allow me to add another option in the future (if needed).  
+I also took the chance to added a custom made persistence/rehydration logic (redux-persist seemed overkill, so I'm just using two small sagas for that) and a button to show/hide the hidden bookmarks.

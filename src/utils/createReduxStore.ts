@@ -5,7 +5,8 @@ import { rootReducer } from "../reducers";
 import { rootSaga } from "../sagas";
 
 const loggerMiddleware = createLogger({
-  collapsed: true
+  collapsed: true,
+  duration: true
 });
 
 const sagaMiddleware = createSagaMiddleware();

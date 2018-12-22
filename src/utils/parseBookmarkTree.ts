@@ -1,10 +1,7 @@
 import { omit } from "lodash";
 import { ChromeBookmark } from "./../types/ChromeBookmark";
 
-export const parseBookmarkTree = (
-  bookmarkTree: ChromeBookmark[],
-  query?: string
-) => {
+export const parseBookmarkTree = (bookmarkTree: ChromeBookmark[]) => {
   const parsedBookmarksTree: ChromeBookmark[] = [];
   const parseBookmarkNodes = (nodes: ChromeBookmark[]) => {
     nodes.forEach(node => {
@@ -14,12 +11,9 @@ export const parseBookmarkTree = (
           children: node.children
             .filter(child => {
               const hasValidUrl = child.url !== "chrome://bookmarks/";
-              const isInQuery = query
-                ? child.title.toLowerCase().includes(query.toLowerCase())
-                : true;
               const isEmptyFolder =
                 child.children && child.children.length === 0;
-              return isInQuery && !isEmptyFolder && hasValidUrl;
+              return !isEmptyFolder && hasValidUrl;
             })
             .map(child => {
               return omit(child, "children");
