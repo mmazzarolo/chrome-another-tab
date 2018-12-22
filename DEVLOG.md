@@ -1,4 +1,5 @@
-### Initial setup (Create React App + TypeScript)
+## Nov 23, 2018
+### Initial setup (Create React App + TypeScript) 
 
 Creating a Chrome Extension seems to be way easier than expected.
 
@@ -35,6 +36,7 @@ This means that to test our extension we have to always create a production buil
 As a workaround I'll mock a the result of the Chrome API with a few fixtures while in development.  
 See [`chromeService`](./src/services/chromeService.ts).
 
+## Dec 8, 2018
 ### Getting a bookmark favicon
 
 The Chrome Bookmark API doesn't return the bookmark favicon.  
@@ -50,6 +52,7 @@ The website says that the project is in "free beta" but given how well it perfor
 
 I still don't know why the Bookmark API doesn't return the 32x32 favicon used in the Chrome bookmarks management (I tried taking a quick look at the Chromium source but I wasn't able to find anything related to that).
 
+## Dec 15, 2018
 ### Chrome API
 
 I really like the the shape of the bookmark tree returned by the Chrome API.  
@@ -57,6 +60,7 @@ Since it's a tree it might look scary at first but once you get the pattern it j
 
 Shoutout to the `@types/chrome` type-definitions: they are immensively helpful for exploring the Chrome APIs.
 
+## Dec 22, 2018
 ### Styled-Components
 
 Not much to say here, I added styled-components.  
