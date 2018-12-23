@@ -54,6 +54,10 @@ The website says that the project is in "free beta" but given how well it perfor
 
 I still don't know why the Bookmark API doesn't return the 32x32 favicon used in the Chrome bookmarks management (I tried taking a quick look at the Chromium source but I wasn't able to find anything related to that).
 
+<p align="center" margin-bottom="0">
+    <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-15-screenshot.png">
+</p>
+
 ## Dec 15, 2018
 
 ### Chrome API
@@ -100,3 +104,29 @@ After creating a stub of it and playing around though it seemed a bit too clunky
 This also allowed me to experiment a bit with the hovering micro-interaction... since the option was showing up every time you hovered on a bookmark (which is a common action) I added a small delay before showing it, so it won't show up while you're moving between the bookmarks.
 The "hide/show" option icon is small enough to allow me to add another option in the future (if needed).  
 I also took the chance to added a custom made persistence/rehydration logic (redux-persist seemed overkill, so I'm just using two small sagas for that) and a button to show/hide the hidden bookmarks.
+
+<p align="center" margin-bottom="0">
+    <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-22-show-hide.gif">
+</p>
+
+## Dec 23, 2018
+
+### A new look
+
+New look! This time I went for a stronger color palette and I reorganized the header.  
+Honestly, I haven't put too much attention in details on the UI yet because I'm pretty sure I'll change the theme a few times during the development. Ultimately I'd like providing a simple way to switch between different themes or even to provide your own color scheme...
+
+<p align="center" margin-bottom="0">
+    <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-23-screenshot.png">
+</p>
+
+### Search
+
+Added a search feature.  
+I can now search through bookmarks using the top searchbar.  
+The bookmarks filtering is currently done with a Redux selector that takes into account the bookmarks visibility and the current search query.  
+I'd like to add a search shortcut and a way to specify if the query should be searched even on hidden bookmarks (right now you have to press the "Show hidden" button to do that).
+
+<p align="center" margin-bottom="0">
+    <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-23-search.gif">
+</p>
