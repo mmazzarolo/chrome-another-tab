@@ -23,8 +23,9 @@ Just building a Chrome Extension with Create React App and TypeScript.
 - [x] Get the Chrome bookmarks
 - [x] Parse the Chrome bookmarks and show them in a new tab
 - [x] Open a bookmark on click
-- [ ] Hide a specific bookmark/folder
-- [ ] Search
+- [x] Hide a specific bookmark
+- [ ] Hide a specific folder
+- [x] Search
 - [ ] Publish it
 
 # Acknowledgements
