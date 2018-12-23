@@ -1,45 +1,35 @@
 import React, { FC, memo } from "react";
 import styled from "styled-components/macro";
 import { BookmarkNode } from "./BookmarkNode";
-import { ChromeBookmark } from "../types/ChromeBookmark";
+import { BookmarkTree } from "../types/BookmarkTree";
 
 interface Props {
-  bookmarkNode: ChromeBookmark[] | ChromeBookmark;
+  bookmarkTree: BookmarkTree;
 }
 
 export const BookmarkList: FC<Props> = memo(props => {
-  const { bookmarkNode } = props;
-  if (Array.isArray(bookmarkNode)) {
-    return (
-      <RootList>
-        {bookmarkNode.map(x => (
-          <BookmarkList bookmarkNode={x} key={x.id} />
-        ))}
-      </RootList>
-    );
-  } else {
-    return (
-      <>
-        {!bookmarkNode.children && (
-          <BookmarkNode
-            id={bookmarkNode.id}
-            title={bookmarkNode.title}
-            url={bookmarkNode.url}
-          />
-        )}
-        {bookmarkNode.children && (
-          <>
-            <FolderTitle>{bookmarkNode.title}</FolderTitle>
+  const { bookmarkTree } = props;
+  return (
+    <RootList>
+      {bookmarkTree.map(folder => {
+        return (
+          <div key={folder.id}>
+            <FolderTitle>{folder.title}</FolderTitle>
             <Folder>
-              {bookmarkNode.children.map(x => (
-                <BookmarkList bookmarkNode={x} key={x.id} />
+              {folder.bookmarks.map(bookmark => (
+                <BookmarkNode
+                  key={bookmark.id}
+                  id={bookmark.id}
+                  title={bookmark.title}
+                  url={bookmark.url}
+                />
               ))}
             </Folder>
-          </>
-        )}
-      </>
-    );
-  }
+          </div>
+        );
+      })}
+    </RootList>
+  );
 });
 
 const RootList = styled.ul`

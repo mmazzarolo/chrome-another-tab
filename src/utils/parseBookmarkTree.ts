@@ -1,31 +1,32 @@
-import { omit } from "lodash";
 import { ChromeBookmark } from "./../types/ChromeBookmark";
 
+type ChromeBookmarksById = { [id: string]: ChromeBookmark };
+
+const withoutChildren = (bookmark: ChromeBookmark) => ({
+  index: bookmark.index,
+  title: bookmark.title,
+  url: bookmark.url,
+  dateGroupModified: bookmark.dateGroupModified,
+  id: bookmark.id,
+  parentId: bookmark.parentId,
+  unmodifiable: bookmark.unmodifiable
+});
+
 export const parseBookmarkTree = (bookmarkTree: ChromeBookmark[]) => {
-  const parsedBookmarksTree: ChromeBookmark[] = [];
+  const foldersById: ChromeBookmarksById = {};
+  const bookmarksById: ChromeBookmarksById = {};
+  const a = Date.now();
   const parseBookmarkNodes = (nodes: ChromeBookmark[]) => {
     nodes.forEach(node => {
       if (node.children) {
-        const parsedBookmark = {
-          ...node,
-          children: node.children
-            .filter(child => {
-              const hasValidUrl = child.url !== "chrome://bookmarks/";
-              const isEmptyFolder =
-                child.children && child.children.length === 0;
-              return !isEmptyFolder && hasValidUrl;
-            })
-            .map(child => {
-              return omit(child, "children");
-            })
-        };
-        if (!!parsedBookmark.title) {
-          parsedBookmarksTree.push(parsedBookmark);
-        }
+        foldersById[node.id] = withoutChildren(node);
         parseBookmarkNodes(node.children);
+      } else {
+        bookmarksById[node.id] = node;
       }
     });
   };
   parseBookmarkNodes(bookmarkTree);
-  return parsedBookmarksTree;
+
+  return { foldersById, bookmarksById };
 };

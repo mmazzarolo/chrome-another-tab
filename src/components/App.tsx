@@ -7,11 +7,11 @@ import { Header } from "./Header";
 import { ReduxState } from "../types/ReduxState";
 import { useMappedState } from "redux-react-hook";
 import { useMappedActions } from "../hooks/useMappedActions";
-import { getFilteredBookmarks } from "../selectors/getFilteredBookmarks";
+import { getBookmarkTree } from "../selectors/getBookmarkTree";
 
 const mapState = (state: ReduxState) => ({
-  bookmarks: getFilteredBookmarks(state),
-  isRetrievingBookmarks: state.bookmarks.isRetrievingBookmarks
+  bookmarkTree: getBookmarkTree(state),
+  areBookmarksReady: state.bookmarks.areBookmarksReady
 });
 
 const mapActions = {
@@ -20,7 +20,7 @@ const mapActions = {
 };
 
 export const App: FC = () => {
-  const { bookmarks, isRetrievingBookmarks } = useMappedState(mapState);
+  const { areBookmarksReady, bookmarkTree } = useMappedState(mapState);
   const { retrieveBookmarks, rehydrate } = useMappedActions(mapActions);
 
   useOnMount(() => {
@@ -30,11 +30,11 @@ export const App: FC = () => {
 
   return (
     <Root>
-      {!isRetrievingBookmarks && bookmarks.length > 0 && (
+      {areBookmarksReady && (
         <>
           <Header />
           <Main>
-            <BookmarkList bookmarkNode={bookmarks} />
+            <BookmarkList bookmarkTree={bookmarkTree} />
           </Main>
         </>
       )}

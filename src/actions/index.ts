@@ -13,7 +13,10 @@ export const actions = {
   retrieveBookmarks: createStandardAction("bookmark/RETRIEVE_BOOKMARK")(),
   retrieveBookmarksSuccess: createStandardAction(
     "bookmark/RETRIEVE_BOOKMARK_SUCCESS"
-  )<ChromeBookmark[]>(),
+  )<{
+    foldersById: { [id: string]: ChromeBookmark };
+    bookmarksById: { [id: string]: ChromeBookmark };
+  }>(),
 
   // Settings actions
   hideBookmark: createStandardAction("settings/HIDE_BOOKMARK")<string>(),

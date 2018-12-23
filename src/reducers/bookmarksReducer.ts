@@ -5,13 +5,17 @@ import { ReduxAction } from "../types/ReduxAction";
 import { ChromeBookmark } from "../types/ChromeBookmark";
 
 export type State = {
-  readonly bookmarks: ChromeBookmark[];
+  readonly foldersById: { [id: string]: ChromeBookmark };
+  readonly bookmarksById: { [id: string]: ChromeBookmark };
   readonly isRetrievingBookmarks: boolean;
+  readonly areBookmarksReady: boolean;
 };
 
 export const initialState: State = {
-  bookmarks: [],
-  isRetrievingBookmarks: false
+  foldersById: {},
+  bookmarksById: {},
+  isRetrievingBookmarks: false,
+  areBookmarksReady: false
 };
 
 export const bookmarksReducer = (
@@ -25,8 +29,10 @@ export const bookmarksReducer = (
         break;
       }
       case getType(actions.retrieveBookmarksSuccess): {
+        draft.foldersById = action.payload.foldersById;
+        draft.bookmarksById = action.payload.bookmarksById;
         draft.isRetrievingBookmarks = false;
-        draft.bookmarks = action.payload;
+        draft.areBookmarksReady = true;
         break;
       }
       default:
