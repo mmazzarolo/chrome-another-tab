@@ -35,6 +35,17 @@ export const bookmarksReducer = (
         draft.areBookmarksReady = true;
         break;
       }
+      case getType(actions.rehydrateSuccess): {
+        const { foldersById, bookmarksById } = action.payload;
+        if (foldersById || bookmarksById) {
+          draft.foldersById = action.payload.foldersById;
+          draft.bookmarksById = action.payload.bookmarksById;
+          if (Object.keys(action.payload.bookmarksById).length > 0) {
+            draft.areBookmarksReady = true;
+          }
+        }
+        break;
+      }
       default:
         return state;
     }

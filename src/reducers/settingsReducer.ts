@@ -34,7 +34,7 @@ export const settingsReducer = (
       }
       case getType(actions.rehydrateSuccess): {
         const persistedState = action.payload;
-        draft.hiddenBookmarkIds = persistedState.settings.hiddenBookmarkIds;
+        draft.hiddenBookmarkIds = persistedState.hiddenBookmarkIds;
         break;
       }
       default:

@@ -10,7 +10,11 @@ export const rootSaga = function*() {
     takeEvery(getType(actions.retrieveBookmarks), retrieveBookmarksSaga),
     takeEvery(getType(actions.rehydrate), rehydrateSaga),
     takeEvery(
-      [getType(actions.showBookmark), getType(actions.hideBookmark)],
+      [
+        getType(actions.showBookmark),
+        getType(actions.hideBookmark),
+        getType(actions.retrieveBookmarksSuccess)
+      ],
       persistSaga
     )
   ]);
