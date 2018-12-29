@@ -1,4 +1,11 @@
-import React, { FC, memo, MouseEvent, useCallback } from "react";
+import React, {
+  FC,
+  memo,
+  MouseEvent,
+  useCallback,
+  useRef,
+  useState
+} from "react";
 import { useMappedState } from "redux-react-hook";
 import styled, { keyframes } from "styled-components/macro";
 import { Hide as HideIcon } from "styled-icons/boxicons-regular";
@@ -9,6 +16,7 @@ import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
 import { getIsBookmarkHidden } from "../selectors/getIsBookmarkHidden";
 import { useMappedActions } from "../hooks/useMappedActions";
+import { delay } from "../utils/delay";
 
 interface Props {
   id: string;
@@ -33,8 +41,6 @@ export const BookmarkNode: FC<Props> = memo(props => {
   const { isHidden } = useMappedState(mapState);
   const { hideBookmark, showBookmark } = useMappedActions(mapActions);
 
-  const faviconSrc = url && getFaviconUrl(url);
-
   const handleHideClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (isHidden) {
@@ -44,19 +50,45 @@ export const BookmarkNode: FC<Props> = memo(props => {
     }
   };
 
+  const faviconSrc = url && getFaviconUrl(url);
+
+  // To improve the performance we render the <Options> DOM node on a mouseOver
+  // event and we hide it on a mouseOut event (delaying it by a few ms to make
+  // sure the exit animation is completed).
+  const [areOptionsVisible, setAreOptionsVisible] = useState(false);
+  const shouldStopOptionsHiding = useRef(false);
+  const handleMouseOver = () => {
+    setAreOptionsVisible(true);
+    shouldStopOptionsHiding.current = true;
+  };
+  const handleMouseOut = async () => {
+    shouldStopOptionsHiding.current = false;
+    await delay(200);
+    if (!shouldStopOptionsHiding.current) {
+      setAreOptionsVisible(false);
+    }
+  };
+
   return (
-    <Root href={url} rel="noopener noreferrer">
+    <Root
+      href={url}
+      rel="noopener noreferrer"
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+    >
       <Content isHidden={isHidden}>
         {url && <Favicon src={faviconSrc} />}
         {!url && <StyledFolderIcon />}
         <Title>{title}</Title>
       </Content>
-      <Options>
-        <Option onClick={handleHideClick}>
-          {!isHidden && <StyledHideIcon />}
-          {isHidden && <StyledShowIcon />}
-        </Option>
-      </Options>
+      {areOptionsVisible && (
+        <Options>
+          <Option onClick={handleHideClick}>
+            {!isHidden && <StyledHideIcon />}
+            {isHidden && <StyledShowIcon />}
+          </Option>
+        </Options>
+      )}
     </Root>
   );
 });
