@@ -6,11 +6,15 @@ import { ReduxAction } from "../types/ReduxAction";
 export type State = {
   readonly query: string;
   readonly isShowingHiddenBookmark: boolean;
+  readonly isRetrievingBookmarks: boolean;
+  readonly areBookmarksReady: boolean;
 };
 
 export const initialState: State = {
   query: "",
-  isShowingHiddenBookmark: false
+  isShowingHiddenBookmark: false,
+  isRetrievingBookmarks: false,
+  areBookmarksReady: false
 };
 
 export const sessionReducer = (
@@ -19,6 +23,21 @@ export const sessionReducer = (
 ): State => {
   return produce(state, draft => {
     switch (action.type) {
+      case getType(actions.retrieveBookmarks): {
+        draft.isRetrievingBookmarks = true;
+        break;
+      }
+      case getType(actions.retrieveBookmarksSuccess): {
+        draft.isRetrievingBookmarks = false;
+        draft.areBookmarksReady = true;
+        break;
+      }
+      case getType(actions.rehydrateSuccess): {
+        if (action.payload.bookmarks) {
+          draft.areBookmarksReady = true;
+        }
+        break;
+      }
       case getType(actions.toggleShowHiddenBookmark): {
         draft.isShowingHiddenBookmark = !state.isShowingHiddenBookmark;
         break;

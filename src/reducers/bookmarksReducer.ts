@@ -7,15 +7,11 @@ import { ChromeBookmark } from "../types/ChromeBookmark";
 export type State = {
   readonly foldersById: { [id: string]: ChromeBookmark };
   readonly bookmarksById: { [id: string]: ChromeBookmark };
-  readonly isRetrievingBookmarks: boolean;
-  readonly areBookmarksReady: boolean;
 };
 
 export const initialState: State = {
   foldersById: {},
-  bookmarksById: {},
-  isRetrievingBookmarks: false,
-  areBookmarksReady: false
+  bookmarksById: {}
 };
 
 export const bookmarksReducer = (
@@ -24,25 +20,15 @@ export const bookmarksReducer = (
 ): State => {
   return produce(state, draft => {
     switch (action.type) {
-      case getType(actions.retrieveBookmarks): {
-        draft.isRetrievingBookmarks = true;
-        break;
-      }
       case getType(actions.retrieveBookmarksSuccess): {
         draft.foldersById = action.payload.foldersById;
         draft.bookmarksById = action.payload.bookmarksById;
-        draft.isRetrievingBookmarks = false;
-        draft.areBookmarksReady = true;
         break;
       }
       case getType(actions.rehydrateSuccess): {
-        const { foldersById, bookmarksById } = action.payload;
-        if (foldersById || bookmarksById) {
-          draft.foldersById = action.payload.foldersById;
-          draft.bookmarksById = action.payload.bookmarksById;
-          if (Object.keys(action.payload.bookmarksById).length > 0) {
-            draft.areBookmarksReady = true;
-          }
+        const persistedState = action.payload;
+        if (persistedState.bookmarks) {
+          return persistedState.bookmarks;
         }
         break;
       }

@@ -1,7 +1,7 @@
-import { ChromeBookmark } from "./ChromeBookmark";
+import { State as BookmarksState } from "../reducers/bookmarksReducer";
+import { State as SettingsState } from "../reducers/settingsReducer";
 
 export type ReduxPersistedState = {
-  foldersById: { [id: string]: ChromeBookmark };
-  bookmarksById: { [id: string]: ChromeBookmark };
-  hiddenBookmarkIds: string[];
+  bookmarks: BookmarksState;
+  settings: SettingsState;
 };

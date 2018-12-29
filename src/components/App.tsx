@@ -11,7 +11,7 @@ import { getBookmarkTree } from "../selectors/getBookmarkTree";
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
-  areBookmarksReady: state.bookmarks.areBookmarksReady
+  areBookmarksReady: state.session.areBookmarksReady
 });
 
 const mapActions = {

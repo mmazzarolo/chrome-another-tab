@@ -5,9 +5,8 @@ import { ReduxPersistedState } from "./../types/ReduxPersistedState";
 export const persistSaga = function*() {
   const reduxState: ReduxState = yield select();
   const reduxStateToPersist: ReduxPersistedState = {
-    foldersById: reduxState.bookmarks.foldersById,
-    bookmarksById: reduxState.bookmarks.bookmarksById,
-    hiddenBookmarkIds: reduxState.settings.hiddenBookmarkIds
+    bookmarks: reduxState.bookmarks,
+    settings: reduxState.settings
   };
   localStorage.setItem("REDUX_STATE", JSON.stringify(reduxStateToPersist));
 };
