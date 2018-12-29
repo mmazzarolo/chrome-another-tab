@@ -29,7 +29,7 @@ const mapActions = {
   showBookmark: actions.showBookmark
 };
 
-export const BookmarkNode: FC<Props> = memo(props => {
+export const BookmarkListItem: FC<Props> = memo(props => {
   const { title, url, id } = props;
 
   const mapState = useCallback(
