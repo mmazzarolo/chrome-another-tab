@@ -105,6 +105,12 @@ const Title = styled.span`
   letter-spacing: 0px;
   font-weight: 500;
   color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 
   ${Root}:hover & {
     color: #7076c0;
