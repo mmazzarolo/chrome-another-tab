@@ -1,13 +1,12 @@
-import React, { FC, memo, MouseEvent, useCallback } from "react";
-import styled, { keyframes } from "styled-components/macro";
+import React, { FC, memo, useCallback } from "react";
+import styled from "styled-components/macro";
 import { useHover } from "../hooks/useHover";
-import { Hide as HideIcon } from "styled-icons/boxicons-regular";
-import { Show as ShowIcon } from "styled-icons/boxicons-regular";
 import { useMappedActions } from "../hooks/useMappedActions";
 import { getIsFolderHidden } from "../selectors/getIsFolderHidden";
 import { ReduxState } from "../types/ReduxState";
 import { actions } from "../actions";
 import { useMappedState } from "redux-react-hook";
+import { OptionHideShow } from "./OptionHideShow";
 
 interface Props {
   id: string;
@@ -33,8 +32,7 @@ export const BookmarkListFolder: FC<Props> = memo(props => {
 
   const [rootRef, isHovered] = useHover<HTMLParagraphElement>();
 
-  const handleHideClick = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
+  const handleHideClick = () => {
     if (isHidden) {
       showFolder(id);
     } else {
@@ -48,10 +46,11 @@ export const BookmarkListFolder: FC<Props> = memo(props => {
         <Title>{title}</Title>
         {isHovered && (
           <Options>
-            <Option onClick={handleHideClick}>
-              {!isHidden && <StyledHideIcon />}
-              {isHidden && <StyledShowIcon />}
-            </Option>
+            <OptionHideShow
+              size={24}
+              isHidden={isHidden}
+              onClick={handleHideClick}
+            />
           </Options>
         )}
       </Header>
@@ -59,17 +58,6 @@ export const BookmarkListFolder: FC<Props> = memo(props => {
     </Root>
   );
 });
-
-const scaleIn = keyframes`
-  from {
-    transform: scale(0);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-`;
 
 const Root = styled.li`
   list-style: none;
@@ -98,42 +86,4 @@ const Content = styled.ul`
   padding-left: 0;
 `;
 
-const Options = styled.div`
-  width: 40px;
-  height: 40px;
-  display: none;
-
-  ${Root}:hover & {
-    display: block;
-  }
-`;
-
-const Option = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 24px;
-  width: 24px;
-  border-radius: 16px;
-  animation: ${scaleIn} 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation-delay: 140ms;
-  transition: background-color 100ms;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 1);
-  }
-`;
-
-const StyledHideIcon = styled(HideIcon)`
-  color: #7076c0;
-  height: 18px;
-  width: 18px;
-`;
-
-const StyledShowIcon = styled(ShowIcon)`
-  color: #7076c0;
-  height: 18px;
-  width: 18px;
-`;
+const Options = styled.div``;
