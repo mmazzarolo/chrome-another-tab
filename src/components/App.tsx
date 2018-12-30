@@ -51,10 +51,21 @@ const Root = styled.div`
   text-align: center;
   transition: all 0.6s ease-out;
   height: 100%;
-  /* background: linear-gradient(to bottom, #d3959b, #bfe6ba); */
-  background: linear-gradient(to bottom, #7474bf, #348ac7);
-  background-attachment: fixed;
   min-height: 100vh;
+  overflow: hidden; // added for pseudo-element
+  position: relative; // added for pseudo-element
+
+  &::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    will-change: transform;
+    z-index: -1;
+    background: linear-gradient(to bottom, #7474bf, #348ac7);
+  }
 `;
 
 const Main = styled.main`
