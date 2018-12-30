@@ -137,3 +137,10 @@ I'd like to add a search shortcut and a way to specify if the query should be se
 
 Well, it looks like I was wrong.  
 The `chrome://favicon/` API allows you to specify the size of the favicon you need (e.g.: `chrome://favicon/size/16@2x/${url}`), see (./src/utils/getFaviconUrl.ts)[getFaviconUrl.ts]: I'm now getting the favicon from the chrome API when the app is running as an extension and I'm using FaviconKit API to get it when running/testing/developing locally.
+
+### When CMD key is kept pressed, keyup is not triggered for any other key
+
+While working on a keyboard handling hook I discovered that [when CMD key is kept pressed, keyup is not triggered for any other key
+](https://stackoverflow.com/questions/27380018/when-cmd-key-is-kept-pressed-keyup-is-not-triggered-for-any-other-key).  
+Looks like it is a known behavior of the meta key without any available workaround.
+That's not blocking in any way, but it's interesting nevertheless.
