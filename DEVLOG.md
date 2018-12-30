@@ -130,3 +130,10 @@ I'd like to add a search shortcut and a way to specify if the query should be se
 <p align="center" margin-bottom="0">
     <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-23-search.gif">
 </p>
+
+## Dec 30, 2018
+
+### Getting a bookmark favicon, round 2
+
+Well, it looks like I was wrong.  
+The `chrome://favicon/` API allows you to specify the size of the favicon you need (e.g.: `chrome://favicon/size/16@2x/${url}`), see (./src/utils/getFaviconUrl.ts)[getFaviconUrl.ts]: I'm now getting the favicon from the chrome API when the app is running as an extension and I'm using FaviconKit API to get it when running/testing/developing locally.
