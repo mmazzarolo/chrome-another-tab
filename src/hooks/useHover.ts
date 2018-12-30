@@ -26,7 +26,6 @@ export function useHover<T>(
     isCurrentlyHovered.current = false;
     await delay(options.delay || 0);
     if (!isCurrentlyHovered.current) {
-      console.log("ciao");
       setIsHovered(false);
     }
   };
