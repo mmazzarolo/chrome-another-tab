@@ -8,6 +8,7 @@ import { useMappedState } from "redux-react-hook";
 import { SearchBar } from "./SearchBar";
 import { MarkGithub as GithubIcon } from "styled-icons/octicons";
 import { Hide as HideIcon } from "styled-icons/boxicons-regular";
+import { useKeyboardPress } from "../hooks/useKeyboardPress";
 
 const mapState = (state: ReduxState) => ({
   query: state.session.query,
@@ -22,6 +23,14 @@ const mapActions = {
 export const Header: FC = memo(props => {
   const { isShowingHiddenBookmark, query } = useMappedState(mapState);
   const { toggleShowHiddenBookmark, setQuery } = useMappedActions(mapActions);
+  useKeyboardPress({
+    key: "f",
+    metaKey: true,
+    onKeyDown: e => {
+      e.preventDefault();
+      // TODO: Handle searchbar focus
+    }
+  });
 
   const handleBookmarksVisibilityClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
