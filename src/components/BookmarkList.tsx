@@ -14,7 +14,11 @@ export const BookmarkList: FC<Props> = memo(props => {
     <RootList>
       {bookmarkTree.map(folder => {
         return (
-          <BookmarkListFolder key={folder.id} title={folder.title}>
+          <BookmarkListFolder
+            key={folder.id}
+            id={folder.id}
+            title={folder.title}
+          >
             {folder.bookmarks.map(bookmark => (
               <BookmarkListItem
                 key={bookmark.id}

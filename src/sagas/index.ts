@@ -13,6 +13,8 @@ export const rootSaga = function*() {
       [
         getType(actions.showBookmark),
         getType(actions.hideBookmark),
+        getType(actions.showFolder),
+        getType(actions.hideFolder),
         getType(actions.retrieveBookmarksSuccess)
       ],
       persistSaga

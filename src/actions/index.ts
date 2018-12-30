@@ -21,6 +21,8 @@ export const actions = {
   // Settings actions
   hideBookmark: createStandardAction("settings/HIDE_BOOKMARK")<string>(),
   showBookmark: createStandardAction("settings/SHOW_BOOKMARK")<string>(),
+  hideFolder: createStandardAction("settings/HIDE_FOLDER")<string>(),
+  showFolder: createStandardAction("settings/SHOW_FOLDER")<string>(),
 
   // Other
   rehydrate: createStandardAction("other/REHYDRATE_REQUEST")(),
