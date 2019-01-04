@@ -1,4 +1,4 @@
-import React, { FC, memo, MouseEvent } from "react";
+import React, { FC, memo, MouseEvent, useRef } from "react";
 import styled, { keyframes } from "styled-components/macro";
 import logoImage from "../assets/images/logo.png";
 import { actions } from "../actions";
@@ -23,12 +23,14 @@ const mapActions = {
 export const Header: FC = memo(props => {
   const { isShowingHiddenBookmark, query } = useMappedState(mapState);
   const { toggleShowHiddenBookmark, setQuery } = useMappedActions(mapActions);
+  const searchBarRef = useRef<HTMLInputElement>(null);
+
   useKeyboardPress({
     key: "f",
     metaKey: true,
     onKeyDown: e => {
       e.preventDefault();
-      // TODO: Handle searchbar focus
+      searchBarRef.current && searchBarRef.current.focus();
     }
   });
 
@@ -43,14 +45,17 @@ export const Header: FC = memo(props => {
         <LogoImage src={logoImage} />
         <LogoText>Another Tab</LogoText>
       </Logo>
-      <SearchBar query={query} onChange={setQuery} />
+      <SearchBar ref={searchBarRef} query={query} onChange={setQuery} />
       <Menu>
         <MenuItem onClick={handleBookmarksVisibilityClick}>
           <StyledHideIcon />
           {isShowingHiddenBookmark ? "Hide hidden" : "Show hidden"}
         </MenuItem>
         <Separator />
-        <MenuItem href="https://github.com/mmazzarolo/chrome-another-tab">
+        <MenuItem
+          href="https://github.com/mmazzarolo/chrome-another-tab"
+          tabIndex={-1}
+        >
           <StyledGithubIcon />
         </MenuItem>
       </Menu>

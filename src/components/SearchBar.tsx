@@ -1,4 +1,4 @@
-import React, { FC, memo, ChangeEvent } from "react";
+import React, { ChangeEvent, forwardRef } from "react";
 import styled from "styled-components/macro";
 import { Search as SearchIcon } from "styled-icons/material";
 
@@ -7,7 +7,7 @@ interface Props {
   onChange: (query: string) => void;
 }
 
-export const SearchBar: FC<Props> = memo(props => {
+export const SearchBar = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { query, onChange } = props;
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -16,6 +16,7 @@ export const SearchBar: FC<Props> = memo(props => {
     <Form>
       <StyledSearchIcon />
       <Input
+        ref={ref}
         placeholder="Search bookmarks..."
         type="text"
         onChange={handleInputChange}
@@ -54,6 +55,11 @@ const Input = styled.input`
   &:hover:focus {
     outline: 0;
     border: none;
+  }
+
+  &:focus {
+    border: none;
+    border-bottom: 1px solid white;
   }
 
   &:hover::placeholder {

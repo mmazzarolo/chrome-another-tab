@@ -75,8 +75,10 @@ const Root = styled.a`
   cursor: pointer;
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: rgba(255, 255, 255, 0.8);
+    outline: none;
   }
 `;
 
@@ -113,6 +115,10 @@ const Title = styled.span`
   -webkit-line-clamp: 2;
 
   ${Root}:hover & {
+    color: #7076c0;
+  }
+
+  ${Root}:focus & {
     color: #7076c0;
   }
 `;
