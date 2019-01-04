@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled, { keyframes } from "styled-components/macro";
+import { isEmpty } from "lodash";
 import { BookmarkList } from "./BookmarkList";
 import { useOnMount } from "../hooks/useOnMount";
 import { actions } from "../actions";
@@ -8,6 +9,7 @@ import { ReduxState } from "../types/ReduxState";
 import { useMappedState } from "redux-react-hook";
 import { useMappedActions } from "../hooks/useMappedActions";
 import { getBookmarkTree } from "../selectors/getBookmarkTree";
+import { NoResult } from "./NoResult";
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
@@ -23,6 +25,8 @@ export const App: FC = () => {
   const { areBookmarksReady, bookmarkTree } = useMappedState(mapState);
   const { retrieveBookmarks, rehydrate } = useMappedActions(mapActions);
 
+  const isBookmarkTreeEmpty = isEmpty(bookmarkTree);
+
   useOnMount(() => {
     rehydrate();
     retrieveBookmarks();
@@ -33,9 +37,12 @@ export const App: FC = () => {
       {areBookmarksReady && (
         <>
           <Header />
-          <Main>
-            <BookmarkList bookmarkTree={bookmarkTree} />
-          </Main>
+          {!isBookmarkTreeEmpty && (
+            <Main>
+              <BookmarkList bookmarkTree={bookmarkTree} />
+            </Main>
+          )}
+          {isBookmarkTreeEmpty && <NoResult />}
         </>
       )}
     </Root>
