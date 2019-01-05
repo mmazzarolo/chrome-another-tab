@@ -69,7 +69,10 @@ export const bookmarksReducer = (
       case getType(actions.rehydrateSuccess): {
         const persistedState = action.payload;
         if (persistedState.bookmarks) {
-          return persistedState.bookmarks;
+          return {
+            ...initialState,
+            ...persistedState.bookmarks
+          };
         }
         break;
       }

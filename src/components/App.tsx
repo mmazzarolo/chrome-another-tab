@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styled, { keyframes } from "styled-components/macro";
+import styled, { keyframes, ThemeProvider } from "styled-components/macro";
 import { isEmpty } from "lodash";
 import { BookmarkList } from "./BookmarkList";
 import { useOnMount } from "../hooks/useOnMount";
@@ -10,10 +10,13 @@ import { useMappedState } from "redux-react-hook";
 import { useMappedActions } from "../hooks/useMappedActions";
 import { getBookmarkTree } from "../selectors/getBookmarkTree";
 import { NoResult } from "./NoResult";
+import { Theme } from "../types/Theme";
+import { getCurrentTheme } from "../selectors/getCurrentTheme";
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
-  areBookmarksReady: state.session.areBookmarksReady
+  areBookmarksReady: state.session.areBookmarksReady,
+  currentTheme: getCurrentTheme(state)
 });
 
 const mapActions = {
@@ -22,7 +25,9 @@ const mapActions = {
 };
 
 export const App: FC = () => {
-  const { areBookmarksReady, bookmarkTree } = useMappedState(mapState);
+  const { areBookmarksReady, bookmarkTree, currentTheme } = useMappedState(
+    mapState
+  );
   const { retrieveBookmarks, rehydrate } = useMappedActions(mapActions);
 
   const isBookmarkTreeEmpty = isEmpty(bookmarkTree);
@@ -32,20 +37,22 @@ export const App: FC = () => {
     retrieveBookmarks();
   });
 
+  if (!areBookmarksReady) {
+    return null;
+  }
+
   return (
-    <Root>
-      {areBookmarksReady && (
-        <>
-          <Header />
-          {!isBookmarkTreeEmpty && (
-            <Main>
-              <BookmarkList bookmarkTree={bookmarkTree} />
-            </Main>
-          )}
-          {isBookmarkTreeEmpty && <NoResult />}
-        </>
-      )}
-    </Root>
+    <ThemeProvider theme={currentTheme}>
+      <Root>
+        <Header />
+        {!isBookmarkTreeEmpty && (
+          <Main>
+            <BookmarkList bookmarkTree={bookmarkTree} />
+          </Main>
+        )}
+        {isBookmarkTreeEmpty && <NoResult />}
+      </Root>
+    </ThemeProvider>
   );
 };
 
@@ -72,7 +79,7 @@ const Root = styled.div`
     left: 0;
     will-change: transform;
     z-index: -1;
-    background: linear-gradient(to bottom, #7474bf, #348ac7);
+    background: ${(props: { theme: Theme }) => props.theme.appBackground};
   }
 `;
 

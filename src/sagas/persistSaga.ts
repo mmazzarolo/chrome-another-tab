@@ -6,7 +6,7 @@ export const persistSaga = function*() {
   const reduxState: ReduxState = yield select();
   const reduxStateToPersist: ReduxPersistedState = {
     bookmarks: reduxState.bookmarks,
-    settings: reduxState.settings
+    themes: reduxState.themes
   };
   localStorage.setItem("REDUX_STATE", JSON.stringify(reduxStateToPersist));
 };

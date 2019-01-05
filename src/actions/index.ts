@@ -17,12 +17,13 @@ export const actions = {
     foldersById: { [id: string]: ChromeBookmark };
     bookmarksById: { [id: string]: ChromeBookmark };
   }>(),
+  hideBookmark: createStandardAction("bookmarks/HIDE_BOOKMARK")<string>(),
+  showBookmark: createStandardAction("bookmarks/SHOW_BOOKMARK")<string>(),
+  hideFolder: createStandardAction("bookmarks/HIDE_FOLDER")<string>(),
+  showFolder: createStandardAction("bookmarks/SHOW_FOLDER")<string>(),
 
-  // Settings actions
-  hideBookmark: createStandardAction("settings/HIDE_BOOKMARK")<string>(),
-  showBookmark: createStandardAction("settings/SHOW_BOOKMARK")<string>(),
-  hideFolder: createStandardAction("settings/HIDE_FOLDER")<string>(),
-  showFolder: createStandardAction("settings/SHOW_FOLDER")<string>(),
+  // Theme actions
+  goToNextTheme: createStandardAction("theme/GO_TO_NEXT_THEME")(),
 
   // Other
   rehydrate: createStandardAction("other/REHYDRATE_REQUEST")(),

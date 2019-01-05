@@ -1,7 +1,7 @@
 import { State as BookmarksState } from "../reducers/bookmarksReducer";
-import { State as SettingsState } from "../reducers/settingsReducer";
+import { State as ThemesState } from "../reducers/themesReducer";
 
 export type ReduxPersistedState = {
   bookmarks: BookmarksState;
-  settings: SettingsState;
+  themes: ThemesState;
 };

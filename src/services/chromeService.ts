@@ -1,9 +1,10 @@
 import { delay } from "../utils/delay";
 import bookmarksFixture from "../fixtures/bookmarks.json";
 import { ChromeBookmark } from "./../types/ChromeBookmark";
+import { NODE_ENV } from "../config/constants";
 
 export const getBookmarks = async () => {
-  if (process.env.NODE_ENV === "development") {
+  if (NODE_ENV === "development") {
     await delay(100);
     return bookmarksFixture;
   } else {

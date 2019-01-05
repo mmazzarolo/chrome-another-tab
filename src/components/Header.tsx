@@ -11,6 +11,7 @@ import {
   Hide as HideIcon,
   Show as ShowIcon
 } from "styled-icons/boxicons-regular";
+import { ColorLens as ColorLensIcon } from "styled-icons/material";
 import { useKeyboardPress } from "../hooks/useKeyboardPress";
 
 const mapState = (state: ReduxState) => ({
@@ -20,12 +21,17 @@ const mapState = (state: ReduxState) => ({
 
 const mapActions = {
   setQuery: actions.setQuery,
-  toggleShowHiddenBookmark: actions.toggleShowHiddenBookmark
+  toggleShowHiddenBookmark: actions.toggleShowHiddenBookmark,
+  goToNextTheme: actions.goToNextTheme
 };
 
 export const Header: FC = memo(props => {
   const { isShowingHiddenBookmark, query } = useMappedState(mapState);
-  const { toggleShowHiddenBookmark, setQuery } = useMappedActions(mapActions);
+  const {
+    toggleShowHiddenBookmark,
+    setQuery,
+    goToNextTheme
+  } = useMappedActions(mapActions);
   const searchBarRef = useRef<HTMLInputElement>(null);
 
   useKeyboardPress({
@@ -42,6 +48,11 @@ export const Header: FC = memo(props => {
     toggleShowHiddenBookmark();
   };
 
+  const handleThemeSwitchClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    goToNextTheme();
+  };
+
   return (
     <Root>
       <Logo>
@@ -53,6 +64,10 @@ export const Header: FC = memo(props => {
         <MenuItem onClick={handleBookmarksVisibilityClick}>
           {isShowingHiddenBookmark ? <StyledHideIcon /> : <StyledShowIcon />}
           {isShowingHiddenBookmark ? "Hide hidden" : "Show hidden"}
+        </MenuItem>
+        <Separator />
+        <MenuItem onClick={handleThemeSwitchClick}>
+          <StyledColorLensIcon />
         </MenuItem>
         <Separator />
         <MenuItem
@@ -136,6 +151,13 @@ const Separator = styled.span`
 `;
 
 const StyledHideIcon = styled(HideIcon)`
+  color: white;
+  height: 22px;
+  width: 22px;
+  margin-right: 4px;
+`;
+
+const StyledColorLensIcon = styled(ColorLensIcon)`
   color: white;
   height: 22px;
   width: 22px;

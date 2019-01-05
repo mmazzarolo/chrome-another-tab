@@ -9,6 +9,7 @@ import { getIsBookmarkHidden } from "../selectors/getIsBookmarkHidden";
 import { useMappedActions } from "../hooks/useMappedActions";
 import { useHover } from "../hooks/useHover";
 import { OptionHideShow } from "./OptionHideShow";
+import { Theme } from "../types/Theme";
 
 interface Props {
   id: string;
@@ -115,11 +116,11 @@ const Title = styled.span`
   -webkit-line-clamp: 2;
 
   ${Root}:hover & {
-    color: #7076c0;
+    color: ${(props: { theme: Theme }) => props.theme.itemHoverTextColor};
   }
 
   ${Root}:focus & {
-    color: #7076c0;
+    color: ${(props: { theme: Theme }) => props.theme.itemHoverTextColor};
   }
 `;
 

@@ -1,4 +1,4 @@
-import { all, put, takeEvery } from "redux-saga/effects";
+import { all, takeEvery } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 import { actions } from "./../actions/index";
 import { retrieveBookmarksSaga } from "./retrieveBookmarksSaga";
@@ -15,6 +15,7 @@ export const rootSaga = function*() {
         getType(actions.hideBookmark),
         getType(actions.showFolder),
         getType(actions.hideFolder),
+        getType(actions.goToNextTheme),
         getType(actions.retrieveBookmarksSuccess)
       ],
       persistSaga
