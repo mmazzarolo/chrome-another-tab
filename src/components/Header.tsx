@@ -1,6 +1,6 @@
 import React, { FC, memo, MouseEvent, useRef } from "react";
 import styled, { keyframes } from "styled-components/macro";
-import logoImage from "../assets/images/logo.png";
+import logoImage from "../assets/images/logo.svg";
 import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
 import { useMappedActions } from "../hooks/useMappedActions";
