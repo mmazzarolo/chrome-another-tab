@@ -55,6 +55,7 @@ const fadeIn = keyframes`
 `;
 
 const Root = styled.div`
+  animation: ${fadeIn} 0.1s ease-in-out both;
   text-align: center;
   transition: all 0.6s ease-out;
   height: 100%;
@@ -76,7 +77,7 @@ const Root = styled.div`
 `;
 
 const Main = styled.main`
-  animation: ${fadeIn} 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation-delay: 0.2s;
+  animation: ${fadeIn} 0.3s ease-in-out both;
+  animation-delay: 0.1s;
   padding: 0 40px;
 `;

@@ -7,7 +7,10 @@ import { useMappedActions } from "../hooks/useMappedActions";
 import { useMappedState } from "redux-react-hook";
 import { SearchBar } from "./SearchBar";
 import { MarkGithub as GithubIcon } from "styled-icons/octicons";
-import { Hide as HideIcon } from "styled-icons/boxicons-regular";
+import {
+  Hide as HideIcon,
+  Show as ShowIcon
+} from "styled-icons/boxicons-regular";
 import { useKeyboardPress } from "../hooks/useKeyboardPress";
 
 const mapState = (state: ReduxState) => ({
@@ -48,7 +51,7 @@ export const Header: FC = memo(props => {
       <SearchBar ref={searchBarRef} query={query} onChange={setQuery} />
       <Menu>
         <MenuItem onClick={handleBookmarksVisibilityClick}>
-          <StyledHideIcon />
+          {isShowingHiddenBookmark ? <StyledHideIcon /> : <StyledShowIcon />}
           {isShowingHiddenBookmark ? "Hide hidden" : "Show hidden"}
         </MenuItem>
         <Separator />
@@ -83,7 +86,8 @@ const Root = styled.div`
   height: 28px;
   /* background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4); */
-  animation: ${fadeInBottom} 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: ${fadeInBottom} 0.3s ease-in-out both;
+  animation-delay: 0.1s;
 `;
 
 const Logo = styled.div`
@@ -132,6 +136,13 @@ const Separator = styled.span`
 `;
 
 const StyledHideIcon = styled(HideIcon)`
+  color: white;
+  height: 22px;
+  width: 22px;
+  margin-right: 4px;
+`;
+
+const StyledShowIcon = styled(ShowIcon)`
   color: white;
   height: 22px;
   width: 22px;
