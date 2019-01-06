@@ -25,7 +25,7 @@ export const themesReducer = (
         if (persistedState.themes) {
           return {
             ...initialState,
-            ...persistedState.themes
+            currentThemeId: persistedState.themes.currentThemeId
           };
         }
         break;

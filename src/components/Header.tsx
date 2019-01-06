@@ -1,11 +1,11 @@
 import React, { FC, memo, MouseEvent, useRef } from "react";
 import styled, { keyframes } from "styled-components/macro";
-import logoImage from "../assets/images/logo.svg";
 import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
 import { useMappedActions } from "../hooks/useMappedActions";
 import { useMappedState } from "redux-react-hook";
 import { SearchBar } from "./SearchBar";
+import { LogoImage } from "./LogoImage";
 import { MarkGithub as GithubIcon } from "styled-icons/octicons";
 import {
   Hide as HideIcon,
@@ -13,6 +13,7 @@ import {
 } from "styled-icons/boxicons-regular";
 import { ColorLens as ColorLensIcon } from "styled-icons/material";
 import { useKeyboardPress } from "../hooks/useKeyboardPress";
+import { Theme } from "../types/Theme";
 
 const mapState = (state: ReduxState) => ({
   query: state.session.query,
@@ -56,14 +57,13 @@ export const Header: FC = memo(props => {
   return (
     <Root>
       <Logo>
-        <LogoImage src={logoImage} />
+        <StyledLogoImage />
         <LogoText>Another Tab</LogoText>
       </Logo>
       <SearchBar ref={searchBarRef} query={query} onChange={setQuery} />
       <Menu>
         <MenuItem onClick={handleBookmarksVisibilityClick}>
           {isShowingHiddenBookmark ? <StyledHideIcon /> : <StyledShowIcon />}
-          {isShowingHiddenBookmark ? "Hide hidden" : "Show hidden"}
         </MenuItem>
         <Separator />
         <MenuItem onClick={handleThemeSwitchClick}>
@@ -99,8 +99,7 @@ const Root = styled.div`
   justify-content: space-between;
   padding: 8px 40px;
   height: 28px;
-  /* background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4); */
+  background: ${(props: { theme: Theme }) => props.theme.headerBackground};
   animation: ${fadeInBottom} 0.3s ease-in-out both;
   animation-delay: 0.1s;
 `;
@@ -112,12 +111,13 @@ const Logo = styled.div`
   align-items: center;
 `;
 
-const LogoImage = styled.img`
-  height: 100%;
+const StyledLogoImage = styled(LogoImage)`
+  width: 28px;
+  height: 28px;
 `;
 
 const LogoText = styled.p`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
   font-size: 17px;
   font-weight: 600;
   margin-left: 16px;
@@ -132,7 +132,6 @@ const Menu = styled.div`
 const MenuItem = styled.a`
   display: flex;
   align-items: center;
-  color: white;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -144,35 +143,35 @@ const MenuItem = styled.a`
 `;
 
 const Separator = styled.span`
-  background-color: white;
+  background: ${(props: { theme: Theme }) => props.theme.headerColor};
   margin: 0px 16px;
   height: 18px;
   width: 1px;
 `;
 
 const StyledHideIcon = styled(HideIcon)`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
   height: 22px;
   width: 22px;
   margin-right: 4px;
 `;
 
 const StyledColorLensIcon = styled(ColorLensIcon)`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
   height: 22px;
   width: 22px;
   margin-right: 4px;
 `;
 
 const StyledShowIcon = styled(ShowIcon)`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
   height: 22px;
   width: 22px;
   margin-right: 4px;
 `;
 
 const StyledGithubIcon = styled(GithubIcon)`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
   height: 22px;
   width: 22px;
 `;

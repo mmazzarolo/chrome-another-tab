@@ -1,4 +1,18 @@
 {
   "appBackground": "linear-gradient(to bottom, #051937, #004d7a, #008793, #00bf72);",
-  "itemHoverTextColor": "#051937"
+  "headerBackground": "transparent",
+  "headerColor": "white",
+  "noResultColor": "white",
+  "folderColor": "white",
+  "itemHoverTextColor": "#006283",
+  "itemBackground": "rgba(255, 255, 255, 0.1)",
+  "itemBorder": "1px solid rgba(255, 255, 255, 0.2)",
+  "itemHoverBackground": "rgba(255, 255, 255, 0.8)",
+  "itemTextColor": "white",
+  "itemOptionColor": "#006283",
+  "itemOptionBackground": "rgba(255, 255, 255, 0.8)",
+  "itemOptionHoverBackground": "rgba(255, 255, 255, 1)",
+  "itemOptionHoverColor": "white",
+  "itemShadow": "none",
+  "itemHoverShadow": "none"
 }

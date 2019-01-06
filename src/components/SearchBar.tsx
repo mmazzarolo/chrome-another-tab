@@ -1,6 +1,7 @@
 import React, { ChangeEvent, forwardRef } from "react";
 import styled from "styled-components/macro";
 import { Search as SearchIcon } from "styled-icons/material";
+import { Theme } from "../types/Theme";
 
 interface Props {
   query: string;
@@ -35,7 +36,7 @@ const Form = styled.form`
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
   width: 28px;
   height: 28px;
   margin-right: 6px;
@@ -47,7 +48,7 @@ const Input = styled.input`
   font-size: 16px;
   font-weight: 500;
   transition: all 0.6s ease-out;
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
   background-color: transparent;
   border: none;
   outline: 0;
@@ -60,12 +61,15 @@ const Input = styled.input`
   &:focus {
     border: none;
     border-bottom: 1px solid white;
+    border-bottom-color: ${(props: { theme: Theme }) =>
+      props.theme.headerColor};
   }
 
   &:hover::placeholder {
   }
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: ${(props: { theme: Theme }) => props.theme.headerColor};
+    opacity: 0.6;
   }
 `;

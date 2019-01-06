@@ -1,7 +1,6 @@
 import React, { FC, memo, useCallback } from "react";
 import { useMappedState } from "redux-react-hook";
 import styled from "styled-components/macro";
-import { FolderOpen as FolderIcon } from "styled-icons/fa-solid/FolderOpen";
 import { getFaviconUrl } from "../utils/getFaviconUrl";
 import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
@@ -50,7 +49,6 @@ export const BookmarkListItem: FC<Props> = memo(props => {
     <Root ref={rootRef} href={url} rel="noopener noreferrer">
       <Content isHidden={isHidden}>
         {url && <Favicon src={faviconSrc} />}
-        {!url && <StyledFolderIcon />}
         <Title>{title}</Title>
       </Content>
       {isHovered && (
@@ -69,8 +67,9 @@ const Root = styled.a`
   font-size: 14px;
   font-weight: 400;
   width: 320px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: ${(props: { theme: Theme }) => props.theme.itemBackground};
+  border: ${(props: { theme: Theme }) => props.theme.itemBorder};
+  box-shadow: ${(props: { theme: Theme }) => props.theme.itemShadow};
   transition: all 0.4s ease-out;
   border-radius: 4px;
   cursor: pointer;
@@ -78,7 +77,8 @@ const Root = styled.a`
 
   &:hover,
   &:focus {
-    background-color: rgba(255, 255, 255, 0.8);
+    background: ${(props: { theme: Theme }) => props.theme.itemHoverBackground};
+    box-shadow: ${(props: { theme: Theme }) => props.theme.itemHoverShadow};
     outline: none;
   }
 `;
@@ -97,17 +97,10 @@ const Favicon = styled.img`
   margin-right: 12px;
 `;
 
-const StyledFolderIcon = styled(FolderIcon)`
-  color: white;
-  height: 24px;
-  width: 24px;
-  margin-right: 12px;
-`;
-
 const Title = styled.span`
   letter-spacing: 0px;
   font-weight: 500;
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.itemTextColor};
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-word;

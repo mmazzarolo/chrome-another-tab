@@ -7,6 +7,7 @@ import { ReduxState } from "../types/ReduxState";
 import { actions } from "../actions";
 import { useMappedState } from "redux-react-hook";
 import { OptionHideShow } from "./OptionHideShow";
+import { Theme } from "../types/Theme";
 
 interface Props {
   id: string;
@@ -72,7 +73,7 @@ const Header = styled.div`
 `;
 
 const Title = styled.p`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.folderColor};
   font-size: 19px;
   font-weight: 500;
   display: inline-block;

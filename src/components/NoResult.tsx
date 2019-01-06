@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled, { keyframes } from "styled-components/macro";
+import { Theme } from "../types/Theme";
 
 export const NoResult: FC = () => {
   return (
@@ -29,7 +30,7 @@ const Root = styled.div`
 `;
 
 const Message = styled.p`
-  color: white;
+  color: ${(props: { theme: Theme }) => props.theme.noResultColor};
   font-size: x-large;
   font-weight: 500;
   animation: ${fadeInTop} 0.4s ease-in-out both;

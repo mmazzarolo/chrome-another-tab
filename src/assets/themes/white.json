@@ -1,0 +1,20 @@
+{
+  "appBackground": "#F9FBFC",
+  "headerBackground": "transparent",
+  "headerColor": "#565656",
+  "noResultColor": "#565656",
+  "folderColor": "#565656",
+  "itemHoverTextColor": "#fff",
+  "itemBackground": "white",
+  "itemBorder": "1px solid rgba(255, 255, 255, 0.2)",
+  "itemHoverBackground": "#5B95FF",
+  "itemTextColor": "#565656",
+  "noResultTextColor": "#565656",
+  "itemOptionColor": "#878D90",
+  "itemOptionBackground": "#F1F3F4",
+  "itemOptionHoverBackground": "#5B95FF",
+  "itemOptionHoverColor": "white",
+  "folderNameTextColor": "#565656",
+  "itemShadow": "0 1px 1px rgba(0,0,0,0.24)",
+  "itemHoverShadow": "none"
+}

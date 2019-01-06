@@ -2,6 +2,7 @@ import React, { FC, memo, MouseEvent } from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { Hide as HideIcon } from "styled-icons/boxicons-regular";
 import { Show as ShowIcon } from "styled-icons/boxicons-regular";
+import { Theme } from "../types/Theme";
 
 interface Props {
   isHidden: boolean;
@@ -44,17 +45,23 @@ const Root = styled.div`
   animation: ${scaleIn} 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: 140ms;
   transition: background-color 100ms;
-  background-color: rgba(255, 255, 255, 0.8);
-
+  background: ${(props: { theme: Theme }) => props.theme.itemOptionBackground};
   &:hover {
-    background-color: rgba(255, 255, 255, 1);
+    background: ${(props: { theme: Theme }) =>
+      props.theme.itemOptionHoverBackground};
   }
 `;
 
 const StyledHideIcon = styled(HideIcon)`
-  color: #7076c0;
+  color: ${(props: { theme: Theme }) => props.theme.itemOptionColor};
+  ${Root}:hover & {
+    color: ${(props: { theme: Theme }) => props.theme.itemOptionHoverColor};
+  }
 `;
 
 const StyledShowIcon = styled(ShowIcon)`
-  color: #7076c0;
+  color: ${(props: { theme: Theme }) => props.theme.itemOptionColor};
+  ${Root}:hover & {
+    color: ${(props: { theme: Theme }) => props.theme.itemOptionHoverColor};
+  }
 `;
