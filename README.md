@@ -15,8 +15,8 @@ Built with Create React App and TypeScript.
 
 <p align="center">
   <a href="https://chrome.google.com/webstore/detail/oaaeanlgefipegfcbgpgnhhnpengdjld/publish-accepted?authuser=3&hl=it">
-    <img alt="Another Tab" width="auto" height="30" src="./.github/chrome-web-store.png">
-    Another Tab
+    <img alt="Another Tab" width="auto" height="32" src="./.github/chrome-web-store-icon.png">
+    Another Tab in the Chrome Web Store
   </a>
 </p>
 
