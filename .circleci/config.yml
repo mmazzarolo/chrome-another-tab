@@ -1,34 +1,35 @@
 version: 2
 jobs:
-  docker:
-    - image: circleci/node
-  environment:
-    - APP_ID: oaaeanlgefipegfcbgpgnhhnpengdjld
-  steps:
-    - checkout
-    - run:
-        name: "Install Dependencies"
-        command: |
-          sudo apt-get update
-          sudo apt-get -y install curl jq
-          yarn
-    - run:
-        name: "Run TypeScript Compile"
-        command: yarn run tsc
-    - run:
-        name: "Run TSLint"
-        command: yarn run lint
-    - run:
-        name: "Build"
-        command: yarn run build
-    - run:
-        name: "Zip the built extension"
-        command: zip -r build.zip build
-    - run:
-        name: "Upload & Publish Extension to the Google Chrome Store"
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            ACCESS_TOKEN=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&refresh_token=${REFRESH_TOKEN}&grant_type=refresh_token&redirect_uri=urn:ietf:wg:oauth:2.0:oob" | jq -r .access_token)
-            curl -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "x-goog-api-version: 2" -X PUT -T build.zip -v "https://www.googleapis.com/upload/chromewebstore/v1.1/items/${APP_ID}"
-            curl -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "x-goog-api-version: 2" -H "Content-Length: 0" -X POST -v "https://www.googleapis.com/chromewebstore/v1.1/items/${APP_ID}/publish"
-          fi
+  build:
+    docker:
+      - image: circleci/node
+    environment:
+      - APP_ID: oaaeanlgefipegfcbgpgnhhnpengdjld
+    steps:
+      - checkout
+      - run:
+          name: "Install Dependencies"
+          command: |
+            sudo apt-get update
+            sudo apt-get -y install curl jq
+            yarn
+      - run:
+          name: "Run TypeScript Compile"
+          command: yarn run tsc
+      - run:
+          name: "Run TSLint"
+          command: yarn run lint
+      - run:
+          name: "Build"
+          command: yarn run build
+      - run:
+          name: "Zip the built extension"
+          command: zip -r build.zip build
+      - run:
+          name: "Upload & Publish Extension to the Google Chrome Store"
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ACCESS_TOKEN=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&refresh_token=${REFRESH_TOKEN}&grant_type=refresh_token&redirect_uri=urn:ietf:wg:oauth:2.0:oob" | jq -r .access_token)
+              curl -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "x-goog-api-version: 2" -X PUT -T build.zip -v "https://www.googleapis.com/upload/chromewebstore/v1.1/items/${APP_ID}"
+              curl -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "x-goog-api-version: 2" -H "Content-Length: 0" -X POST -v "https://www.googleapis.com/chromewebstore/v1.1/items/${APP_ID}/publish"
+            fi
