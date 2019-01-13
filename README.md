@@ -17,12 +17,6 @@ Built with Create React App and TypeScript.
   </a>
 </p>
 
-<p align="center" margin-bottom="0">
-  <a href="https://github.com/mmazzarolo/chrome-another-tab" target="_blank">
-    <img alt="Another Tab" width="auto" height="auto" src="./.github/2019-01-13-screenshot-light.png">
-  </a>
-</p>
-
 ## Overview
 
 I initially built this extension just for personal use and for trying building a Chrome extension, so it has just the feature that I need for now...  
