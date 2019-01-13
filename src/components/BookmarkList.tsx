@@ -35,6 +35,9 @@ export const BookmarkList: FC<Props> = memo(props => {
 });
 
 const RootList = styled.ul`
+  display: block;
   text-align: left;
   padding-left: 0;
+  width: 100%;
+  max-width: 860px;
 `;

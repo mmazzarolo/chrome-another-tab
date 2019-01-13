@@ -70,6 +70,7 @@ const Root = styled.li`
 const Header = styled.div`
   display: inline-flex;
   cursor: pointer;
+  align-items: center;
 `;
 
 const Title = styled.p`
@@ -82,9 +83,11 @@ const Title = styled.p`
 const Content = styled.ul`
   display: grid;
   grid-gap: 12px 20px;
-  grid-template-columns: repeat(auto-fit, 320px);
+  grid-template-columns: repeat(auto-fit, 260px);
   grid-auto-rows: 54px;
   padding-left: 0;
 `;
 
-const Options = styled.div``;
+const Options = styled.div`
+  margin-left: 6px;
+`;

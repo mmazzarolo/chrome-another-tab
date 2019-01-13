@@ -67,8 +67,8 @@ const Root = styled.div`
   transition: all 0.6s ease-out;
   height: 100%;
   min-height: 100vh;
-  overflow: hidden; // added for pseudo-element
-  position: relative; // added for pseudo-element
+  overflow: hidden;
+  position: relative;
 
   &::before {
     content: "";
@@ -84,7 +84,9 @@ const Root = styled.div`
 `;
 
 const Main = styled.main`
-  animation: ${fadeIn} 0.3s ease-in-out both;
+  animation: ${fadeIn} 0.2s ease-in-out both;
   animation-delay: 0.1s;
   padding: 0 40px;
+  display: flex;
+  justify-content: center;
 `;

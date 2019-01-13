@@ -2,12 +2,8 @@ import React, { FC, memo, useCallback } from "react";
 import { useMappedState } from "redux-react-hook";
 import styled from "styled-components/macro";
 import { getFaviconUrl } from "../utils/getFaviconUrl";
-import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
 import { getIsBookmarkHidden } from "../selectors/getIsBookmarkHidden";
-import { useMappedActions } from "../hooks/useMappedActions";
-import { useHover } from "../hooks/useHover";
-import { OptionHideShow } from "./OptionHideShow";
 import { Theme } from "../types/Theme";
 
 interface Props {
@@ -15,11 +11,6 @@ interface Props {
   title: string;
   url?: string;
 }
-
-const mapActions = {
-  hideBookmark: actions.hideBookmark,
-  showBookmark: actions.showBookmark
-};
 
 export const BookmarkListItem: FC<Props> = memo(props => {
   const { title, url, id } = props;
@@ -31,31 +22,14 @@ export const BookmarkListItem: FC<Props> = memo(props => {
     [id]
   );
   const { isHidden } = useMappedState(mapState);
-  const { hideBookmark, showBookmark } = useMappedActions(mapActions);
-
-  const handleHideClick = () => {
-    if (isHidden) {
-      showBookmark(id);
-    } else {
-      hideBookmark(id);
-    }
-  };
-
   const faviconSrc = url && getFaviconUrl(url);
 
-  const [rootRef, isHovered] = useHover<HTMLAnchorElement>({ delay: 10 });
-
   return (
-    <Root ref={rootRef} href={url} rel="noopener noreferrer">
+    <Root href={url} rel="noopener noreferrer">
       <Content isHidden={isHidden}>
         {url && <Favicon src={faviconSrc} />}
         <Title>{title}</Title>
       </Content>
-      {isHovered && (
-        <Options>
-          <OptionHideShow isHidden={isHidden} onClick={handleHideClick} />
-        </Options>
-      )}
     </Root>
   );
 });
@@ -66,11 +40,11 @@ const Root = styled.a`
   text-align: left;
   font-size: 14px;
   font-weight: 400;
-  width: 320px;
+  width: 260px;
   background: ${(props: { theme: Theme }) => props.theme.itemBackground};
   border: ${(props: { theme: Theme }) => props.theme.itemBorder};
   box-shadow: ${(props: { theme: Theme }) => props.theme.itemShadow};
-  transition: all 0.4s ease-out;
+  transition: all 0.2s ease-out;
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
@@ -115,10 +89,4 @@ const Title = styled.span`
   ${Root}:focus & {
     color: ${(props: { theme: Theme }) => props.theme.itemHoverTextColor};
   }
-`;
-
-const Options = styled.div`
-  position: absolute;
-  margin-top: -8px;
-  margin-left: 300px;
 `;

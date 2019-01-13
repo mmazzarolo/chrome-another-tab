@@ -100,7 +100,7 @@ const Root = styled.div`
   padding: 8px 40px;
   height: 28px;
   background: ${(props: { theme: Theme }) => props.theme.headerBackground};
-  animation: ${fadeInBottom} 0.3s ease-in-out both;
+  animation: ${fadeInBottom} 0.1s ease-in-out both;
   animation-delay: 0.1s;
 `;
 
