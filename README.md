@@ -13,6 +13,13 @@ Built with Create React App and TypeScript.
   </a>
 </p>
 
+<p align="center">
+  <a href="https://chrome.google.com/webstore/detail/oaaeanlgefipegfcbgpgnhhnpengdjld/publish-accepted?authuser=3&hl=it">
+    <img alt="Another Tab" width="auto" height="30" src="./.github/chrome-web-store.png">
+    Another Tab
+  </a>
+</p>
+
 ## Overview
 
 I initially built this extension just for personal use and for trying building a Chrome extension, so it has just the feature that I need for now...  

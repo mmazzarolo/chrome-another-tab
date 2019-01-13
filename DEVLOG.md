@@ -144,3 +144,18 @@ While working on a keyboard handling hook I discovered that [when CMD key is kep
 ](https://stackoverflow.com/questions/27380018/when-cmd-key-is-kept-pressed-keyup-is-not-triggered-for-any-other-key).  
 Looks like it is a known behavior of the meta key without any available workaround.
 That's not blocking in any way, but it's interesting nevertheless.
+
+## Gen 13, 2019
+
+### Published!
+
+Got some free time today so I took the chacne to publish it on the store.
+Publishing a Chrome Extension is quite easy, and seeing that the update is "immediate" is absolutely refreshing if you come from a native app development background.
+
+You can find the extension [here](https://chrome.google.com/webstore/detail/oaaeanlgefipegfcbgpgnhhnpengdjld/publish-accepted?authuser=3&hl=it).
+
+### Added CI
+
+Following [this really good article](https://circleci.com/blog/continuously-deploy-a-chrome-extension/) I was able to setup a CircleCI Continous Integration/Deployment of the extension in 20 minutes.  
+The CI runs a `build`, `tsc` and `tslint` command after a push, and if the target branch is `master` it also zips and publish the new extension version to the Chrome Web Store.  
+I already have a few ideas on how to improve the process but it is more then enough for now.
