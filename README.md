@@ -67,7 +67,7 @@ Also, if you're not confortable with hooks feel free to use class components.
 
 ### Chrome Web Store deployment
 
-I setup a [semi-automated Chrome Web Store deployment using CircleCI](./circleci/config.yml).     
+I setup a [semi-automated Chrome Web Store deployment using CircleCI](./.circleci/config.yml).     
 It currently runs only when the `production` branch receives a new push, but I still haven't automated the version number bumping (so I still have to do it manually).  
 It would be great making the publishing step manipulate the `manifest.json` so that it reflects the `package.json` version and/or a git tag.  
 
