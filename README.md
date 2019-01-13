@@ -1,33 +1,37 @@
 &nbsp;
 
-# Another Tab - Chrome Extension <img src="./.github/logo.png" width="110" align="left">
+# Another Tab - Chrome Extension <img src="./.github/logo.svg" width="110" align="left">
 
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 &nbsp;
 
-Just building a Chrome Extension with Create React App and TypeScript.  
-...I still don't have a clear idea of what I'll build though.  
-[Let's see how it goes](./DEVLOG.md).
+An open source Chrome extension that shows your bookmarks when you open a new tab.  
+Built with Create React App and TypeScript.   
 
 &nbsp;
 
 <p align="center" margin-bottom="0">
   <a href="https://github.com/mmazzarolo/chrome-another-tab" target="_blank">
-    <img alt="Another Tab" width="auto" height="auto" src="./.github/2018-12-23-screenshot.png">
+    <img alt="Another Tab" width="auto" height="auto" src="./.github/2019-01-13-screenshot-dark.png">
   </a>
 </p>
 
-# ~Roadmap~ What should I work on?
+## Overview
 
-- [x] Get the Chrome bookmarks
-- [x] Parse the Chrome bookmarks and show them in a new tab
-- [x] Open a bookmark on click
-- [x] Hide a specific bookmark
-- [x] Hide a specific folder
-- [x] Search
-- [ ] Publish it
+I initially built this extension just for personal use and for trying building a Chrome extension, so it has just the feature that I need for now...  
+PRs are welcome!   
+[Check the DEVLOG to see the history of the project](./DEVLOG.md).  
 
-# Acknowledgements
+### Features
+- Shows your bookmarks in the new tab page
+- Bookmarks filtering/search
+- Keyboard navigation support
+- Bookmark folders visibility toggle
+- Themes support
 
-Logo made by [Roundicons](https://www.flaticon.com/authors/roundicons) and licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
+### Stack
+- React (using Create React App) and hooks
+- TypeScript
+- Styled-Components
+- Redux, Redux-Saga and Typesafe-Actions
