@@ -1,10 +1,6 @@
 &nbsp;
 
-# Another Tab - Chrome Extension <img src="./.github/logo.svg" width="110" align="left">
-
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-
-&nbsp;
+# Another Tab - Chrome Extension <img src="./.github/logo.svg" width="40" align="left">
 
 An open source Chrome extension that shows your bookmarks when you open a new tab.  
 Built with Create React App and TypeScript.   
