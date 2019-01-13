@@ -1,10 +1,11 @@
+import { IS_LIVE_EXAMPLE } from "./../config/constants";
 import { delay } from "../utils/delay";
 import bookmarksFixture from "../fixtures/bookmarks.json";
 import { ChromeBookmark } from "./../types/ChromeBookmark";
 import { NODE_ENV } from "../config/constants";
 
 export const getBookmarks = async () => {
-  if (NODE_ENV === "development") {
+  if (NODE_ENV === "development" || IS_LIVE_EXAMPLE) {
     await delay(100);
     return bookmarksFixture;
   } else {

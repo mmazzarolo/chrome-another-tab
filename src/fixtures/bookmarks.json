@@ -6,8 +6,8 @@
         "id": "20",
         "index": 8,
         "parentId": "1",
-        "title": "Gmail",
-        "url": "https://mail.google.com/mail/u/0/#inbox"
+        "title": "Google",
+        "url": "https:/google.com/"
       },
       {
         "dateAdded": 1457424049324,
@@ -39,7 +39,7 @@
         "index": 12,
         "parentId": "1",
         "title": "Amazon",
-        "url": "http://www.amazon.it/"
+        "url": "http://www.amazon.com/"
       },
       {
         "dateAdded": 1415021717391,
@@ -72,14 +72,6 @@
         "parentId": "1",
         "title": "YouTube",
         "url": "https://www.youtube.com/feed/subscriptions"
-      },
-      {
-        "dateAdded": 1415027440729,
-        "id": "36",
-        "index": 17,
-        "parentId": "1",
-        "title": "Google Drive",
-        "url": "https://drive.google.com/drive/u/0/#my-drive"
       },
       {
         "dateAdded": 1524163526513,
@@ -128,36 +120,12 @@
                 "url": "http://www.flaticon.com/"
               },
               {
-                "dateAdded": 1453138539691,
-                "id": "131",
-                "index": 5,
-                "parentId": "19",
-                "title": "HN Reads",
-                "url": "http://www.hnreads.com/"
-              },
-              {
-                "dateAdded": 1446153915801,
-                "id": "132",
-                "index": 6,
-                "parentId": "19",
-                "title": "Use This / Interviews",
-                "url": "https://usesthis.com/"
-              },
-              {
                 "dateAdded": 1364206411437,
                 "id": "133",
                 "index": 7,
                 "parentId": "19",
-                "title": "5000 Best Movies - Personalized Recommendations",
+                "title": "5000 Best Movies",
                 "url": "http://5000best.com/movies/"
-              },
-              {
-                "dateAdded": 1446153781758,
-                "id": "134",
-                "index": 8,
-                "parentId": "19",
-                "title": "Screenshots from developers and Unix people taken in 2002 | Hacker News",
-                "url": "https://news.ycombinator.com/item?id=10469824"
               },
               {
                 "dateAdded": 1498548187677,
@@ -184,28 +152,12 @@
                 "url": "http://isotope.metafizzy.co/"
               },
               {
-                "dateAdded": 1488897693188,
-                "id": "153",
-                "index": 13,
-                "parentId": "19",
-                "title": "Hover.css - A collection of CSS3 powered hover effects",
-                "url": "http://ianlunn.github.io/Hover/"
-              },
-              {
                 "dateAdded": 1489700817156,
                 "id": "157",
                 "index": 14,
                 "parentId": "19",
                 "title": "Animista",
                 "url": "http://animista.net/"
-              },
-              {
-                "dateAdded": 1487496421412,
-                "id": "5",
-                "index": 17,
-                "parentId": "19",
-                "title": "Hero Patterns",
-                "url": "http://www.heropatterns.com/"
               },
               {
                 "dateAdded": 1537809812089,
@@ -224,14 +176,6 @@
             "title": "Useful stuff"
           },
           {
-            "dateAdded": 1432275789998,
-            "id": "15",
-            "index": 0,
-            "parentId": "1",
-            "title": "",
-            "url": "chrome://bookmarks/"
-          },
-          {
             "children": [
               {
                 "dateAdded": 1446822250939,
@@ -248,30 +192,6 @@
                 "parentId": "475",
                 "title": "GitHub | mmazzarolo",
                 "url": "https://github.com/mmazzarolo"
-              },
-              {
-                "dateAdded": 1539070444058,
-                "id": "478",
-                "index": 5,
-                "parentId": "475",
-                "title": "react-native-community/react-native-modal",
-                "url": "https://github.com/react-native-community/react-native-modal"
-              },
-              {
-                "dateAdded": 1539070429612,
-                "id": "477",
-                "index": 6,
-                "parentId": "475",
-                "title": "mmazzarolo/the-starter-app",
-                "url": "https://github.com/mmazzarolo/the-starter-app"
-              },
-              {
-                "dateAdded": 1539070461857,
-                "id": "479",
-                "index": 7,
-                "parentId": "475",
-                "title": "mmazzarolo/react-native-modal-datetime-picker",
-                "url": "https://github.com/mmazzarolo/react-native-modal-datetime-picker"
               }
             ],
             "dateAdded": 1539070313228,
@@ -280,226 +200,6 @@
             "index": 1,
             "parentId": "1-f",
             "title": "GitHub"
-          },
-          {
-            "children": [
-              {
-                "dateAdded": 1511985363313,
-                "id": "69",
-                "index": 0,
-                "parentId": "282",
-                "title": "Learn Mobile App Development | Rational App Development",
-                "url": "http://rationalappdev.com/"
-              },
-              {
-                "dateAdded": 1520495740773,
-                "id": "288",
-                "index": 1,
-                "parentId": "282",
-                "title": "RWieruch",
-                "url": "https://www.robinwieruch.de/"
-              },
-              {
-                "dateAdded": 1513461541845,
-                "id": "11",
-                "index": 2,
-                "parentId": "282",
-                "title": "Drew DeVault’s Blog | Blog",
-                "url": "http://sircmpwn.github.io/"
-              },
-              {
-                "dateAdded": 1533934313859,
-                "id": "434",
-                "index": 3,
-                "parentId": "282",
-                "title": "1/0 = 0 • Hillel Wayne",
-                "url": "https://www.hillelwayne.com/post/divide-by-zero/"
-              }
-            ],
-            "dateAdded": 1520543869289,
-            "dateGroupModified": 1533934313859,
-            "id": "282",
-            "index": 5,
-            "parentId": "1-f",
-            "title": "Blog"
-          },
-          {
-            "children": [
-              {
-                "dateAdded": 1513081683226,
-                "id": "82",
-                "index": 0,
-                "parentId": "283",
-                "title": "How We Built Dealmap with React Native, Redux, and Realm",
-                "url": "https://blog.qmo.io/how-we-built-dealmap-with-react-native/"
-              },
-              {
-                "dateAdded": 1484594556666,
-                "id": "137",
-                "index": 1,
-                "parentId": "283",
-                "title": "Performance Limitations of React Native and How to Overcome Them – Medium",
-                "url": "https://medium.com/@talkol/performance-limitations-of-react-native-and-how-to-overcome-them-947630d7f440#.oeknf0jzv"
-              },
-              {
-                "dateAdded": 1484685327570,
-                "id": "138",
-                "index": 2,
-                "parentId": "283",
-                "title": "React Native animations revisited — Part III",
-                "url": "https://blog.callstack.io/react-native-animations-revisited-part-iii-41ed43d1ce2e#.rq2o57axq"
-              },
-              {
-                "dateAdded": 1485291200972,
-                "id": "142",
-                "index": 3,
-                "parentId": "283",
-                "title": "5 Tips to make a great component to page animation in React-native",
-                "url": "https://blog.bam.tech/developper-news/5-tips-to-make-a-great-component-to-page-animation-in-react-native"
-              },
-              {
-                "dateAdded": 1486679696714,
-                "id": "147",
-                "index": 4,
-                "parentId": "283",
-                "title": "Toolbar Animation in React Native – React Native Motion – Medium",
-                "url": "https://medium.com/react-native-motion/toolbar-animation-in-react-native-fe89c4f8e4cf#.5e9pej5w7"
-              },
-              {
-                "dateAdded": 1487716647750,
-                "id": "150",
-                "index": 5,
-                "parentId": "283",
-                "title": "How to build animated microinteractions in React",
-                "url": "https://medium.freecodecamp.com/how-to-build-animated-microinteractions-in-react-aab1cb9fe7c8#.q514xosqi"
-              },
-              {
-                "dateAdded": 1488530870773,
-                "id": "151",
-                "index": 6,
-                "parentId": "283",
-                "title": "Design a Perfect Search Box",
-                "url": "https://uxplanet.org/design-a-perfect-search-box-b6baaf9599c#.nvdt9fymu"
-              },
-              {
-                "dateAdded": 1488827065566,
-                "id": "152",
-                "index": 7,
-                "parentId": "283",
-                "title": "React Native collapsible navbar – App & Flow – Medium",
-                "url": "https://medium.com/appandflow/react-native-collapsible-navbar-e51a049b560a#.4who7buxr"
-              },
-              {
-                "dateAdded": 1489527900661,
-                "id": "155",
-                "index": 8,
-                "parentId": "283",
-                "title": "Bringing Mobile Apps to Life Through Motion",
-                "url": "https://uxplanet.org/bringing-mobile-apps-to-life-through-motion-9472d259b58e#.4qccyqbak"
-              },
-              {
-                "dateAdded": 1489567866981,
-                "id": "156",
-                "index": 9,
-                "parentId": "283",
-                "title": "Progress Indicators in Mobile UX Design",
-                "url": "https://uxplanet.org/progress-indicators-in-mobile-ux-design-a141e22f3ea0#.u15g5k7wl"
-              },
-              {
-                "dateAdded": 1493545107074,
-                "id": "161",
-                "index": 10,
-                "parentId": "283",
-                "title": "Declare Peace with React Native Animations – Shoutem – Medium",
-                "url": "https://medium.com/shoutem/declare-peace-with-react-native-animations-e947332fa9b1"
-              },
-              {
-                "dateAdded": 1493746306872,
-                "id": "162",
-                "index": 11,
-                "parentId": "283",
-                "title": "Progressive Web App Libraries in Production – Dev Channel – Medium",
-                "url": "https://medium.com/dev-channel/progressive-web-app-libraries-in-production-b52cad37d34"
-              },
-              {
-                "dateAdded": 1493844228821,
-                "id": "163",
-                "index": 12,
-                "parentId": "283",
-                "title": "10 things I learned making the fastest site in the world",
-                "url": "https://hackernoon.com/10-things-i-learned-making-the-fastest-site-in-the-world-18a0e1cdf4a7"
-              },
-              {
-                "dateAdded": 1501477208408,
-                "id": "177",
-                "index": 13,
-                "parentId": "283",
-                "title": "Autofocus inputs in React native",
-                "url": "https://zach.codes/autofocus-inputs-in-react-native/"
-              },
-              {
-                "dateAdded": 1507550367688,
-                "id": "190",
-                "index": 14,
-                "parentId": "283",
-                "title": "A Five Minutes Guide to Better Typography — Pierrick Calvez",
-                "url": "http://pierrickcalvez.com/journal/a-five-minutes-guide-to-better-typography"
-              },
-              {
-                "dateAdded": 1511337397533,
-                "id": "64",
-                "index": 15,
-                "parentId": "283",
-                "title": "Simple React Native Android Releases – Red Shift",
-                "url": "https://shift.infinite.red/simple-react-native-android-releases-319dc5e29605"
-              },
-              {
-                "dateAdded": 1512631249574,
-                "id": "78",
-                "index": 16,
-                "parentId": "283",
-                "title": "Smart Images in React Native – William Candillon – Medium",
-                "url": "https://medium.com/@wcandillon/smart-images-in-react-native-db0ef047dd8c"
-              },
-              {
-                "dateAdded": 1479231943013,
-                "id": "201",
-                "index": 17,
-                "parentId": "283",
-                "title": "React Native Login Logout Animation",
-                "url": "https://blog.nativebase.io/react-native-login-logout-animation-722001c8fc55#.20wu85r7g"
-              },
-              {
-                "dateAdded": 1483479407838,
-                "id": "200",
-                "index": 18,
-                "parentId": "283",
-                "title": "Better Cross-Platform React Native Components – Differential – Medium",
-                "url": "https://medium.com/differential/better-cross-platform-react-native-components-cb8aadeba472#.w93djzazr"
-              },
-              {
-                "dateAdded": 1513323336825,
-                "id": "86",
-                "index": 19,
-                "parentId": "283",
-                "title": "Essential Image Optimization",
-                "url": "https://images.guide/"
-              },
-              {
-                "dateAdded": 1521560739820,
-                "id": "306",
-                "index": 20,
-                "parentId": "283",
-                "title": "Franz – a free messaging app for Slack, Facebook Messenger, WhatsApp, Telegram and more",
-                "url": "https://meetfranz.com/"
-              }
-            ],
-            "dateAdded": 1520543869289,
-            "dateGroupModified": 1534149370845,
-            "id": "283",
-            "index": 6,
-            "parentId": "1-f",
-            "title": "Articles"
           }
         ],
         "dateAdded": 1519759407642,
