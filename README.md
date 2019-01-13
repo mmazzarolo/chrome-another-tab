@@ -63,9 +63,20 @@ To develop the app locally you can run `yarn start`, I already included some fak
 This app uses TypeScript, React Hooks, Redux and Styled-Components, so you might need to be confortable with these technologies to completely understand the codebase.  
 The app is still pretty simple, doesn't have too many components and most of the logic is just in the Chrome Bookmarks parsing and in the Redux sagas.  
 If you feel intimidated by the codebase **please just open an issue/send a PR**, I'm open to discussion and tips.  
-Also, if you're not confortable with hooks feel free to use class components.  
+Also, if you're not confortable with hooks feel free to use class components.
 
-### Organization?
+### Chrome Web Store deployment
+
+I setup a [semi-automated Chrome Web Store deployment using CircleCI](./circleci/config.yaml).     
+It currently runs only when the `production` branch receives a new push, but I still haven't automated the version number bumping (so I still have to do it manually).  
+It would be great making the publishing step manipulate the `manifest.json` so that it reflects the `package.json` version and/or a git tag.  
+
+### Live example deployment
+
+The "live example" is just a customized version of the production build of the app deployed on GitHub Pages. 
+If you check the `gh-pages` script in the `package.json` you'll see that I'm setting a `REACT_APP_IS_LIVE_EXAMPLE` environment variable before running the GitHub Pages deployment: this will allow the build to use the fake bookmarks instead of trying to get them from the Chrome API (like if it was an extension running in the browser).   
+
+### GitHub organization?
 
 If the app starts getting contributions I'll gladly create a new ad-hoc organization for it, instead of keeping it in my personal profile.  
 
