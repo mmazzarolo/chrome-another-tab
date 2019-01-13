@@ -11,7 +11,7 @@ jobs:
           name: "Install Dependencies"
           command: |
             apt-get update
-            apt-get -y install curl jq yarn
+            apt-get -y install curl jq
             yarn
       - run:
           name: "Run TypeScript Compile"
