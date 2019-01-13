@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    filters:
-      branches:
-        only: production
+    branches:
+      only: production
     docker:
       - image: circleci/node
     environment:
