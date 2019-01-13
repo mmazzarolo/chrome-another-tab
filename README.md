@@ -3,7 +3,7 @@
 # Another Tab - Chrome Extension <img src="./.github/logo.svg" width="40" align="left">
 
 An open source Chrome extension that shows your bookmarks when you open a new tab.  
-Built with Create React App and TypeScript.   
+Built with Create React App and TypeScript.
 
 &nbsp;
 
@@ -16,10 +16,11 @@ Built with Create React App and TypeScript.
 ## Overview
 
 I initially built this extension just for personal use and for trying building a Chrome extension, so it has just the feature that I need for now...  
-PRs are welcome!   
-[Check the DEVLOG to see the history of the project](./DEVLOG.md).  
+PRs are welcome!  
+[Check the DEVLOG to see the history of the project](./DEVLOG.md).
 
 ### Features
+
 - Shows your bookmarks in the new tab page
 - Bookmarks filtering/search
 - Keyboard navigation support
@@ -27,6 +28,7 @@ PRs are welcome!
 - Themes support
 
 ### Stack
+
 - React (using Create React App) and hooks
 - TypeScript
 - Styled-Components
