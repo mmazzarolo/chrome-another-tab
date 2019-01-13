@@ -46,3 +46,26 @@ PRs are welcome!
 - TypeScript
 - Styled-Components
 - Redux, Redux-Saga and Typesafe-Actions
+
+## Contributing
+
+### Feature request
+
+I already created a few [issues](https://github.com/mmazzarolo/chrome-another-tab/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) with some features that I feel like would be really welcomed addition, and I'm open to any other additional suggestion... especially if you already have an idea to implement it's UI/UX.  
+
+### Developing locally
+
+This is a standard Create React App, so you can easily start working on it by simply cloning the project and running `yarn` to install all its dependencies.   
+To develop the app locally you can run `yarn start`, I already included some fake bookmarks to simulate the production behaviour of the extension.  
+
+### Development tips
+
+This app uses TypeScript, React Hooks, Redux and Styled-Components, so you might need to be confortable with these technologies to completely understand the codebase.  
+The app is still pretty simple, doesn't have too many components and most of the logic is just in the Chrome Bookmarks parsing and in the Redux sagas.  
+If you feel intimidated by the codebase **please just open an issue/send a PR**, I'm open to discussion and tips.  
+Also, if you're not confortable with hooks feel free to use class components.  
+
+### Organization?
+
+If the app starts getting contributions I'll gladly create a new ad-hoc organization for it, instead of keeping it in my personal profile.  
+
