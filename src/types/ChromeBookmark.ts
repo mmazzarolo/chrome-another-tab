@@ -1,1 +1,3 @@
-export type ChromeBookmark = chrome.bookmarks.BookmarkTreeNode;
+export type ChromeBookmark = chrome.bookmarks.BookmarkTreeNode & {
+  nodeOrder?: number;
+};
