@@ -13,7 +13,7 @@ npx create-react-app chrome-another-tab --typescript
 Add the Chrome API TypeScript types:
 
 ```bash
-cd chrome-anoter-tab && yarn add @types/chrome
+cd chrome-another-tab && yarn add @types/chrome
 ```
 
 And update `public/manifest.json` like you'll do for a standard Chrome extension.  
@@ -77,7 +77,7 @@ Why styled-components instead of any other library? Well, it's an easy choice fo
 ### State management
 
 Since I'm planning to add a few features that need to share a global state between different components I had (wanted) to pick a state management library.  
-Initially I thought about just using the `Context` API, maybe in conjuntion with the `useReducer` hook, but since in [my last project](https://github.com/mmazzarolo/just-tap) I fell in love (again) with Redux + TypeScript (and a few other related libraries) I decided to use them here as well.  
+Initially I thought about just using the `Context` API, maybe in conjunction with the `useReducer` hook, but since in [my last project](https://github.com/mmazzarolo/just-tap) I fell in love (again) with Redux + TypeScript (and a few other related libraries) I decided to use them here as well.  
 The libraries I'm planning to use are:
 
 - Redux
