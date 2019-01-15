@@ -5,10 +5,15 @@ import { getIsBookmarkHidden } from "./getIsBookmarkHidden";
 export const getBookmarkTree = (state: ReduxState): BookmarkTree => {
   const { foldersById, bookmarksById } = state.bookmarks;
   const { query, isShowingHiddenBookmark } = state.session;
-  const folders: BookmarkTree = Object.keys(foldersById).map(folderId => ({
-    ...foldersById[folderId],
-    bookmarks: []
-  }));
+  const folders: BookmarkTree = Object.entries(foldersById)
+    .sort(
+      ([keyA, { nodeOrder: nodeOrderA }], [keyB, { nodeOrder: nodeOrderB }]) =>
+        nodeOrderA! - nodeOrderB!
+    )
+    .map(([folderId]) => ({
+      ...foldersById[folderId],
+      bookmarks: []
+    }));
   Object.keys(bookmarksById).forEach(bookmarkId => {
     const bookmark = bookmarksById[bookmarkId];
     const isHidden = getIsBookmarkHidden(state, bookmark.id);
