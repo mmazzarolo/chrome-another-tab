@@ -15,3 +15,13 @@ export const getBookmarks = async () => {
 
 export const openNewTab = (params: { url: string }) =>
   new Promise<chrome.tabs.Tab>(resolve => chrome.tabs.create(params, resolve));
+
+export const moveBookmark = async (
+  bookmarkId: string,
+  parentId: string,
+  index: number
+) => {
+  return new Promise<ChromeBookmark>(resolve =>
+    chrome.bookmarks.move(bookmarkId, { index, parentId }, resolve)
+  );
+};

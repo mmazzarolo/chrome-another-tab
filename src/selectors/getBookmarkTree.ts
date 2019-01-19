@@ -1,25 +1,29 @@
+import { compareIndexes } from "./../utils/compareIndexes";
 import { BookmarkTree } from "./../types/BookmarkTree";
 import { ReduxState } from "../types/ReduxState";
-import { getIsBookmarkHidden } from "./getIsBookmarkHidden";
+import { getIsFolderHidden } from "./getIsFolderHidden";
 
 export const getBookmarkTree = (state: ReduxState): BookmarkTree => {
   const { foldersById, bookmarksById } = state.bookmarks;
-  const { query, isShowingHiddenBookmark } = state.session;
-  const folders: BookmarkTree = Object.keys(foldersById).map(folderId => ({
-    ...foldersById[folderId],
-    bookmarks: []
-  }));
+  const { query, isShowingHiddenBookmarks } = state.session;
+  const folders: BookmarkTree = Object.keys(foldersById)
+    .map(folderId => ({
+      ...foldersById[folderId],
+      bookmarks: []
+    }))
+    .filter(x => !getIsFolderHidden(state, x.id))
+    .sort(compareIndexes);
   Object.keys(bookmarksById).forEach(bookmarkId => {
     const bookmark = bookmarksById[bookmarkId];
-    const isHidden = getIsBookmarkHidden(state, bookmark.id);
-    const isTitleQuery = bookmark.title
+    const isTitleInQuery = bookmark.title
       .toLowerCase()
       .includes(query.toLowerCase());
-    const isUrlQuery = (bookmark.url || "")
+    const isUrlInQuery = (bookmark.url || "")
       .toLowerCase()
       .includes(query.toLowerCase());
-    const isVisible =
-      (!isHidden || isShowingHiddenBookmark) && (isTitleQuery || isUrlQuery);
+    // TODO: FIX
+    // const isVisible = isShowingHiddenBookmarks && (isTitleQuery || isUrlQuery);
+    const isVisible = isTitleInQuery || isUrlInQuery;
     if (isVisible) {
       const folderIndex = folders.findIndex(
         folder => folder.id === bookmark.parentId
@@ -35,6 +39,9 @@ export const getBookmarkTree = (state: ReduxState): BookmarkTree => {
   });
   const bookmarkTree = folders.filter(folder => {
     return folder.bookmarks && folder.bookmarks.length > 0;
+  });
+  bookmarkTree.forEach(folder => {
+    folder.bookmarks.sort(compareIndexes);
   });
   return bookmarkTree;
 };

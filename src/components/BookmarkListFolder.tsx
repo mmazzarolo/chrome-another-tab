@@ -12,34 +12,14 @@ import { Theme } from "../types/Theme";
 interface Props {
   id: string;
   title: string;
+  isHidden: boolean;
+  onOptionClick: () => void;
 }
 
-const mapActions = {
-  hideFolder: actions.hideFolder,
-  showFolder: actions.showFolder
-};
-
 export const BookmarkListFolder: FC<Props> = memo(props => {
-  const { id, title, children } = props;
-
-  const mapState = useCallback(
-    (state: ReduxState) => ({
-      isHidden: getIsFolderHidden(state, id)
-    }),
-    [id]
-  );
-  const { isHidden } = useMappedState(mapState);
-  const { hideFolder, showFolder } = useMappedActions(mapActions);
+  const { id, title, children, isHidden, onOptionClick } = props;
 
   const [rootRef, isHovered] = useHover<HTMLParagraphElement>();
-
-  const handleHideClick = () => {
-    if (isHidden) {
-      showFolder(id);
-    } else {
-      hideFolder(id);
-    }
-  };
 
   return (
     <Root>
@@ -50,7 +30,7 @@ export const BookmarkListFolder: FC<Props> = memo(props => {
             <OptionHideShow
               size={24}
               isHidden={isHidden}
-              onClick={handleHideClick}
+              onClick={onOptionClick}
             />
           </Options>
         )}

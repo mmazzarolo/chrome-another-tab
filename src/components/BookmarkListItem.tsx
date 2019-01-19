@@ -1,31 +1,36 @@
-import React, { FC, memo, useCallback } from "react";
-import { useMappedState } from "redux-react-hook";
+import React, { FC, memo } from "react";
 import styled from "styled-components/macro";
 import { getFaviconUrl } from "../utils/getFaviconUrl";
-import { ReduxState } from "../types/ReduxState";
-import { getIsBookmarkHidden } from "../selectors/getIsBookmarkHidden";
 import { Theme } from "../types/Theme";
 
 interface Props {
   id: string;
   title: string;
   url?: string;
+  isHidden: boolean;
+  isHoverDisabled?: boolean;
+  isTransitionDisabled?: boolean;
 }
 
 export const BookmarkListItem: FC<Props> = memo(props => {
-  const { title, url, id } = props;
-
-  const mapState = useCallback(
-    (state: ReduxState) => ({
-      isHidden: getIsBookmarkHidden(state, id)
-    }),
-    [id]
-  );
-  const { isHidden } = useMappedState(mapState);
+  const {
+    title,
+    url,
+    id,
+    isHidden,
+    isHoverDisabled,
+    isTransitionDisabled
+  } = props;
   const faviconSrc = url && getFaviconUrl(url);
 
   return (
-    <Root href={url} rel="noopener noreferrer">
+    <Root
+      draggable={false} // Disables the browser built-in drag handler
+      href={url}
+      rel="noopener noreferrer"
+      isHoverDisabled={isHoverDisabled}
+      isTransitionDisabled={isTransitionDisabled}
+    >
       <Content isHidden={isHidden}>
         {url && <Favicon src={faviconSrc} />}
         <Title>{title}</Title>
@@ -34,6 +39,11 @@ export const BookmarkListItem: FC<Props> = memo(props => {
   );
 });
 
+interface RootProps {
+  theme: Theme;
+  isHoverDisabled?: boolean;
+  isTransitionDisabled?: boolean;
+}
 const Root = styled.a`
   display: flex;
   flex-direction: row;
@@ -41,18 +51,21 @@ const Root = styled.a`
   font-size: 14px;
   font-weight: 400;
   width: 260px;
-  background: ${(props: { theme: Theme }) => props.theme.itemBackground};
-  border: ${(props: { theme: Theme }) => props.theme.itemBorder};
-  box-shadow: ${(props: { theme: Theme }) => props.theme.itemShadow};
-  transition: all 0.2s ease-out;
+  background: ${(props: RootProps) => props.theme.itemBackground};
+  border: ${(props: RootProps) => props.theme.itemBorder};
+  box-shadow: ${(props: RootProps) => props.theme.itemShadow};
+  transition: ${(props: RootProps) =>
+    props.isTransitionDisabled ? "initial" : "all 0.2s ease-out"};
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
 
   &:hover,
   &:focus {
-    background: ${(props: { theme: Theme }) => props.theme.itemHoverBackground};
-    box-shadow: ${(props: { theme: Theme }) => props.theme.itemHoverShadow};
+    background: ${(props: RootProps) =>
+      props.isHoverDisabled ? "initial" : props.theme.itemHoverBackground};
+    box-shadow: ${(props: RootProps) =>
+      props.isHoverDisabled ? "initial" : props.theme.itemHoverShadow};
     outline: none;
   }
 `;

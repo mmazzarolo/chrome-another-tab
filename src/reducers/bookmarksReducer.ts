@@ -1,6 +1,8 @@
 import { pull } from "lodash";
 import { produce } from "immer";
 import { getType } from "typesafe-actions";
+import { moveArrayElement } from "./../utils/moveArrayElement";
+import { compareIndexes } from "./../utils/compareIndexes";
 import { actions } from "../actions";
 import { ReduxAction } from "../types/ReduxAction";
 import { ChromeBookmark } from "../types/ChromeBookmark";
@@ -8,13 +10,13 @@ import { ChromeBookmark } from "../types/ChromeBookmark";
 export type State = {
   readonly foldersById: { [id: string]: ChromeBookmark };
   readonly bookmarksById: { [id: string]: ChromeBookmark };
-  readonly hiddenBookmarkIds: string[];
+  readonly hiddenFolderIds: string[];
 };
 
 export const initialState: State = {
   foldersById: {},
   bookmarksById: {},
-  hiddenBookmarkIds: []
+  hiddenFolderIds: []
 };
 
 export const bookmarksReducer = (
@@ -28,43 +30,33 @@ export const bookmarksReducer = (
         draft.bookmarksById = action.payload.bookmarksById;
         break;
       }
-      case getType(actions.hideBookmark): {
-        const bookmarkId = action.payload;
-        if (draft.hiddenBookmarkIds.indexOf(bookmarkId) === -1) {
-          draft.hiddenBookmarkIds.push(bookmarkId);
-        }
-        break;
-      }
-      case getType(actions.showBookmark): {
-        const bookmarkId = action.payload;
-        if (draft.hiddenBookmarkIds.indexOf(bookmarkId) > -1) {
-          pull(draft.hiddenBookmarkIds, bookmarkId);
-        }
-        break;
-      }
       case getType(actions.hideFolder): {
         const folderId = action.payload;
-        const folderBookmarks = Object.values(state.bookmarksById).filter(
-          x => x.parentId === folderId
-        );
-        folderBookmarks.forEach(bookmark => {
-          if (draft.hiddenBookmarkIds.indexOf(bookmark.id) === -1) {
-            draft.hiddenBookmarkIds.push(bookmark.id);
-          }
-        });
+        if (draft.hiddenFolderIds.indexOf(folderId) === -1) {
+          draft.hiddenFolderIds.push(folderId);
+        }
         break;
       }
       case getType(actions.showFolder): {
         const folderId = action.payload;
-        const folderBookmarks = Object.values(state.bookmarksById).filter(
-          x => x.parentId === folderId
-        );
-        folderBookmarks.forEach(bookmark => {
-          if (draft.hiddenBookmarkIds.indexOf(bookmark.id) > -1) {
-            pull(draft.hiddenBookmarkIds, bookmark.id);
-          }
+        if (draft.hiddenFolderIds.indexOf(folderId) > -1) {
+          pull(draft.hiddenFolderIds, folderId);
+        }
+        break;
+      }
+      case getType(actions.moveBookmark): {
+        const { parentId, oldIndex, newIndex } = action.payload;
+        let bookmarks = Object.values(state.bookmarksById)
+          .filter(x => x.parentId === parentId)
+          .sort(compareIndexes);
+        bookmarks = moveArrayElement(bookmarks, oldIndex, newIndex);
+        bookmarks.forEach((x, index) => {
+          draft.bookmarksById[x.id].index = index;
         });
         break;
+      }
+      case getType(actions.moveBookmarkSuccess): {
+        return state;
       }
       case getType(actions.rehydrateSuccess): {
         const persistedState = action.payload;

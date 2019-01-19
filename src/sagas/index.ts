@@ -11,8 +11,6 @@ export const rootSaga = function*() {
     takeEvery(getType(actions.rehydrate), rehydrateSaga),
     takeEvery(
       [
-        getType(actions.showBookmark),
-        getType(actions.hideBookmark),
         getType(actions.showFolder),
         getType(actions.hideFolder),
         getType(actions.goToNextTheme),

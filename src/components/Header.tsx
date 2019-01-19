@@ -17,19 +17,19 @@ import { Theme } from "../types/Theme";
 
 const mapState = (state: ReduxState) => ({
   query: state.session.query,
-  isShowingHiddenBookmark: state.session.isShowingHiddenBookmark
+  isShowingHiddenBookmarks: state.session.isShowingHiddenBookmarks
 });
 
 const mapActions = {
   setQuery: actions.setQuery,
-  toggleShowHiddenBookmark: actions.toggleShowHiddenBookmark,
+  toggleShowHiddenBookmarks: actions.toggleShowHiddenBookmarks,
   goToNextTheme: actions.goToNextTheme
 };
 
 export const Header: FC = memo(props => {
-  const { isShowingHiddenBookmark, query } = useMappedState(mapState);
+  const { isShowingHiddenBookmarks, query } = useMappedState(mapState);
   const {
-    toggleShowHiddenBookmark,
+    toggleShowHiddenBookmarks,
     setQuery,
     goToNextTheme
   } = useMappedActions(mapActions);
@@ -46,7 +46,7 @@ export const Header: FC = memo(props => {
 
   const handleBookmarksVisibilityClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    toggleShowHiddenBookmark();
+    toggleShowHiddenBookmarks();
   };
 
   const handleThemeSwitchClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -63,7 +63,7 @@ export const Header: FC = memo(props => {
       <SearchBar ref={searchBarRef} query={query} onChange={setQuery} />
       <Menu>
         <MenuItem onClick={handleBookmarksVisibilityClick}>
-          {isShowingHiddenBookmark ? <StyledHideIcon /> : <StyledShowIcon />}
+          {isShowingHiddenBookmarks ? <StyledHideIcon /> : <StyledShowIcon />}
         </MenuItem>
         <Separator />
         <MenuItem onClick={handleThemeSwitchClick}>

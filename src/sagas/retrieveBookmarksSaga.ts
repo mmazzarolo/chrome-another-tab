@@ -6,5 +6,10 @@ import { parseBookmarkTree } from "../utils/parseBookmarkTree";
 export const retrieveBookmarksSaga = function*() {
   const chromeBookmarks = yield getBookmarks();
   const parsedBookmarks = parseBookmarkTree(chromeBookmarks);
-  yield put(actions.retrieveBookmarksSuccess(parsedBookmarks));
+  yield put(
+    actions.retrieveBookmarksSuccess(
+      parsedBookmarks.foldersById,
+      parsedBookmarks.bookmarksById
+    )
+  );
 };

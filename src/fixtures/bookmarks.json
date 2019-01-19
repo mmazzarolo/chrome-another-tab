@@ -4,7 +4,7 @@
       {
         "dateAdded": 1415023988987,
         "id": "20",
-        "index": 8,
+        "index": 0,
         "parentId": "1",
         "title": "Google",
         "url": "https:/google.com/"
@@ -12,7 +12,7 @@
       {
         "dateAdded": 1457424049324,
         "id": "26",
-        "index": 9,
+        "index": 1,
         "parentId": "1",
         "title": "Twitter",
         "url": "https://twitter.com/"
@@ -20,7 +20,7 @@
       {
         "dateAdded": 1452547369278,
         "id": "28",
-        "index": 10,
+        "index": 2,
         "parentId": "1",
         "title": "Ino reader",
         "url": "https://www.inoreader.com/discovery"
@@ -28,7 +28,7 @@
       {
         "dateAdded": 1522930734988,
         "id": "324",
-        "index": 11,
+        "index": 3,
         "parentId": "1",
         "title": "Dev.to",
         "url": "https://dev.to/"
@@ -36,7 +36,7 @@
       {
         "dateAdded": 1415021741069,
         "id": "29",
-        "index": 12,
+        "index": 4,
         "parentId": "1",
         "title": "Amazon",
         "url": "http://www.amazon.com/"
@@ -44,7 +44,7 @@
       {
         "dateAdded": 1415021717391,
         "id": "30",
-        "index": 13,
+        "index": 5,
         "parentId": "1",
         "title": "Reddit",
         "url": "http://www.reddit.com/"
@@ -52,7 +52,7 @@
       {
         "dateAdded": 1415021693972,
         "id": "31",
-        "index": 14,
+        "index": 6,
         "parentId": "1",
         "title": "Facebook",
         "url": "https://www.facebook.com/"
@@ -60,7 +60,7 @@
       {
         "dateAdded": 1406291592095,
         "id": "32",
-        "index": 15,
+        "index": 7,
         "parentId": "1",
         "title": "Hacker News",
         "url": "https://news.ycombinator.com/"
@@ -68,7 +68,7 @@
       {
         "dateAdded": 1415021705455,
         "id": "33",
-        "index": 16,
+        "index": 8,
         "parentId": "1",
         "title": "YouTube",
         "url": "https://www.youtube.com/feed/subscriptions"
@@ -76,7 +76,7 @@
       {
         "dateAdded": 1524163526513,
         "id": "344",
-        "index": 18,
+        "index": 9,
         "parentId": "1",
         "title": "Wirecutter",
         "url": "https://thewirecutter.com/electronics/"
@@ -122,7 +122,7 @@
               {
                 "dateAdded": 1364206411437,
                 "id": "133",
-                "index": 7,
+                "index": 3,
                 "parentId": "19",
                 "title": "5000 Best Movies",
                 "url": "http://5000best.com/movies/"
@@ -130,7 +130,7 @@
               {
                 "dateAdded": 1498548187677,
                 "id": "143",
-                "index": 10,
+                "index": 4,
                 "parentId": "19",
                 "title": "Mobile UI designs - UI Movement",
                 "url": "https://uimovement.com/category/1/mobile/"
@@ -138,7 +138,7 @@
               {
                 "dateAdded": 1485813957389,
                 "id": "144",
-                "index": 11,
+                "index": 5,
                 "parentId": "19",
                 "title": "Noisli - Improve Focus and Boost Productivity with Background Noise",
                 "url": "https://www.noisli.com/"
@@ -146,7 +146,7 @@
               {
                 "dateAdded": 1487253440683,
                 "id": "148",
-                "index": 12,
+                "index": 6,
                 "parentId": "19",
                 "title": "Isotope",
                 "url": "http://isotope.metafizzy.co/"
@@ -154,7 +154,7 @@
               {
                 "dateAdded": 1489700817156,
                 "id": "157",
-                "index": 14,
+                "index": 7,
                 "parentId": "19",
                 "title": "Animista",
                 "url": "http://animista.net/"
@@ -162,7 +162,7 @@
               {
                 "dateAdded": 1537809812089,
                 "id": "468",
-                "index": 28,
+                "index": 8,
                 "parentId": "19",
                 "title": "365 Random Muppets",
                 "url": "https://365randommuppets.wordpress.com/"
