@@ -2,7 +2,6 @@
   "name": "chrome-another-tab",
   "version": "1.0.1",
   "private": true,
-  "homepage": "https://mmazzarolo.github.io/chrome-another-tab",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -10,12 +9,9 @@
     "eject": "react-scripts eject",
     "lint": "tslint -t verbose -p . -c tslint.json",
     "tsc": "tsc",
-    "gh-pages:build": "REACT_APP_IS_LIVE_EXAMPLE=true yarn run build",
-    "gh-pages:deploy": "gh-pages -d build",
-    "gh-pages": "yarn run gh-pages:build && yarn run gh-pages:deploy"
+    "build-fake": "REACT_APP_IS_LIVE_EXAMPLE=true react-scripts build"
   },
   "dependencies": {
-    "gh-pages": "^2.0.1",
     "immer": "^1.9.3",
     "lodash": "^4.17.11",
     "prettier": "^1.15.2",
@@ -23,7 +19,7 @@
     "react-dom": "^16.7.0-alpha.2",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.1",
-    "react-sortable-hoc": "^1.4.0",
+    "react-sortable-hoc": "mmazzarolo/react-sortable-hoc",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-react-hook": "^3.0.0",
