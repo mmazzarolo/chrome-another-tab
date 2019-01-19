@@ -1,11 +1,11 @@
 import { put } from "redux-saga/effects";
 import { actions } from "../actions/index";
 import { getBookmarks } from "../services/chromeService";
-import { parseBookmarkTree } from "../utils/parseBookmarkTree";
+import { parseChromeBookmarks } from "../utils/parseChromeBookmarks";
 
 export const retrieveBookmarksSaga = function*() {
   const chromeBookmarks = yield getBookmarks();
-  const parsedBookmarks = parseBookmarkTree(chromeBookmarks);
+  const parsedBookmarks = parseChromeBookmarks(chromeBookmarks);
   yield put(
     actions.retrieveBookmarksSuccess(
       parsedBookmarks.foldersById,

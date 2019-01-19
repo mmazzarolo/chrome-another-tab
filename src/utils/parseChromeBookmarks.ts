@@ -12,7 +12,7 @@ const withoutChildren = (bookmark: ChromeBookmark) => ({
   unmodifiable: bookmark.unmodifiable
 });
 
-export const parseBookmarkTree = (bookmarkTree: ChromeBookmark[]) => {
+export const parseChromeBookmarks = (chromeBookmarks: ChromeBookmark[]) => {
   const foldersById: ChromeBookmarksById = {};
   const allFolderIds: string[] = [];
   const bookmarksById: ChromeBookmarksById = {};
@@ -29,7 +29,7 @@ export const parseBookmarkTree = (bookmarkTree: ChromeBookmark[]) => {
       }
     });
   };
-  parseBookmarkNodes(bookmarkTree);
+  parseBookmarkNodes(chromeBookmarks);
 
   return { foldersById, bookmarksById };
 };

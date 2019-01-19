@@ -19,16 +19,11 @@ const mapState = (state: ReduxState) => ({
   currentTheme: getCurrentTheme(state)
 });
 
-const mapActions = {
-  rehydrate: actions.rehydrate,
-  retrieveBookmarks: actions.retrieveBookmarks
-};
-
 export const App: FC = () => {
   const { areBookmarksReady, bookmarkTree, currentTheme } = useMappedState(
     mapState
   );
-  const { retrieveBookmarks, rehydrate } = useMappedActions(mapActions);
+  const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
 
   const isBookmarkTreeEmpty = isEmpty(bookmarkTree);
 

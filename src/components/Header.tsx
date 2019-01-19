@@ -20,19 +20,13 @@ const mapState = (state: ReduxState) => ({
   isShowingHiddenBookmarks: state.session.isShowingHiddenBookmarks
 });
 
-const mapActions = {
-  setQuery: actions.setQuery,
-  toggleShowHiddenBookmarks: actions.toggleShowHiddenBookmarks,
-  goToNextTheme: actions.goToNextTheme
-};
-
 export const Header: FC = memo(props => {
   const { isShowingHiddenBookmarks, query } = useMappedState(mapState);
   const {
     toggleShowHiddenBookmarks,
     setQuery,
     goToNextTheme
-  } = useMappedActions(mapActions);
+  } = useMappedActions(actions);
   const searchBarRef = useRef<HTMLInputElement>(null);
 
   useKeyboardPress({
