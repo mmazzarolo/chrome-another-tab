@@ -45,9 +45,9 @@ export const bookmarksReducer = (
         break;
       }
       case getType(actions.moveBookmark): {
-        const { parentId, oldIndex, newIndex } = action.payload;
+        const { bookmark, oldIndex, newIndex } = action.payload;
         let bookmarks = Object.values(state.bookmarksById)
-          .filter(x => x.parentId === parentId)
+          .filter(x => x.parentId === bookmark.parentId)
           .sort(compareIndexes);
         bookmarks = moveArrayElement(bookmarks, oldIndex, newIndex);
         bookmarks.forEach((x, index) => {

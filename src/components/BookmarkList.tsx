@@ -19,83 +19,78 @@ interface BookmarkListProps {
 export const BookmarkList: FC<BookmarkListProps> = memo(props => {
   const { bookmarkTree } = props;
   const [isDragging, setIsDragging] = useState(false);
-  const mapActions = {
-    moveBookmark: actions.moveBookmark
-  };
-  const { moveBookmark } = useMappedActions(mapActions);
+  const { moveBookmark } = useMappedActions(actions);
   const handleStartDragging = () => setIsDragging(true);
   const handleStopDragging = (
-    parentId: string,
+    folder: Folder,
     params: {
       oldIndex: number;
       newIndex: number;
     }
   ) => {
     setIsDragging(false);
-    moveBookmark(parentId, params.oldIndex, params.newIndex);
+    const bookmark = folder.bookmarks[params.oldIndex];
+    moveBookmark(bookmark, params.oldIndex, params.newIndex);
   };
+  const { hideFolder, showFolder } = useMappedActions(actions);
   return (
-    <RootList>
+    <Root>
       {bookmarkTree.map(folder => {
+        const mapState = useCallback(
+          (state: ReduxState) => ({
+            isFolderHidden: getIsFolderHidden(state, folder.id)
+          }),
+          [folder.id]
+        );
+        const { isFolderHidden } = useMappedState(mapState);
+        const handleOptionClick = () => {
+          if (isFolderHidden) {
+            showFolder(folder.id);
+          } else {
+            hideFolder(folder.id);
+          }
+        };
         return (
-          <SortableBookmarkList
+          <BookmarkListFolder
             key={folder.id}
-            folder={folder}
-            axis="xy"
-            distance={8}
-            updateBeforeSortStart={handleStartDragging}
-            onSortEnd={params => handleStopDragging(folder.id, params)}
-            isDragging={isDragging}
-          />
+            title={folder.title}
+            isHidden={isFolderHidden}
+            onOptionClick={handleOptionClick}
+          >
+            <SortableBookmarkList
+              key={folder.id}
+              folder={folder}
+              isFolderHidden={isFolderHidden}
+              isDragging={isDragging}
+              axis="xy"
+              distance={8}
+              updateBeforeSortStart={handleStartDragging}
+              onSortEnd={params => handleStopDragging(folder, params)}
+            />
+          </BookmarkListFolder>
         );
       })}
-    </RootList>
+    </Root>
   );
 });
 
 const SortableBookmarkList = SortableContainer<{
   folder: Folder;
   isDragging: boolean;
+  isFolderHidden: boolean;
 }>(props => {
-  const { folder, isDragging } = props;
-  const mapState = useCallback(
-    (state: ReduxState) => ({
-      isHidden: getIsFolderHidden(state, folder.id)
-    }),
-    [folder.id]
-  );
-  const { isHidden } = useMappedState(mapState);
-  const mapActions = {
-    hideFolder: actions.hideFolder,
-    showFolder: actions.showFolder
-  };
-  const { hideFolder, showFolder } = useMappedActions(mapActions);
-
-  const handleOptionClick = () => {
-    if (isHidden) {
-      showFolder(folder.id);
-    } else {
-      hideFolder(folder.id);
-    }
-  };
   return (
-    <BookmarkListFolder
-      key={folder.id}
-      id={folder.id}
-      title={folder.title}
-      isHidden={isHidden}
-      onOptionClick={handleOptionClick}
-    >
-      {folder.bookmarks.map((bookmark, index) => (
+    <Grid>
+      {props.folder.bookmarks.map((bookmark, index) => (
         <SortableBookmarkListItem
           key={bookmark.id}
           index={index}
           bookmark={bookmark}
-          isDragging={isDragging}
-          isHidden={isHidden}
+          isDragging={props.isDragging}
+          isHidden={props.isFolderHidden}
         />
       ))}
-    </BookmarkListFolder>
+    </Grid>
   );
 });
 
@@ -115,10 +110,18 @@ const SortableBookmarkListItem = SortableElement<{
   />
 ));
 
-const RootList = styled.ul`
+const Root = styled.ul`
   display: block;
   text-align: left;
   padding-left: 0;
   width: 100%;
   max-width: 860px;
+`;
+
+const Grid = styled.ul`
+  display: grid;
+  grid-gap: 12px 20px;
+  grid-template-columns: repeat(auto-fit, 260px);
+  grid-auto-rows: 54px;
+  padding-left: 0;
 `;

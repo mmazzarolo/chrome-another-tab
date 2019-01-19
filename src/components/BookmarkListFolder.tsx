@@ -1,24 +1,21 @@
-import React, { FC, memo, useCallback } from "react";
+import React, { FC } from "react";
 import styled from "styled-components/macro";
 import { useHover } from "../hooks/useHover";
-import { useMappedActions } from "../hooks/useMappedActions";
-import { getIsFolderHidden } from "../selectors/getIsFolderHidden";
-import { ReduxState } from "../types/ReduxState";
-import { actions } from "../actions";
-import { useMappedState } from "redux-react-hook";
 import { OptionHideShow } from "./OptionHideShow";
 import { Theme } from "../types/Theme";
 
 interface Props {
-  id: string;
   title: string;
   isHidden: boolean;
   onOptionClick: () => void;
 }
 
-export const BookmarkListFolder: FC<Props> = memo(props => {
-  const { id, title, children, isHidden, onOptionClick } = props;
-
+export const BookmarkListFolder: FC<Props> = ({
+  title,
+  children,
+  isHidden,
+  onOptionClick
+}) => {
   const [rootRef, isHovered] = useHover<HTMLParagraphElement>();
 
   return (
@@ -35,10 +32,10 @@ export const BookmarkListFolder: FC<Props> = memo(props => {
           </Options>
         )}
       </Header>
-      <Content>{children}</Content>
+      {children}
     </Root>
   );
-});
+};
 
 const Root = styled.li`
   list-style: none;
@@ -58,14 +55,6 @@ const Title = styled.p`
   font-size: 19px;
   font-weight: 500;
   display: inline-block;
-`;
-
-const Content = styled.ul`
-  display: grid;
-  grid-gap: 12px 20px;
-  grid-template-columns: repeat(auto-fit, 260px);
-  grid-auto-rows: 54px;
-  padding-left: 0;
 `;
 
 const Options = styled.div`

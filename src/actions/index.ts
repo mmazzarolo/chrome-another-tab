@@ -1,3 +1,4 @@
+import { Bookmark } from "./../types/Bookmark";
 import { createAction } from "typesafe-actions";
 import { ChromeBookmark } from "./../types/ChromeBookmark";
 import { ReduxPersistedState } from "./../types/ReduxPersistedState";
@@ -33,8 +34,8 @@ const retrieveBookmarksSuccess = createAction(
 );
 
 const moveBookmark = createAction("bookmark/MOVE_BOOKMARK", resolve => {
-  return (parentId: string, oldIndex: number, newIndex: number) =>
-    resolve({ parentId, oldIndex, newIndex });
+  return (bookmark: Bookmark, oldIndex: number, newIndex: number) =>
+    resolve({ bookmark, oldIndex, newIndex });
 });
 
 const moveBookmarkSuccess = createAction(

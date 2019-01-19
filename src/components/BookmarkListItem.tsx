@@ -48,17 +48,19 @@ const Root = styled.a`
   display: flex;
   flex-direction: row;
   text-align: left;
+  /* margin: 6px 10px; */
   font-size: 14px;
   font-weight: 400;
   width: 260px;
   background: ${(props: RootProps) => props.theme.itemBackground};
   border: ${(props: RootProps) => props.theme.itemBorder};
   box-shadow: ${(props: RootProps) => props.theme.itemShadow};
-  transition: ${(props: RootProps) =>
-    props.isTransitionDisabled ? "initial" : "all 0.2s ease-out"};
+  /* transition: ${(props: RootProps) =>
+    props.isTransitionDisabled ? "initial" : "all 0.2s ease-out"}; */
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
+    box-sizing: border-box;
 
   &:hover,
   &:focus {

@@ -14,9 +14,9 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const createReduxStore = (initialState?: {}) => {
   const middlewares = [];
-  if (NODE_ENV === "development") {
-    middlewares.push(loggerMiddleware);
-  }
+  // if (NODE_ENV === "development") {
+  middlewares.push(loggerMiddleware);
+  // }
   middlewares.push(sagaMiddleware);
   const enhancer = compose(applyMiddleware(...middlewares));
   const store = createStore(rootReducer, initialState!, enhancer);
