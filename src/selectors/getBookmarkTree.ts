@@ -9,9 +9,10 @@ export const getBookmarkTree = (state: ReduxState): BookmarkTree => {
   const folders: BookmarkTree = Object.keys(foldersById)
     .map(folderId => ({
       ...foldersById[folderId],
+      isHidden: getIsFolderHidden(state, folderId),
       bookmarks: []
     }))
-    .filter(x => !getIsFolderHidden(state, x.id))
+    .filter(x => isShowingHiddenBookmarks || !x.isHidden)
     .sort(compareIndexes);
   Object.keys(bookmarksById).forEach(bookmarkId => {
     const bookmark = bookmarksById[bookmarkId];
@@ -21,8 +22,6 @@ export const getBookmarkTree = (state: ReduxState): BookmarkTree => {
     const isUrlInQuery = (bookmark.url || "")
       .toLowerCase()
       .includes(query.toLowerCase());
-    // TODO: FIX
-    // const isVisible = isShowingHiddenBookmarks && (isTitleQuery || isUrlQuery);
     const isVisible = isTitleInQuery || isUrlInQuery;
     if (isVisible) {
       const folderIndex = folders.findIndex(

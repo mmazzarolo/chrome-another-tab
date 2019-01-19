@@ -19,7 +19,7 @@
     "react-dom": "^16.7.0-alpha.2",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.1",
-    "react-sortable-hoc": "mmazzarolo/react-sortable-hoc",
+    "react-sortable-hoc": "^1.4.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-react-hook": "^3.0.0",

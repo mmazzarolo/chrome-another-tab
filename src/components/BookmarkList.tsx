@@ -1,4 +1,4 @@
-import React, { FC, memo, useState, useCallback } from "react";
+import React, { FC, memo, useState } from "react";
 import styled from "styled-components/macro";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import { BookmarkListItem } from "./BookmarkListItem";
@@ -6,9 +6,6 @@ import { BookmarkListFolder } from "./BookmarkListFolder";
 import { BookmarkTree } from "../types/BookmarkTree";
 import { Bookmark } from "../types/Bookmark";
 import { Folder } from "../types/Folder";
-import { ReduxState } from "../types/ReduxState";
-import { getIsFolderHidden } from "../selectors/getIsFolderHidden";
-import { useMappedState } from "redux-react-hook";
 import { actions } from "../actions";
 import { useMappedActions } from "../hooks/useMappedActions";
 
@@ -36,15 +33,8 @@ export const BookmarkList: FC<BookmarkListProps> = memo(props => {
   return (
     <Root>
       {bookmarkTree.map(folder => {
-        const mapState = useCallback(
-          (state: ReduxState) => ({
-            isFolderHidden: getIsFolderHidden(state, folder.id)
-          }),
-          [folder.id]
-        );
-        const { isFolderHidden } = useMappedState(mapState);
         const handleOptionClick = () => {
-          if (isFolderHidden) {
+          if (folder.isHidden) {
             showFolder(folder.id);
           } else {
             hideFolder(folder.id);
@@ -54,13 +44,13 @@ export const BookmarkList: FC<BookmarkListProps> = memo(props => {
           <BookmarkListFolder
             key={folder.id}
             title={folder.title}
-            isHidden={isFolderHidden}
+            isHidden={folder.isHidden}
             onOptionClick={handleOptionClick}
           >
             <SortableBookmarkList
               key={folder.id}
               folder={folder}
-              isFolderHidden={isFolderHidden}
+              isFolderHidden={folder.isHidden}
               isDragging={isDragging}
               axis="xy"
               distance={8}

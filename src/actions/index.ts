@@ -1,5 +1,5 @@
-import { Bookmark } from "./../types/Bookmark";
 import { createAction } from "typesafe-actions";
+import { Bookmark } from "./../types/Bookmark";
 import { ChromeBookmark } from "./../types/ChromeBookmark";
 import { ReduxPersistedState } from "./../types/ReduxPersistedState";
 

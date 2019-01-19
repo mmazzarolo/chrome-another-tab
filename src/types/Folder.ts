@@ -6,5 +6,6 @@ export interface Folder {
   url?: string;
   id: string;
   parentId?: string;
+  isHidden: boolean;
   bookmarks: Bookmark[];
 }
