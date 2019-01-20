@@ -1,11 +1,11 @@
 {
-  "main.js": "/static/js/main.4bada1df.chunk.js",
-  "main.js.map": "/static/js/main.4bada1df.chunk.js.map",
-  "static/js/1.7d8627f5.chunk.js": "/static/js/1.7d8627f5.chunk.js",
-  "static/js/1.7d8627f5.chunk.js.map": "/static/js/1.7d8627f5.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.eccb6b5063719e1cb4e3ac59845a9c44.js": "/precache-manifest.eccb6b5063719e1cb4e3ac59845a9c44.js",
-  "service-worker.js": "/service-worker.js"
+  "main.js": "https://mmazzarolo.github.io/chrome-another-tab/static/js/main.29f82302.chunk.js",
+  "main.js.map": "https://mmazzarolo.github.io/chrome-another-tab/static/js/main.29f82302.chunk.js.map",
+  "static/js/1.acbbc61c.chunk.js": "https://mmazzarolo.github.io/chrome-another-tab/static/js/1.acbbc61c.chunk.js",
+  "static/js/1.acbbc61c.chunk.js.map": "https://mmazzarolo.github.io/chrome-another-tab/static/js/1.acbbc61c.chunk.js.map",
+  "runtime~main.js": "https://mmazzarolo.github.io/chrome-another-tab/static/js/runtime~main.c646ed54.js",
+  "runtime~main.js.map": "https://mmazzarolo.github.io/chrome-another-tab/static/js/runtime~main.c646ed54.js.map",
+  "index.html": "https://mmazzarolo.github.io/chrome-another-tab/index.html",
+  "precache-manifest.cee2d60d2e5382a8af883a09cdeafa95.js": "https://mmazzarolo.github.io/chrome-another-tab/precache-manifest.cee2d60d2e5382a8af883a09cdeafa95.js",
+  "service-worker.js": "https://mmazzarolo.github.io/chrome-another-tab/service-worker.js"
 }
