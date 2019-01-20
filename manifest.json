@@ -17,5 +17,5 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; img-src chrome://favicon;"
+  "content_security_policy": "script-src 'self'; object-src 'self'; img-src chrome://favicon;"
 }
