@@ -1,3 +1,6 @@
+/**
+ * The app header (with logo, searchbar and a few links).
+ */
 import React, { FC, memo, MouseEvent, useRef } from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { actions } from "../actions";
@@ -29,6 +32,7 @@ export const Header: FC = memo(props => {
   } = useMappedActions(actions);
   const searchBarRef = useRef<HTMLInputElement>(null);
 
+  // Overrides CMD+F default behaviour
   useKeyboardPress({
     key: "f",
     metaKey: true,

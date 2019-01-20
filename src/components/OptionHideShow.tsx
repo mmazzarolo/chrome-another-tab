@@ -1,3 +1,6 @@
+/**
+ * The hide/show option round button.
+ */
 import React, { FC, memo, MouseEvent } from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { Hide as HideIcon } from "styled-icons/boxicons-regular";

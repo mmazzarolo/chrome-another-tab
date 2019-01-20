@@ -45,18 +45,24 @@ export const bookmarksReducer = (
         break;
       }
       case getType(actions.moveBookmark): {
+        // This action is triggered when the user moves a bookmark to a new
+        // position. Since the reducer structure keeps the bookmarks in an
+        // unordered structure (an object) we need to do some tricks to update
+        // its position in the state.
         const { bookmark, oldIndex, newIndex } = action.payload;
+        // First, we put all the folder's bookmarks in an array and we sort it
+        // to get their current position (pre-sort)...
         let bookmarks = Object.values(state.bookmarksById)
           .filter(x => x.parentId === bookmark.parentId)
           .sort(compareIndexes);
+        // Then, given the updated bookmark position, we move it in the array...
         bookmarks = moveArrayElement(bookmarks, oldIndex, newIndex);
+        // And lastly we update the state by updating the index of all the
+        // elements in the folder
         bookmarks.forEach((x, index) => {
           draft.bookmarksById[x.id].index = index;
         });
         break;
-      }
-      case getType(actions.moveBookmarkSuccess): {
-        return state;
       }
       case getType(actions.rehydrateSuccess): {
         const persistedState = action.payload;

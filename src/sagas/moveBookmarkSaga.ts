@@ -1,8 +1,10 @@
 import { ActionType } from "typesafe-actions";
-import { put, select } from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 import { moveBookmark } from "./../services/chromeService";
 import { actions } from "../actions/index";
 
+// When the user sorts a bookmark item trough drag and drop we also update it
+// in the Chrome bookmarks
 export const moveBookmarkSaga = function*(
   action: ActionType<typeof actions.moveBookmark>
 ) {

@@ -1,3 +1,6 @@
+/**
+ * The folder header, where there are the folder title and its show/hide option.
+ */
 import React, { FC } from "react";
 import styled from "styled-components/macro";
 import { useHover } from "../hooks/useHover";
@@ -10,44 +13,30 @@ interface Props {
   onOptionClick: () => void;
 }
 
-export const BookmarkListFolder: FC<Props> = ({
-  title,
-  children,
-  isHidden,
-  onOptionClick
-}) => {
+export const FolderHeader: FC<Props> = ({ title, isHidden, onOptionClick }) => {
   const [rootRef, isHovered] = useHover<HTMLParagraphElement>();
 
   return (
-    <Root>
-      <Header ref={rootRef}>
-        <Title>{title}</Title>
-        {isHovered && (
-          <Options>
-            <OptionHideShow
-              size={24}
-              isHidden={isHidden}
-              onClick={onOptionClick}
-            />
-          </Options>
-        )}
-      </Header>
-      {children}
+    <Root ref={rootRef}>
+      <Title>{title}</Title>
+      {isHovered && (
+        <Options>
+          <OptionHideShow
+            size={24}
+            isHidden={isHidden}
+            onClick={onOptionClick}
+          />
+        </Options>
+      )}
     </Root>
   );
 };
 
-const Root = styled.li`
-  list-style: none;
-  padding-left: 0px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-`;
-
-const Header = styled.div`
+const Root = styled.div`
   display: inline-flex;
   cursor: pointer;
   align-items: center;
+  margin-left: 10px; /* TODO: react-sortable-hoc grid workaround */
 `;
 
 const Title = styled.p`

@@ -1,3 +1,7 @@
+/**
+ * Screen shown to the user when the are not bookmarks in the list (most of the
+ * time it happens if no bookmarks are available in the search result).
+ */
 import React, { FC } from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { Theme } from "../types/Theme";

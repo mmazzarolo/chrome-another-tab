@@ -1,3 +1,8 @@
+/**
+ * Just the SVG logo.
+ * Putting it inside a component allows us to easily change its fill color
+ * trough props.
+ */
 import React, { FC } from "react";
 import { withTheme } from "styled-components";
 import { Theme } from "../types/Theme";
