@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "lint": "tslint -t verbose -p . -c tslint.json",
     "tsc": "tsc",
-    "predeploy": "PUBLIC_URL=https://mmazzarolo.github.io/chrome-another-tab REACT_APP_IS_LIVE_EXAMPLE=true gh-pages -d build",
+    "predeploy": "PUBLIC_URL=https://mmazzarolo.github.io/chrome-another-tab REACT_APP_IS_LIVE_EXAMPLE=true yarn run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {

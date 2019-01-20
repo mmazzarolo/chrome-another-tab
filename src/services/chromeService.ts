@@ -19,7 +19,9 @@ export const moveBookmark = async (
   oldIndex: number,
   newIndex: number
 ) => {
-  if (NODE_ENV !== "development") {
+  if (NODE_ENV === "development" || IS_LIVE_EXAMPLE) {
+    return;
+  } else {
     return new Promise<ChromeBookmark>(resolve => {
       // The Chrome move API seems to have a bug when you move a bookmark to
       // a position where the new index is greater than the current one.
