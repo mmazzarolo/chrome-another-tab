@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "29f82302c4b0941ef414",
-    "url": "https://mmazzarolo.github.io/chrome-another-tab/static/js/main.29f82302.chunk.js"
+    "revision": "5f508ac9e277d7a37a7c",
+    "url": "https://mmazzarolo.github.io/chrome-another-tab/static/js/main.5f508ac9.chunk.js"
   },
   {
     "revision": "acbbc61c4e26af779246",
@@ -12,7 +12,7 @@ self.__precacheManifest = [
     "url": "https://mmazzarolo.github.io/chrome-another-tab/static/js/runtime~main.c646ed54.js"
   },
   {
-    "revision": "b901daca5fd7c92f3836c8dce3b58113",
+    "revision": "3f46747c58118e3c3fc54f24db280622",
     "url": "https://mmazzarolo.github.io/chrome-another-tab/index.html"
   }
 ];
