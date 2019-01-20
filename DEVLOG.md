@@ -183,4 +183,6 @@ That said, the library works well! (Even if I admit I'm a bit worried that will 
     <img width="auto" height="auto" src="./.github/2019-01-19-drag-and-drop.gif">
 </p>
 
-I also had a lot of fun playing around with the Chrome API for moving bookmarks, [discovering what seems to be a really old bug of it](https://stackoverflow.com/q/13264060/4836602), and implementing an optimistic update (so that we can update the bookmark position in the state without having to wait for the Chrome API response).
+I also had a lot of fun playing around with the Chrome API for moving bookmarks, [discovering what seems to be a really old bug of it](https://stackoverflow.com/q/13264060/4836602), and implementing an optimistic update (so that we can update the bookmark position in the state without having to wait for the Chrome API response).  
+
+P.S.: Looks like "Bookmarks Bar" and "Other Bookmarks" cannot be sorted :(
