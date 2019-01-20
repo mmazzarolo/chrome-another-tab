@@ -1,30 +1,32 @@
+import { compareIndexes } from "./../utils/compareIndexes";
 import { BookmarkTree } from "./../types/BookmarkTree";
 import { ReduxState } from "../types/ReduxState";
-import { getIsBookmarkHidden } from "./getIsBookmarkHidden";
+import { getIsFolderHidden } from "./getIsFolderHidden";
 
+// Given the Redux state returns a "BookmarkTree" object with data that can
+// be easily represented using React components.
 export const getBookmarkTree = (state: ReduxState): BookmarkTree => {
   const { foldersById, bookmarksById } = state.bookmarks;
-  const { query, isShowingHiddenBookmark } = state.session;
-  const folders: BookmarkTree = Object.entries(foldersById)
-    .sort(
-      ([keyA, { nodeOrder: nodeOrderA }], [keyB, { nodeOrder: nodeOrderB }]) =>
-        nodeOrderA! - nodeOrderB!
-    )
-    .map(([folderId]) => ({
+  const { query, isShowingHiddenBookmarks } = state.session;
+  // Get an array of bookmark folders (sorted like in the Chrome bookmarks)
+  const folders: BookmarkTree = Object.keys(foldersById)
+    .map(folderId => ({
       ...foldersById[folderId],
+      isHidden: getIsFolderHidden(state, folderId),
       bookmarks: []
-    }));
+    }))
+    .filter(x => isShowingHiddenBookmarks || !x.isHidden)
+    .sort(compareIndexes);
+  // Populate the folders with their bookmarks
   Object.keys(bookmarksById).forEach(bookmarkId => {
     const bookmark = bookmarksById[bookmarkId];
-    const isHidden = getIsBookmarkHidden(state, bookmark.id);
-    const isTitleQuery = bookmark.title
+    const isTitleInQuery = bookmark.title
       .toLowerCase()
       .includes(query.toLowerCase());
-    const isUrlQuery = (bookmark.url || "")
+    const isUrlInQuery = (bookmark.url || "")
       .toLowerCase()
       .includes(query.toLowerCase());
-    const isVisible =
-      (!isHidden || isShowingHiddenBookmark) && (isTitleQuery || isUrlQuery);
+    const isVisible = isTitleInQuery || isUrlInQuery;
     if (isVisible) {
       const folderIndex = folders.findIndex(
         folder => folder.id === bookmark.parentId
@@ -38,8 +40,13 @@ export const getBookmarkTree = (state: ReduxState): BookmarkTree => {
       }
     }
   });
+  // Remove the empty folders
   const bookmarkTree = folders.filter(folder => {
     return folder.bookmarks && folder.bookmarks.length > 0;
+  });
+  // Sort the folders bookmarks (like in the Chrome bookmarks)
+  bookmarkTree.forEach(folder => {
+    folder.bookmarks.sort(compareIndexes);
   });
   return bookmarkTree;
 };

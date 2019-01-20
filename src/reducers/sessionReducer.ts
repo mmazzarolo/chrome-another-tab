@@ -5,15 +5,17 @@ import { ReduxAction } from "../types/ReduxAction";
 
 export type State = {
   readonly query: string;
-  readonly isShowingHiddenBookmark: boolean;
+  readonly isShowingHiddenBookmarks: boolean;
   readonly isRetrievingBookmarks: boolean;
   readonly areBookmarksReady: boolean;
+  readonly isDragging: boolean;
 };
 
 export const initialState: State = {
   query: "",
-  isShowingHiddenBookmark: false,
+  isShowingHiddenBookmarks: false,
   isRetrievingBookmarks: false,
+  isDragging: false,
   areBookmarksReady: false
 };
 
@@ -38,8 +40,8 @@ export const sessionReducer = (
         }
         break;
       }
-      case getType(actions.toggleShowHiddenBookmark): {
-        draft.isShowingHiddenBookmark = !state.isShowingHiddenBookmark;
+      case getType(actions.toggleShowHiddenBookmarks): {
+        draft.isShowingHiddenBookmarks = !state.isShowingHiddenBookmarks;
         break;
       }
       case getType(actions.setQuery): {

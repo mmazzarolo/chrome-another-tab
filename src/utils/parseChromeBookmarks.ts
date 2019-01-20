@@ -9,17 +9,14 @@ const withoutChildren = (bookmark: ChromeBookmark) => ({
   dateGroupModified: bookmark.dateGroupModified,
   id: bookmark.id,
   parentId: bookmark.parentId,
-  unmodifiable: bookmark.unmodifiable,
-  nodeOrder: bookmark.nodeOrder
+  unmodifiable: bookmark.unmodifiable
 });
 
-export const parseBookmarkTree = (bookmarkTree: ChromeBookmark[]) => {
+export const parseChromeBookmarks = (chromeBookmarks: ChromeBookmark[]) => {
   const foldersById: ChromeBookmarksById = {};
   const bookmarksById: ChromeBookmarksById = {};
-  let nodeOrder = 0;
   const parseBookmarkNodes = (nodes: ChromeBookmark[]) => {
     nodes.forEach(node => {
-      node.nodeOrder = nodeOrder++;
       if (node.children) {
         foldersById[node.id] = withoutChildren(node);
         parseBookmarkNodes(node.children);
@@ -28,7 +25,7 @@ export const parseBookmarkTree = (bookmarkTree: ChromeBookmark[]) => {
       }
     });
   };
-  parseBookmarkNodes(bookmarkTree);
+  parseBookmarkNodes(chromeBookmarks);
 
   return { foldersById, bookmarksById };
 };

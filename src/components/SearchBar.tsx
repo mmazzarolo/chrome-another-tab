@@ -1,3 +1,6 @@
+/**
+ * Searchbar that resides inside the app header.
+ */
 import React, { ChangeEvent, forwardRef } from "react";
 import styled from "styled-components/macro";
 import { Search as SearchIcon } from "styled-icons/material";

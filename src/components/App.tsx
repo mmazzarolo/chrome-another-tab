@@ -1,7 +1,10 @@
+/**
+ * App entry point
+ */
 import React, { FC } from "react";
 import styled, { keyframes, ThemeProvider } from "styled-components/macro";
 import { isEmpty } from "lodash";
-import { BookmarkList } from "./BookmarkList";
+import { FolderList } from "./FolderList";
 import { useOnMount } from "../hooks/useOnMount";
 import { actions } from "../actions";
 import { Header } from "./Header";
@@ -19,16 +22,11 @@ const mapState = (state: ReduxState) => ({
   currentTheme: getCurrentTheme(state)
 });
 
-const mapActions = {
-  rehydrate: actions.rehydrate,
-  retrieveBookmarks: actions.retrieveBookmarks
-};
-
 export const App: FC = () => {
   const { areBookmarksReady, bookmarkTree, currentTheme } = useMappedState(
     mapState
   );
-  const { retrieveBookmarks, rehydrate } = useMappedActions(mapActions);
+  const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
 
   const isBookmarkTreeEmpty = isEmpty(bookmarkTree);
 
@@ -47,7 +45,7 @@ export const App: FC = () => {
         <Header />
         {!isBookmarkTreeEmpty && (
           <Main>
-            <BookmarkList bookmarkTree={bookmarkTree} />
+            <FolderList bookmarkTree={bookmarkTree} />
           </Main>
         )}
         {isBookmarkTreeEmpty && <NoResult />}
