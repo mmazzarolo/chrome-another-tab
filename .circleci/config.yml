@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     branches:
-      only: production
+      only: master
     docker:
       - image: circleci/node
     environment:
