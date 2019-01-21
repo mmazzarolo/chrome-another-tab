@@ -39,6 +39,7 @@ PRs are welcome!
 - Keyboard navigation support
 - Bookmark folders visibility toggle
 - Themes support
+- Drag & drop bookmark sorting (only in the [beta](https://chrome.google.com/webstore/detail/ijeooknlkcfkffkjfihlncclhojkfibl) version)
 
 ### Stack
 
