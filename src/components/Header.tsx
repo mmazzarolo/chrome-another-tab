@@ -62,10 +62,12 @@ export const Header: FC = memo(props => {
       <Menu>
         <MenuItem onClick={handleBookmarksVisibilityClick}>
           {isShowingHiddenBookmarks ? <StyledHideIcon /> : <StyledShowIcon />}
+          <ToolTip >{isShowingHiddenBookmarks ? 'Hide hidden bookmarks' : 'Show hidden bookmarks'}</ToolTip>
         </MenuItem>
         <Separator />
         <MenuItem onClick={handleThemeSwitchClick}>
           <StyledColorLensIcon />
+          <ToolTip >Change theme colors</ToolTip>
         </MenuItem>
         <Separator />
         <MenuItem
@@ -73,6 +75,7 @@ export const Header: FC = memo(props => {
           tabIndex={-1}
         >
           <StyledGithubIcon />
+          <ToolTip >Link to GitHub</ToolTip>
         </MenuItem>
       </Menu>
     </Root>
@@ -127,8 +130,33 @@ const Menu = styled.div`
   align-items: center;
 `;
 
+const ToolTip = styled.span`
+  visibility: hidden;
+  width: 120px;
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  color: white;
+  background-color: black;
+
+  &::after {
+    content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+  }
+`;
+
 const MenuItem = styled.a`
   display: flex;
+  flex-direction: column;
   align-items: center;
   font-size: 16px;
   font-weight: 500;
@@ -137,8 +165,14 @@ const MenuItem = styled.a`
 
   &:hover {
     opacity: 0.7;
+
+    ${ToolTip} {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 `;
+
 
 const Separator = styled.span`
   background: ${(props: { theme: Theme }) => props.theme.headerColor};
