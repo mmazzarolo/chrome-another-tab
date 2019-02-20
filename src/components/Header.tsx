@@ -75,7 +75,6 @@ export const Header: FC = memo(props => {
           tabIndex={-1}
         >
           <StyledGithubIcon />
-          <ToolTip >Link to GitHub</ToolTip>
         </MenuItem>
       </Menu>
     </Root>
