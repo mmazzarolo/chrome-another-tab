@@ -25,6 +25,7 @@ export const SearchBar = forwardRef<HTMLInputElement, Props>((props, ref) => {
         type="text"
         onChange={handleInputChange}
         value={query}
+        autofocus
       />
     </Form>
   );
