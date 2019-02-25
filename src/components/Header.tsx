@@ -62,12 +62,12 @@ export const Header: FC = memo(props => {
       <Menu>
         <MenuItem onClick={handleBookmarksVisibilityClick}>
           {isShowingHiddenBookmarks ? <StyledHideIcon /> : <StyledShowIcon />}
-          <ToolTip >{isShowingHiddenBookmarks ? 'Hide hidden bookmarks' : 'Show hidden bookmarks'}</ToolTip>
+          <ToolTip>{isShowingHiddenBookmarks ? 'Hide hidden bookmarks' : 'Show hidden bookmarks'}</ToolTip>
         </MenuItem>
         <Separator />
         <MenuItem onClick={handleThemeSwitchClick}>
           <StyledColorLensIcon />
-          <ToolTip >Change theme colors</ToolTip>
+          <ToolTip>Change theme colors</ToolTip>
         </MenuItem>
         <Separator />
         <MenuItem
