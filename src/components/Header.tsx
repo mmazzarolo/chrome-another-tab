@@ -62,7 +62,11 @@ export const Header: FC = memo(props => {
       <Menu>
         <MenuItem onClick={handleBookmarksVisibilityClick}>
           {isShowingHiddenBookmarks ? <StyledHideIcon /> : <StyledShowIcon />}
-          <ToolTip>{isShowingHiddenBookmarks ? 'Hide hidden bookmarks' : 'Show hidden bookmarks'}</ToolTip>
+          <ToolTip>
+            {isShowingHiddenBookmarks
+              ? "Hide hidden bookmarks"
+              : "Show hidden bookmarks"}
+          </ToolTip>
         </MenuItem>
         <Separator />
         <MenuItem onClick={handleThemeSwitchClick}>
@@ -143,13 +147,13 @@ const ToolTip = styled.span`
 
   &::after {
     content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent black transparent;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
   }
 `;
 
@@ -171,7 +175,6 @@ const MenuItem = styled.a`
     }
   }
 `;
-
 
 const Separator = styled.span`
   background: ${(props: { theme: Theme }) => props.theme.headerColor};
