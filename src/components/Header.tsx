@@ -14,7 +14,10 @@ import {
   Hide as HideIcon,
   Show as ShowIcon
 } from "styled-icons/boxicons-regular";
-import { ColorLens as ColorLensIcon } from "styled-icons/material";
+import {
+  ColorLens as ColorLensIcon,
+  Settings as SettingsIcon
+} from "styled-icons/material";
 import { useKeyboardPress } from "../hooks/useKeyboardPress";
 import { Theme } from "../types/Theme";
 
@@ -79,6 +82,11 @@ export const Header: FC = memo(props => {
           tabIndex={-1}
         >
           <StyledGithubIcon />
+        </MenuItem>
+        <Separator />
+        <MenuItem>
+          <StyledSettingsIcon />
+          <ToolTip>Settings</ToolTip>
         </MenuItem>
       </Menu>
     </Root>
@@ -205,6 +213,12 @@ const StyledShowIcon = styled(ShowIcon)`
 `;
 
 const StyledGithubIcon = styled(GithubIcon)`
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
+  height: 22px;
+  width: 22px;
+`;
+
+const StyledSettingsIcon = styled(SettingsIcon)`
   color: ${(props: { theme: Theme }) => props.theme.headerColor};
   height: 22px;
   width: 22px;
