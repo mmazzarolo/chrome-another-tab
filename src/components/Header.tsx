@@ -31,7 +31,8 @@ export const Header: FC = memo(props => {
   const {
     toggleShowHiddenBookmarks,
     setQuery,
-    goToNextTheme
+    goToNextTheme,
+    showSettingsModal
   } = useMappedActions(actions);
   const searchBarRef = useRef<HTMLInputElement>(null);
 
@@ -53,6 +54,11 @@ export const Header: FC = memo(props => {
   const handleThemeSwitchClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     goToNextTheme();
+  };
+
+  const handleShowSettingsClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    showSettingsModal();
   };
 
   return (
@@ -84,7 +90,7 @@ export const Header: FC = memo(props => {
           <StyledGithubIcon />
         </MenuItem>
         <Separator />
-        <MenuItem>
+        <MenuItem onClick={handleShowSettingsClick}>
           <StyledSettingsIcon />
           <ToolTip>Settings</ToolTip>
         </MenuItem>

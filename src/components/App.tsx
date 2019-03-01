@@ -15,15 +15,19 @@ import { getBookmarkTree } from "../selectors/getBookmarkTree";
 import { NoResult } from "./NoResult";
 import { Theme } from "../types/Theme";
 import { getCurrentTheme } from "../selectors/getCurrentTheme";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
   areBookmarksReady: state.session.areBookmarksReady,
-  currentTheme: getCurrentTheme(state)
+  currentTheme: getCurrentTheme(state),
+  isModalOpen: state.session.isSettingsModalOpen,
 });
 
 export const App: FC = () => {
-  const { areBookmarksReady, bookmarkTree, currentTheme } = useMappedState(
+  const { areBookmarksReady, bookmarkTree, currentTheme, isModalOpen } = useMappedState(
     mapState
   );
   const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
@@ -49,6 +53,7 @@ export const App: FC = () => {
           </Main>
         )}
         {isBookmarkTreeEmpty && <NoResult />}
+        <Modal isOpen={isModalOpen}></Modal>
       </Root>
     </ThemeProvider>
   );

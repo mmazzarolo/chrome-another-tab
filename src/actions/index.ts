@@ -66,6 +66,11 @@ const rehydrateSuccess = createAction("other/REHYDRATE_SUCCESS", resolve => {
   return (persistedState: ReduxPersistedState) => resolve(persistedState);
 });
 
+// show modal for settings
+const showSettingsModal = createAction("session/SHOW_MODAL", resolve => {
+  return () => resolve();
+});
+
 export const actions = {
   toggleShowHiddenBookmarks,
   setQuery,
@@ -77,5 +82,6 @@ export const actions = {
   showFolder,
   goToNextTheme,
   rehydrate,
-  rehydrateSuccess
+  rehydrateSuccess,
+  showSettingsModal
 };

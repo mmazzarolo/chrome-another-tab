@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@types/react-modal": "^3.8.1",
     "gh-pages": "^2.0.1",
     "immer": "^1.9.3",
     "lodash": "^4.17.11",

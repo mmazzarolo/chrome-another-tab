@@ -9,6 +9,7 @@ export type State = {
   readonly isRetrievingBookmarks: boolean;
   readonly areBookmarksReady: boolean;
   readonly isDragging: boolean;
+  readonly isSettingsModalOpen: boolean;
 };
 
 export const initialState: State = {
@@ -16,7 +17,8 @@ export const initialState: State = {
   isShowingHiddenBookmarks: false,
   isRetrievingBookmarks: false,
   isDragging: false,
-  areBookmarksReady: false
+  areBookmarksReady: false,
+  isSettingsModalOpen: false,
 };
 
 export const sessionReducer = (
@@ -46,6 +48,10 @@ export const sessionReducer = (
       }
       case getType(actions.setQuery): {
         draft.query = action.payload;
+        break;
+      }
+      case getType(actions.showSettingsModal): {
+        draft.isSettingsModalOpen = !state.isSettingsModalOpen;
         break;
       }
       default:
