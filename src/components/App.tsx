@@ -113,8 +113,8 @@ const StyledModal = styled(ModalWrapper)`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${(props: { theme: Theme }) =>
-      props.theme.modalBackground};
+    background-color: black;
+    opacity: 0.7;
     border: none;
   }
 `;
