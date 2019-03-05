@@ -27,9 +27,13 @@ const mapState = (state: ReduxState) => ({
 });
 
 export const App: FC = () => {
-  const { areBookmarksReady, bookmarkTree, currentTheme, isModalOpen } = useMappedState(
-    mapState
-  );
+  const {
+    areBookmarksReady,
+    bookmarkTree,
+    currentTheme,
+    isModalOpen
+  } = useMappedState(mapState);
+
   const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
 
   const isBookmarkTreeEmpty = isEmpty(bookmarkTree);
@@ -53,7 +57,27 @@ export const App: FC = () => {
           </Main>
         )}
         {isBookmarkTreeEmpty && <NoResult />}
-        <Modal isOpen={isModalOpen}></Modal>
+        <Modal
+          style={{
+            overlay: {
+              position: "absolute",
+              top: "40px",
+              right: "20px",
+              left: "none",
+              width: "600px",
+              height: "400px"
+            },
+            content: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: "black",
+              border: "none"
+            }
+          }}
+          isOpen={isModalOpen}
+        />
       </Root>
     </ThemeProvider>
   );
