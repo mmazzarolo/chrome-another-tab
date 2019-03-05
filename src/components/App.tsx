@@ -16,6 +16,7 @@ import { NoResult } from "./NoResult";
 import { Theme } from "../types/Theme";
 import { getCurrentTheme } from "../selectors/getCurrentTheme";
 import Modal from "react-modal";
+import { checkPropTypes } from "prop-types";
 
 Modal.setAppElement("#root");
 
@@ -23,7 +24,7 @@ const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
   areBookmarksReady: state.session.areBookmarksReady,
   currentTheme: getCurrentTheme(state),
-  isModalOpen: state.session.isSettingsModalOpen,
+  isModalOpen: state.session.isSettingsModalOpen
 });
 
 export const App: FC = () => {
@@ -72,7 +73,7 @@ export const App: FC = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: "black",
+              backgroundColor: currentTheme.modalBackground,
               border: "none"
             }
           }}
