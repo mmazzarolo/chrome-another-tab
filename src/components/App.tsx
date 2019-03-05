@@ -15,10 +15,8 @@ import { getBookmarkTree } from "../selectors/getBookmarkTree";
 import { NoResult } from "./NoResult";
 import { Theme } from "../types/Theme";
 import { getCurrentTheme } from "../selectors/getCurrentTheme";
-import Modal from "react-modal";
+import { ModalWrapper } from "./SettingsModal";
 import { checkPropTypes } from "prop-types";
-
-Modal.setAppElement("#root");
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
@@ -58,27 +56,7 @@ export const App: FC = () => {
           </Main>
         )}
         {isBookmarkTreeEmpty && <NoResult />}
-        <Modal
-          style={{
-            overlay: {
-              position: "absolute",
-              top: "40px",
-              right: "20px",
-              left: "none",
-              width: "600px",
-              height: "400px"
-            },
-            content: {
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: currentTheme.modalBackground,
-              border: "none"
-            }
-          }}
-          isOpen={isModalOpen}
-        />
+        <StyledModal isOpen={isModalOpen} />
       </Root>
     </ThemeProvider>
   );
@@ -117,4 +95,26 @@ const Main = styled.main`
   padding: 0 40px;
   display: flex;
   justify-content: center;
+`;
+
+const StyledModal = styled(ModalWrapper)`
+  &__overlay {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    left: none;
+    width: 600px;
+    height: 400px;
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${(props: { theme: Theme }) =>
+      props.theme.modalBackground};
+    border: none;
+  }
 `;
