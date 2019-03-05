@@ -14,7 +14,10 @@ import {
   Hide as HideIcon,
   Show as ShowIcon
 } from "styled-icons/boxicons-regular";
-import { ColorLens as ColorLensIcon } from "styled-icons/material";
+import {
+  ColorLens as ColorLensIcon,
+  Settings as SettingsIcon
+} from "styled-icons/material";
 import { useKeyboardPress } from "../hooks/useKeyboardPress";
 import { Theme } from "../types/Theme";
 
@@ -28,7 +31,8 @@ export const Header: FC = memo(props => {
   const {
     toggleShowHiddenBookmarks,
     setQuery,
-    goToNextTheme
+    goToNextTheme,
+    showSettingsModal
   } = useMappedActions(actions);
   const searchBarRef = useRef<HTMLInputElement>(null);
 
@@ -50,6 +54,11 @@ export const Header: FC = memo(props => {
   const handleThemeSwitchClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     goToNextTheme();
+  };
+
+  const handleShowSettingsClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    showSettingsModal();
   };
 
   return (
@@ -79,6 +88,11 @@ export const Header: FC = memo(props => {
           tabIndex={-1}
         >
           <StyledGithubIcon />
+        </MenuItem>
+        <Separator />
+        <MenuItem onClick={handleShowSettingsClick}>
+          <StyledSettingsIcon />
+          <ToolTip>Settings</ToolTip>
         </MenuItem>
       </Menu>
     </Root>
@@ -205,6 +219,12 @@ const StyledShowIcon = styled(ShowIcon)`
 `;
 
 const StyledGithubIcon = styled(GithubIcon)`
+  color: ${(props: { theme: Theme }) => props.theme.headerColor};
+  height: 22px;
+  width: 22px;
+`;
+
+const StyledSettingsIcon = styled(SettingsIcon)`
   color: ${(props: { theme: Theme }) => props.theme.headerColor};
   height: 22px;
   width: 22px;
