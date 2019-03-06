@@ -16,7 +16,6 @@ import { NoResult } from "./NoResult";
 import { Theme } from "../types/Theme";
 import { getCurrentTheme } from "../selectors/getCurrentTheme";
 import { ModalWrapper } from "./SettingsModal";
-import { checkPropTypes } from "prop-types";
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),

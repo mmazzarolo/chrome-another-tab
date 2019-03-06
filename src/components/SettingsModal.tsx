@@ -6,6 +6,7 @@
 import React from "react";
 import ReactModal from "react-modal";
 
+ReactModal.setAppElement("#root");
 interface Props extends ReactModal.Props {
   className?: string;
 }
@@ -13,7 +14,6 @@ export const ModalWrapper: React.SFC<Props> = ({
   className,
   ...props
 }: Props) => {
-  ReactModal.setAppElement("#root");
   const contentClassName = `${className}__content`;
   const overlayClassName = `${className}__overlay`;
   return (

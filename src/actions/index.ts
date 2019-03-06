@@ -67,9 +67,7 @@ const rehydrateSuccess = createAction("other/REHYDRATE_SUCCESS", resolve => {
 });
 
 // show modal for settings
-const showSettingsModal = createAction("session/SHOW_MODAL", resolve => {
-  return () => resolve();
-});
+const showSettingsModal = createAction("session/SHOW_MODAL");
 
 export const actions = {
   toggleShowHiddenBookmarks,
