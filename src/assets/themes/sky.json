@@ -16,5 +16,6 @@
   "itemHoverBackground": "rgba(255, 255, 255, 0.8)",
   "itemTextColor": "white",
   "itemShadow": "none",
-  "itemHoverShadow": "none"
+  "itemHoverShadow": "none",
+  "modalBackground": "blue"
 }

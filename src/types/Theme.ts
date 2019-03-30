@@ -18,4 +18,5 @@ export interface Theme {
   itemTextColor: string;
   itemShadow: string;
   itemHoverShadow: string;
+  modalBackground: string;
 }

@@ -15,17 +15,23 @@ import { getBookmarkTree } from "../selectors/getBookmarkTree";
 import { NoResult } from "./NoResult";
 import { Theme } from "../types/Theme";
 import { getCurrentTheme } from "../selectors/getCurrentTheme";
+import { ModalWrapper } from "./SettingsModal";
 
 const mapState = (state: ReduxState) => ({
   bookmarkTree: getBookmarkTree(state),
   areBookmarksReady: state.session.areBookmarksReady,
-  currentTheme: getCurrentTheme(state)
+  currentTheme: getCurrentTheme(state),
+  isModalOpen: state.session.isSettingsModalOpen
 });
 
 export const App: FC = () => {
-  const { areBookmarksReady, bookmarkTree, currentTheme } = useMappedState(
-    mapState
-  );
+  const {
+    areBookmarksReady,
+    bookmarkTree,
+    currentTheme,
+    isModalOpen
+  } = useMappedState(mapState);
+
   const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
 
   const isBookmarkTreeEmpty = isEmpty(bookmarkTree);
@@ -49,6 +55,7 @@ export const App: FC = () => {
           </Main>
         )}
         {isBookmarkTreeEmpty && <NoResult />}
+        <StyledModal isOpen={isModalOpen} />
       </Root>
     </ThemeProvider>
   );
@@ -87,4 +94,26 @@ const Main = styled.main`
   padding: 0 40px;
   display: flex;
   justify-content: center;
+`;
+
+const StyledModal = styled(ModalWrapper)`
+  &__overlay {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    left: none;
+    width: 600px;
+    height: 400px;
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.7;
+    border: none;
+  }
 `;
