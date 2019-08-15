@@ -28,8 +28,8 @@ Built with Create React App and TypeScript.
 
 ## Overview
 
-I initially built this extension just for personal use and for trying building a Chrome extension, so it has just the feature that I need for now...  
-PRs are welcome!  
+I initially built this extension just for personal use... and for trying building a Chrome extension 🤷‍♂️, so for now it has just the features that I need...  
+That said, PRs are welcome!  
 [Check the DEVLOG to see the history of the project](./DEVLOG.md).
 
 ### Features
