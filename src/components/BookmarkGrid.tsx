@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const BookmarkGrid = SortableContainer<Props>(
-  ({ folder, isDragging, isFolderHidden }) => {
+  ({ folder, isDragging, isFolderHidden }: Props) => {
     return (
       <Root>
         {folder.bookmarks.map((bookmark, index) => (

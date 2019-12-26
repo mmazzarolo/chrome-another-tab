@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const BookmarkGridItem = SortableElement<Props>(
-  ({ title, url, isHidden, isHoverDisabled, isTransitionDisabled }) => {
+  ({ title, url, isHidden, isHoverDisabled, isTransitionDisabled }: Props) => {
     const faviconSrc = url && getFaviconUrl(url);
 
     return (
