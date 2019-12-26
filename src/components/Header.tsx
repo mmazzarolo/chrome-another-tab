@@ -6,7 +6,7 @@ import styled, { keyframes } from "styled-components/macro";
 import { actions } from "../actions";
 import { ReduxState } from "../types/ReduxState";
 import { useMappedActions } from "../hooks/useMappedActions";
-import { useMappedState } from "redux-react-hook";
+import { useSelector } from 'react-redux'
 import { SearchBar } from "./SearchBar";
 import { LogoImage } from "./LogoImage";
 import { MarkGithub as GithubIcon } from "styled-icons/octicons";
@@ -24,7 +24,7 @@ const mapState = (state: ReduxState) => ({
 });
 
 export const Header: FC = memo(props => {
-  const { isShowingHiddenBookmarks, query } = useMappedState(mapState);
+  const { isShowingHiddenBookmarks, query } = useSelector(mapState);
   const {
     toggleShowHiddenBookmarks,
     setQuery,

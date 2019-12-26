@@ -9,7 +9,7 @@ import { useOnMount } from "../hooks/useOnMount";
 import { actions } from "../actions";
 import { Header } from "./Header";
 import { ReduxState } from "../types/ReduxState";
-import { useMappedState } from "redux-react-hook";
+import { useSelector } from "react-redux";
 import { useMappedActions } from "../hooks/useMappedActions";
 import { getBookmarkTree } from "../selectors/getBookmarkTree";
 import { NoResult } from "./NoResult";
@@ -23,7 +23,7 @@ const mapState = (state: ReduxState) => ({
 });
 
 export const App: FC = () => {
-  const { areBookmarksReady, bookmarkTree, currentTheme } = useMappedState(
+  const { areBookmarksReady, bookmarkTree, currentTheme } = useSelector(
     mapState
   );
   const { retrieveBookmarks, rehydrate } = useMappedActions(actions);
